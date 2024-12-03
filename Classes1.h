@@ -22,7 +22,7 @@
 };*/
 
 struct Crime{
-  const short ILLEGALNESS; //range from 1 - 1000
+  short sIllegalness; //range from 1 - 1000
   float fWitnessability;
   short sTimesCommitted = 0;
 };
