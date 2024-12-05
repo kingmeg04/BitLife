@@ -62,17 +62,38 @@ array<int, 2> prisonTime(array<Crime, 6> BadBoyArray, Crime CrimeCaughtFor){ //5
 
     }
     if(fine > 0 && time <= 0) {
-        cout << "You can pay up to " << fine <<"$ to avoid spending " << static_cast<int>(floor(fine / 100)) << " days in prison." << endl;
+        cout << "You can pay up to " << fine <<"$ to avoid spending " << static_cast<int>(floor(fine / 100)) << " days in prison.";
+        if(static_cast<int>(floor(fine / 100)) > 365) {
+            cout << " (" << round(static_cast<int>(floor(fine / 100)/365)*4) / 4 << " years)" << endl;
+        }
+        else {
+            cout << endl;
+        }
     }
     else if(fine > 0 && time > 0) {
         cout << "You've been sentenced to " << time << " days in prison.";
         if(time > 365) {
-            cout << " (" << round((time/365)*4) / 4 << " years)" << endl;
+            cout << " (" << round(time/365*4) / 4 << " years)" << endl;
         }
-        cout << "Additionally you can pay up to " << fine << "$ to avoid spending an additional " << static_cast<int>(floor(fine / 100)) << " days in prison." << endl;
+        else {
+            cout << endl;
+        }
+        cout << "Additionally you can pay up to " << fine << "$ to avoid spending an additional " << static_cast<int>(floor(fine / 100)) << " days in prison.";
+        if(static_cast<int>(floor(fine / 100)) > 365) {
+            cout << " (" << round(static_cast<int>(floor(fine / 100)/365)*4) / 4 << " years)" << endl;
+        }
+        else {
+            cout << endl;
+        }
     }
     else if(fine <= 0 && time > 0) {
-        cout << "You've been sentenced to " << time << " days in prison." << endl;
+        cout << "You've been sentenced to " << time << " days in prison.";
+        if(time > 365) {
+            cout << " (" << round(time/365*4) / 4 << " years)" << endl;
+        }
+        else {
+            cout << endl;
+        }
     }
 
     return {fine, time};
