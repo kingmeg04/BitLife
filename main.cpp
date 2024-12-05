@@ -1,32 +1,31 @@
 #include <iostream>
-#include "Classes1.h"
+#include "WorkLife.cpp"
+
 
 using namespace std;
 
-void AddCrime(Crime crime) {
-    crime.sTimesCommitted++;
-}
 
 
+int main() {
 
-int prisonTime(array<Crime, 6> BadBoyArray){ //5 is the amount of crimes there are that can be committed
-    int time = 1;
-    for(int crimes = 0; crimes <= std::size(BadBoyArray); crimes++){
 
-    }
-    return time;
-}
+    Crime pickpocket = {100, 0.05, "pickpocketing"};
+    Crime shoplift = {200, 0.2, "shoplifting"};
+    Crime assault = {500, 0.9, "assault"};
+    Crime rape = {750, 0.95, "rape"};
+    Crime murder = {900, 0.5, "murder"};
+    Crime explosiveDiarrheaInPublicSpace = {50, 0.99, "explosive diarrhea in public space"};
 
-int main(){
+    array<int, 2> x = prisonTime({pickpocket, shoplift, assault, rape, murder, explosiveDiarrheaInPublicSpace}, murder);
 
-    Crime pickpocket = {1, 0.05};
-    Crime shoplift = {1, 0.2};
-    Crime assault = {1, 0.9};
-    Crime rape = {1, 0.95};
-    Crime murder = {1, 0.5};
-    Crime explosiveDiarrheaInPublicSpace = {1, 0.99};
+    pickpocket.sTimesCommitted = 0;
+    shoplift.sTimesCommitted = 0;
+    assault.sTimesCommitted = 0;
+    rape.sTimesCommitted = 0;
+    murder.sTimesCommitted = 0;
+    explosiveDiarrheaInPublicSpace.sTimesCommitted = 0;
 
-    array<Crime, 6> BadBoyArray = {pickpocket, shoplift, assault, rape, murder, explosiveDiarrheaInPublicSpace};
+    //array<Crime, 6> BadBoyArray = {pickpocket, shoplift, assault, rape, murder, explosiveDiarrheaInPublicSpace};
     //Crime BadBoyArray[] = {pickpocket, shoplift, assault, rape, murder, explosiveDiarrheaInPublicSpace};
 
 
