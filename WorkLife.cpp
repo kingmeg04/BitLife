@@ -55,6 +55,10 @@ array<int, 2> prisonCharge(array<Crime, 6> BadBoyArray, Crime CrimeCaughtFor){ /
                     time += static_cast<int>(BadBoyArray[crimes].sIllegalness * random(2.5,10.0));
 
                 }
+                else if(BadBoyArray[crimes].sIllegalness == 1000) {
+                    cout << "You got the death penalty and died" << endl;
+                    gameOver("ben");
+                }
                 else {
                     time += static_cast<int>(BadBoyArray[crimes].sIllegalness * random(5.0,15.0));
 
