@@ -5,7 +5,6 @@
 
 using namespace std;
 
-
 void AddCrime(Crime crime) {
     crime.sTimesCommitted++;
 }
