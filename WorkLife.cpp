@@ -5,11 +5,16 @@
 
 using namespace std;
 
+//Working stuff
+
+
+
+//Criminal stuff
 void AddCrime(Crime crime) {
     crime.sTimesCommitted++;
 }
 
-array<int, 2> prisonTime(array<Crime, 6> BadBoyArray, Crime CrimeCaughtFor){ //5 is the amount of crimes there are that can be committed
+array<int, 2> prisonCharge(array<Crime, 6> BadBoyArray, Crime CrimeCaughtFor){ //5 is the amount of crimes there are that can be committed
     cout << "You've been caught for " << CrimeCaughtFor.sName << " and are being charged with the following:" << endl;
     int time = 0;
     int fine = 0;

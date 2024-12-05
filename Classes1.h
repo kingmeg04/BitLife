@@ -36,8 +36,8 @@ struct Crime{
 class Job {
     //enum jobs eJob;
     bool bIsAdmin;
-    short sSalary;
-    short sMentalInstability;
+    short sSalary; //paid weekly
+    short sMentalInstability; //range from 1 - 1000
 
     public:
       Job(bool IsAdmin, unsigned short Salary, short MentalInstability){
