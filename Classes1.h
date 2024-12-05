@@ -9,6 +9,7 @@
 
 #include <array>
 #include <vector>
+#include <string>
 
 /*enum jobs{
   HOMELESS,
@@ -21,10 +22,15 @@
   PASSWORDMANAGER,
 };*/
 
+int prisonTime();
+void addCrime();
+
 struct Crime{
   short sIllegalness; //range from 1 - 1000
   float fWitnessability;
+  std::string sName;
   short sTimesCommitted = 0;
+
 };
 
 class Job {
@@ -59,7 +65,7 @@ class IllegalStuff : public Job {
 
     bool isCaught(int lawStrength){
 
-      if()
+      if(true)
         {
         return false;
       }
