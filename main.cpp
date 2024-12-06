@@ -21,6 +21,7 @@ int main() {
     Crime rape = {750, 0.95, "rape"};
     Crime murder = {900, 0.5, "murder"};
     Crime explosiveDiarrheaInPublicSpace = {50, 0.99, "explosive diarrhea in public space"};
+    //If there's any crime that gives the death penalty, It should be used as the first input into anything relating to crime
 
     //caught for a crime (here: assault)
     array<int, 2> prisonCharges = prisonCharge({pickpocket, shoplift, assault, rape, murder, explosiveDiarrheaInPublicSpace}, assault);

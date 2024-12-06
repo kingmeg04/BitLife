@@ -34,8 +34,9 @@ array<int, 2> prisonCharge(array<Crime, 6> BadBoyArray, Crime CrimeCaughtFor){ /
                     fine += CrimeCaughtFor.sIllegalness * 5;
                     time += CrimeCaughtFor.sIllegalness * 10;
                 }
-                else {
-                    time += CrimeCaughtFor.sIllegalness * 15;
+                else if(BadBoyArray[crimes].sIllegalness == 1000) {
+                    cout << "You were charged with " << BadBoyArray[crimes].sName << endl;
+                    gameOver(1);
                 }
 
                 BadBoyArray[crimes].sTimesCommitted--;
@@ -56,7 +57,7 @@ array<int, 2> prisonCharge(array<Crime, 6> BadBoyArray, Crime CrimeCaughtFor){ /
 
                 }
                 else if(BadBoyArray[crimes].sIllegalness == 1000) {
-                    cout << "You got the death penalty and died" << endl;
+                    cout << "You were charged with " << BadBoyArray[crimes].sName << endl;
                     gameOver(1);
                 }
                 else {
