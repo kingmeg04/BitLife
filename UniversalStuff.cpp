@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <iostream>
 #include <windows.h>
 #include <random>
@@ -5,6 +6,8 @@
 #pragma execution_character_set("utf-8")
 
 using namespace std;
+
+
 
 double random(double min, double max) {
     static random_device rd;  // Seed
@@ -20,11 +23,11 @@ auto randomElement(const vector<auto>& elements, const std::vector<double>& weig
     }
 
     // Random number generator
-    std::random_device rd;
-    std::mt19937 gen(rd());
+    random_device rd;
+    mt19937 gen(rd());
 
     // Create a discrete distribution based on the weights
-    std::discrete_distribution<> dist(weights.begin(), weights.end());
+    discrete_distribution<> dist(weights.begin(), weights.end());
 
     // Select and return a random element based on the distribution
     return elements[dist(gen)];

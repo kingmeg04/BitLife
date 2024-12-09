@@ -23,8 +23,6 @@
   PASSWORDMANAGER,
 };*/
 
-int prisonTime();
-void addCrime();
 
 struct Crime{
   short sIllegalness; //range from 1 - 1000
@@ -37,12 +35,12 @@ struct Crime{
 class Job {
     //enum jobs eJob;
     bool bIsAdmin = false;
+public:
+
     short sSalary; //paid weekly
     short sMentalInstability; //range from 1 - 1000
-
-
-    public:
     std::string sName;
+
       Job(short Salary, short MentalInstability, std::string Name){
         this->sSalary = Salary;
         this->sMentalInstability = MentalInstability;
