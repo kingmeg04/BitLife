@@ -1,7 +1,8 @@
 #include <iostream>
 #include <string>
 #include "WorkLife.cpp"
-#include "time_management.cpp"
+#include "time_management.h"
+#include "shop.h"
 
 using namespace std;
 
@@ -11,6 +12,8 @@ int main() {
     TimeManagement timeManager;
     int balance = 0;
     int monthlySalary = 500; // Beispielgehalt
+    int hunger = 50;         // Hunger in %
+    int mentalHealth = 75;   // Mental Health in %
     for (int i = 0; i < 36; i++) { // 36 Tage Simulation
         if (timeManager.getDay() == 1) { // Cashday am ersten Tag des Monats
             cashday(balance, monthlySalary);
@@ -24,6 +27,9 @@ int main() {
         Job x = getJob();
         cout << x.sName << endl;
     }*/
+
+    Shop shop;
+    shop.openShop(balance, hunger, mentalHealth);
 
     Job ben = changeJob({100, 100, "Ben"}, 10);
     cout << ben.sName << endl;
