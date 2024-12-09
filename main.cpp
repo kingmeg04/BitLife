@@ -8,7 +8,12 @@ using namespace std;
 
 
 int main() {
-    SetConsoleOutputCP( 65001 );
+    SetConsoleOutputCP(65001);
+    int counter1 = 0;
+    for(int i = 0; i < 100; i++) {
+        Job x = getJob();
+        cout << x.sName << endl;
+    }
     //player stuff
     int totalMoney = 0; //the players amount of money
 
@@ -64,7 +69,7 @@ int main() {
     }
     //end of being caught for a crime
 
-    class Job teacher(false, 1200, 200);
+
 
     gameOver(1);
 

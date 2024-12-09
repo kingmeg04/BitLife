@@ -13,6 +13,35 @@ double random(double min, double max) {
     return dis(gen);
 }
 
+auto randomElement(const vector<auto>& elements, const std::vector<double>& weights) {
+    // Ensure the weights and elements are the same size
+    if (elements.size() != weights.size()) {
+        throw std::invalid_argument("Elements and weights must have the same size.");
+    }
+
+    // Random number generator
+    std::random_device rd;
+    std::mt19937 gen(rd());
+
+    // Create a discrete distribution based on the weights
+    std::discrete_distribution<> dist(weights.begin(), weights.end());
+
+    // Select and return a random element based on the distribution
+    return elements[dist(gen)];
+}
+
+vector<double> chanceDistribution(vector<double> weights) {
+    int sum = 0;
+    for(int i = 0; i < weights.size(); i++) {
+        sum += weights[i];
+    }
+    for(int i = 0; i < weights.size(); i++) {
+        weights[i] /= sum;
+    }
+
+    return weights;
+}
+
 // Set console text and background color
 void setColor(int rT, int gT, int bT, int rB, int gB, int bB) {
     int textColor = 0;
