@@ -84,7 +84,6 @@ array<int, 2> prisonCharge(array<Crime, 6> BadBoyArray, Crime CrimeCaughtFor){ /
 
     for(int crimes = 0; crimes < 6; crimes++) {
         int ChargeCount = 0;
-        BadBoyArray[crimes].sTimesCommitted;
         while(BadBoyArray[crimes].sTimesCommitted > 0) {
             BadBoyArray[crimes].sTimesCommitted--;
             if(BadBoyArray[crimes].sName == CrimeCaughtFor.sName) {
