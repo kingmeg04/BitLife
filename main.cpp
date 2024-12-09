@@ -3,8 +3,12 @@
 #include "WorkLife.cpp"
 #include "time_management.h"
 #include "shop.h"
+#include "random_events.h"
+#include "family.h"
+
 
 using namespace std;
+
 
 
 
@@ -30,6 +34,11 @@ int main() {
 
     Shop shop;
     shop.openShop(balance, hunger, mentalHealth);
+
+    if (timeManager.getDay() % 7 == 0) {
+        randomEvent(balance, mentalHealth, hunger);
+    }
+
 
     Job ben = changeJob({100, 100, "Ben"}, 10);
     cout << ben.sName << endl;
