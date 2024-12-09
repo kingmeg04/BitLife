@@ -3,7 +3,6 @@
 #include "WorkLife.cpp"
 #include "time_management.cpp"
 
-
 using namespace std;
 
 
@@ -19,11 +18,15 @@ int main() {
         timeManager.advanceDay(); // Einen Tag vorwärts bewegen
     }
     SetConsoleOutputCP(65001);
-    int counter1 = 0;
+
+    /*int counter1 = 0;
     for(int i = 0; i < 100; i++) {
         Job x = getJob();
         cout << x.sName << endl;
-    }
+    }*/
+
+    Job ben = changeJob({100, 100, "Ben"}, 10);
+    cout << ben.sName << endl;
     //player stuff
     int totalMoney = 0; //the players amount of money
 
@@ -53,6 +56,7 @@ int main() {
         cin >> paidFees;
         if(paidFees > totalMoney) {
             paidFees = totalMoney;
+            prisonCharges[0] -= paidFees;
         }
         if(paidFees >= prisonCharges[0]){
             paidFees = prisonCharges[0];
