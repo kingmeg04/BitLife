@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include "WorkLife.cpp"
+#include "time_management.cpp"
 
 
 using namespace std;
@@ -8,6 +9,15 @@ using namespace std;
 
 
 int main() {
+    TimeManagement timeManager;
+    int balance = 0;
+    int monthlySalary = 500; // Beispielgehalt
+    for (int i = 0; i < 36; i++) { // 36 Tage Simulation
+        if (timeManager.getDay() == 1) { // Cashday am ersten Tag des Monats
+            cashday(balance, monthlySalary);
+        }
+        timeManager.advanceDay(); // Einen Tag vorwärts bewegen
+    }
     SetConsoleOutputCP(65001);
     int counter1 = 0;
     for(int i = 0; i < 100; i++) {
