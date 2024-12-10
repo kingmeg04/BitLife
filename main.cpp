@@ -6,7 +6,7 @@
 #include "random_events.h"
 #include "family.h"
 #include "Player.h"
-#include "Job.h"
+#include "WorkLife.h"
 #include "UniversalStuff.h"
 
 using namespace std;
@@ -58,45 +58,9 @@ int main() {
     //If there's any crime that gives the death penalty, It should be used as the first input into anything relating to crime
 
     //caught for a crime (here: assault)
-    array<int, 2> prisonCharges = prisonCharge({pickpocket, shoplift, assault, rape, murder, explosiveDiarrheaInPublicSpace}, assault);
+    prisonCharge({&pickpocket, &shoplift, &assault, &rape, &murder, &explosiveDiarrheaInPublicSpace}, assault, player1.balance);
 
-    pickpocket.sTimesCommitted = 0;
-    shoplift.sTimesCommitted = 0;
-    assault.sTimesCommitted = 0;
-    rape.sTimesCommitted = 0;
-    murder.sTimesCommitted = 0;
-    explosiveDiarrheaInPublicSpace.sTimesCommitted = 0;
 
-    if(prisonCharges[0] > 0) {
-        cout << "How much do you want to pay off: ";
-        cin >> paidFees;
-        if(paidFees > totalMoney) {
-            paidFees = totalMoney;
-            prisonCharges[0] -= paidFees;
-        }
-        if(paidFees >= prisonCharges[0]){
-            paidFees = prisonCharges[0];
-            prisonCharges[0] = 0;
-        }else if(paidFees < prisonCharges[0]){
-            prisonCharges[0] -= paidFees;
-        }
-
-        prisonCharges[1] += static_cast<int>(floor(prisonCharges[0] / 100));
-        totalMoney -= paidFees;
-        cout << totalMoney << endl;
-        if(prisonCharges[1] > 0) {
-            cout << "You paid " << paidFees << "$ and will spend " << prisonCharges[1] << " days in Prison";
-            if(prisonCharges[1] > 365) {
-                cout << " (" << round(prisonCharges[1]/365*4) / 4 << " years)" << endl;
-            }
-            else {
-                cout << endl;
-            }
-        }
-        else {
-            cout << "You paid " << paidFees << "$ to avoid jail time" << endl;
-        }
-    }
     //end of being caught for a crime
 
 
