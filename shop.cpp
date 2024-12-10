@@ -14,7 +14,7 @@ Shop::Shop() {
 
 void Shop::openShop(int& balance, int& hunger, int& mentalHealth) {
     while (true) {
-        cout << "\nWelcome to the Shop! Your Balance: " << balance << "$" << endl;
+        cout << "\nWelcome to the Shop! Your Balance: " << balance << "$ " << endl;
         cout << "Your Hunger: " << hunger << "%, Your Mental Health: " << mentalHealth << "%" << endl;
         cout << "Available items:" << endl;
 
