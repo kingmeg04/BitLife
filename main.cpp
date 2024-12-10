@@ -1,19 +1,47 @@
 #include <iostream>
 #include <string>
 #include "WorkLife.cpp"
+#include "time_management.h"
+#include "shop.h"
+#include "random_events.h"
+#include "family.h"
 
 
 using namespace std;
 
 
 
+
 int main() {
+    TimeManagement timeManager;
+    int balance = 0;
+    int monthlySalary = 500; // Beispielgehalt
+    int hunger = 50;         // Hunger in %
+    int mentalHealth = 75;   // Mental Health in %
+    for (int i = 0; i < 36; i++) { // 36 Tage Simulation
+        if (timeManager.getDay() == 1) { // Cashday am ersten Tag des Monats
+            cashday(balance, monthlySalary);
+        }
+        timeManager.advanceDay(); // Einen Tag vorwärts bewegen
+    }
     SetConsoleOutputCP(65001);
-    int counter1 = 0;
+
+    /*int counter1 = 0;
     for(int i = 0; i < 100; i++) {
         Job x = getJob();
         cout << x.sName << endl;
+    }*/
+
+    Shop shop;
+    shop.openShop(balance, hunger, mentalHealth);
+
+    if (timeManager.getDay() % 7 == 0) {
+        randomEvent(balance, mentalHealth, hunger);
     }
+
+
+    Job ben = changeJob({100, 100, "Ben"}, 10);
+    cout << ben.sName << endl;
     //player stuff
     int totalMoney = 0; //the players amount of money
 
@@ -43,6 +71,7 @@ int main() {
         cin >> paidFees;
         if(paidFees > totalMoney) {
             paidFees = totalMoney;
+            prisonCharges[0] -= paidFees;
         }
         if(paidFees >= prisonCharges[0]){
             paidFees = prisonCharges[0];

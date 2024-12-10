@@ -7,7 +7,6 @@
 
 #include <iostream>
 #include <string>
-#include <utility>
 #include <vector>
 #include <iomanip>
 
@@ -22,16 +21,16 @@ public:
     int hungerChange;
 
     ShopItem(string itemName, int itemPrice, int mentalChange, int hungerChange)
-        : name(std::move(itemName)), price(itemPrice), mentalHealthChange(mentalChange), hungerChange(hungerChange) {}
+        : name(itemName), price(itemPrice), mentalHealthChange(mentalChange), hungerChange(hungerChange) {}
 };
 
 // Shop-Klasse verwaltet den Einkauf
 class Shop {
     vector<ShopItem> items;
 
-    public:
-        Shop();
-        void openShop(int& balance, int& hunger, int& mentalHealth);
+public:
+    Shop();
+    void openShop(int& balance, int& hunger, int& mentalHealth);
 };
 
 #endif // SHOP_H
