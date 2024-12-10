@@ -13,12 +13,12 @@ Shop::Shop() {
 }
 
 void Shop::openShop(int& balance, int& hunger, int& mentalHealth) {
-    while (true) {e
-        cout << "\nWelcome to the Shop! Your Balance: $" << balance << endl;
+    while (true) {
+        cout << "\nWelcome to the Shop! Your Balance: " << balance << "$" << endl;
         cout << "Your Hunger: " << hunger << "%, Your Mental Health: " << mentalHealth << "%" << endl;
         cout << "Available items:" << endl;
 
-        for (size_t i = 0; i < items.size(); i++) {
+        for (int i = 0; i < items.size(); i++) {
             cout << i + 1 << ". " << setw(25) << items[i].name
                  << " - $" << items[i].price
                  << " (Mental Health: " << items[i].mentalHealthChange
@@ -53,8 +53,8 @@ void Shop::openShop(int& balance, int& hunger, int& mentalHealth) {
             if (hunger < 0) hunger = 0;
 
             cout << "You bought " << items[itemIndex].name
-                 << " for $" << items[itemIndex].price << "." << endl;
-            cout << "Your new balance is: $" << balance << endl;
+                 << " for " << items[itemIndex].price << "$." << endl;
+            cout << "Your new balance is: " << balance << "$" << endl;
             cout << "Your Hunger: " << hunger << "%, Your Mental Health: " << mentalHealth << "%" << endl;
         } else {
             cout << "You don't have enough money to buy this item." << endl;
