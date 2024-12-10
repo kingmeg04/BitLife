@@ -1,31 +1,44 @@
 //
 // Created by jbrui on 10.12.2024.
 //
-#include "Classes1.h"
-#include <vector>
 
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#endif //PLAYER_H
+
+
+#include <vector>
+#include "Job.h"
+
+
 
 class player{
-  Job jCurrentJob;
+
   std::vector<Job> vPrevJobs;
 
   public:
-    player();
+
+  Job currentJob;
+  long balance = 0;
+  short saturation = 100;         // Hunger in %
+  short mentalHealth = 100;   // Mental Health in %
+
+
+    player(Job CurrentJob): currentJob(CurrentJob){
+
+  } ;
 
     void newJob(Job newJob){
-      vPrevJobs.push_back(jCurrentJob);
+      vPrevJobs.push_back(currentJob);
       for(int i; i < vPrevJobs.size(); i++){
         if(vPrevJobs[i].sName == newJob.sName){
           vPrevJobs.pop_back();
           break;
         };
       };
-      jCurrentJob = newJob;
+      currentJob = newJob;
     };
 
-
 };
+
+#endif //PLAYER_H

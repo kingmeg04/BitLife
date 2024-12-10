@@ -2,7 +2,6 @@
 #define TIME_MANAGEMENT_H
 
 #include <iostream>
-using namespace std;
 
 class TimeManagement {
     unsigned short day;

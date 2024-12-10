@@ -4,6 +4,8 @@
 
 #include "family.h"
 
+using namespace std;
+
 void FamilyManager::getMarried(Family& family, int& balance) {
     if (!family.spouseName.empty()) {
         cout << "You are already married to " << family.spouseName << "!" << endl;

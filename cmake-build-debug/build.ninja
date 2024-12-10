@@ -79,6 +79,12 @@ build CMakeFiles/EFInfoProject.dir/time_management.cpp.obj: CXX_COMPILER__EFInfo
   OBJECT_DIR = CMakeFiles\EFInfoProject.dir
   OBJECT_FILE_DIR = CMakeFiles\EFInfoProject.dir
 
+build CMakeFiles/EFInfoProject.dir/UniversalStuff.cpp.obj: CXX_COMPILER__EFInfoProject_unscanned_Debug C$:/Users/jbrui/CLionProjects/CPP$ EF$ Info$ Projekt/UniversalStuff.cpp || cmake_object_order_depends_target_EFInfoProject
+  DEP_FILE = CMakeFiles\EFInfoProject.dir\UniversalStuff.cpp.obj.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\EFInfoProject.dir
+  OBJECT_FILE_DIR = CMakeFiles\EFInfoProject.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target EFInfoProject
@@ -87,7 +93,7 @@ build CMakeFiles/EFInfoProject.dir/time_management.cpp.obj: CXX_COMPILER__EFInfo
 #############################################
 # Link the executable EFInfoProject.exe
 
-build EFInfoProject.exe: CXX_EXECUTABLE_LINKER__EFInfoProject_Debug CMakeFiles/EFInfoProject.dir/main.cpp.obj CMakeFiles/EFInfoProject.dir/family.cpp.obj CMakeFiles/EFInfoProject.dir/shop.cpp.obj CMakeFiles/EFInfoProject.dir/random_events.cpp.obj CMakeFiles/EFInfoProject.dir/time_management.cpp.obj
+build EFInfoProject.exe: CXX_EXECUTABLE_LINKER__EFInfoProject_Debug CMakeFiles/EFInfoProject.dir/main.cpp.obj CMakeFiles/EFInfoProject.dir/family.cpp.obj CMakeFiles/EFInfoProject.dir/shop.cpp.obj CMakeFiles/EFInfoProject.dir/random_events.cpp.obj CMakeFiles/EFInfoProject.dir/time_management.cpp.obj CMakeFiles/EFInfoProject.dir/UniversalStuff.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\EFInfoProject.dir

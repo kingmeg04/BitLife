@@ -8,4 +8,7 @@ add_executable(EFInfoProject main.cpp
         shop.cpp
         random_events.h
         random_events.cpp
-        time_management.cpp)
+        time_management.cpp
+        Job.h
+        UniversalStuff.h
+        UniversalStuff.cpp)

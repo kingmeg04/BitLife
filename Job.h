@@ -2,10 +2,10 @@
 // Created by jbrui on 03.12.2024.
 //
 
-#ifndef CLASSES1_H
-#define CLASSES1_H
+#ifndef JOB_H
+#define JOB_H
 
-#endif //CLASSES1_H
+
 
 #include <array>
 #include <utility>
@@ -33,23 +33,21 @@ struct Crime{
 };
 
 class Job {
-    //enum jobs eJob;
-    bool bIsAdmin = false;
-public:
+  //enum jobs eJob;
+  bool bIsAdmin = false;
+  public:
 
-    short sSalary; //paid weekly
-    short sMentalInstability; //range from 1 - 1000
-    std::string sName;
+      short sSalary; //paid weekly
+      short sMentalInstability; //range from 1 - 1000
+      std::string sName;
 
-      Job(short Salary, short MentalInstability, std::string Name){
-        this->sSalary = Salary;
-        this->sMentalInstability = MentalInstability;
-        this->sName = std::move(Name);
-      };
+        Job(short Salary, short MentalInstability, std::string Name){
+          this->sSalary = Salary;
+          this->sMentalInstability = MentalInstability;
+          this->sName = std::move(Name);
+        };
 
-      int getPaid(int iMoney){
-        return iMoney += sSalary;
-      }
+
 
 };
 
@@ -75,8 +73,6 @@ class IllegalStuff : public Job {
           return true;
       }
     }
-
-
-
-
 };
+
+#endif //JOB_H

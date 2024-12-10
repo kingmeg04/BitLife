@@ -3,6 +3,9 @@
 //
 
 #include "shop.h"
+#include "Player.h"
+
+using namespace std;
 
 // Konstruktor: Shop-Artikel initialisieren
 Shop::Shop() {
@@ -12,14 +15,14 @@ Shop::Shop() {
     items.emplace_back("Therapy Session", 200, 50, 0);        // Mental Health stark besser
 }
 
-void Shop::openShop(int& balance, int& hunger, int& mentalHealth) {
+void Shop::openShop(player& player) {
     while (true) {
-        cout << "\nWelcome to the Shop! Your Balance:" << balance << "$" << endl;
-        cout << "Your Hunger: " << hunger << "%, Your Mental Health: " << mentalHealth << "%" << endl;
+        cout << "\nWelcome to the Shop! Your Balance:" << player.balance << "$" << endl;
+        cout << "Your saturation: " << player.saturation << "%, Your Mental Health: " << player.mentalHealth << "%" << endl;
         cout << "Available items:" << endl;
 
         for (size_t i = 0; i < items.size(); i++) {
-            cout << i + 1 << ". " << setw(25) << items[i].name
+            cout << "[" << i + 1 << "] " << items[i].name
                  << " - " << items[i].price << "$"
                  << " (Mental Health: " << items[i].mentalHealthChange
                  << ", Hunger: " << items[i].hungerChange << "%)" << endl;
@@ -41,21 +44,21 @@ void Shop::openShop(int& balance, int& hunger, int& mentalHealth) {
         }
 
         int itemIndex = choice - 1;
-        if (balance >= items[itemIndex].price) {
-            balance -= items[itemIndex].price;
-            mentalHealth += items[itemIndex].mentalHealthChange;
-            hunger += items[itemIndex].hungerChange;
+        if (player.balance >= items[itemIndex].price) {
+            player.balance -= items[itemIndex].price;
+            player.mentalHealth += items[itemIndex].mentalHealthChange;
+            player.saturation += items[itemIndex].hungerChange;
 
             // Begrenzung der Werte
-            if (mentalHealth > 100) mentalHealth = 100;
-            if (mentalHealth < 0) mentalHealth = 0;
-            if (hunger > 100) hunger = 100;
-            if (hunger < 0) hunger = 0;
+            if (player.mentalHealth > 100) player.mentalHealth = 100;
+            if (player.mentalHealth < 0) player.mentalHealth = 0;
+            if (player.saturation > 100) player.saturation = 100;
+            if (player.saturation < 0) player.saturation = 0;
 
             cout << "You bought " << items[itemIndex].name
                  << " for " << items[itemIndex].price << "$." << endl;
-            cout << "Your new balance is: " << balance << "$" << endl;
-            cout << "Your Hunger: " << hunger << "%, Your Mental Health: " << mentalHealth << "%" << endl;
+            cout << "Your new balance is: " << player.balance << "$" << endl;
+            cout << "Your saturation: " << player.saturation << "%, Your Mental Health: " << player.mentalHealth << "%" << endl;
         } else {
             cout << "You don't have enough money to buy this item." << endl;
         }

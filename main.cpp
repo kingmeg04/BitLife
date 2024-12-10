@@ -5,7 +5,9 @@
 #include "shop.h"
 #include "random_events.h"
 #include "family.h"
-
+#include "Player.h"
+#include "Job.h"
+#include "UniversalStuff.h"
 
 using namespace std;
 
@@ -14,16 +16,14 @@ using namespace std;
 
 int main() {
     TimeManagement timeManager;
-    int balance = 0;
-    int monthlySalary = 500; // Beispielgehalt
-    int hunger = 50;         // Hunger in %
-    int mentalHealth = 75;   // Mental Health in %
-    for (int i = 0; i < 36; i++) { // 36 Tage Simulation
+    player player1(getJob());
+
+    /*for (int i = 0; i < 36; i++) { // 36 Tage Simulation
         if (timeManager.getDay() == 1) { // Cashday am ersten Tag des Monats
             cashday(balance, monthlySalary);
         }
         timeManager.advanceDay(); // Einen Tag vorwärts bewegen
-    }
+    }*/
     SetConsoleOutputCP(65001);
 
     /*int counter1 = 0;
@@ -33,10 +33,11 @@ int main() {
     }*/
 
     Shop shop;
-    shop.openShop(balance, hunger, mentalHealth);
+    shop.openShop(player1);
 
     if (timeManager.getDay() % 7 == 0) {
-        randomEvent(balance, mentalHealth, hunger);
+        player1.balance += player1.currentJob.sSalary;
+        randomEvent(player1);
     }
 
 

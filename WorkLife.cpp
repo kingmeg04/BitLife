@@ -1,7 +1,6 @@
 #include <iostream>
-#include <random>
-#include "Classes1.h"
-#include "UniversalStuff.cpp"
+#include "Job.h"
+#include "UniversalStuff.h"
 
 using namespace std;
 

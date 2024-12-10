@@ -2,7 +2,7 @@
 #include <iostream>
 #include <windows.h>
 #include <random>
-
+#include "Player.h"
 #pragma execution_character_set("utf-8")
 
 using namespace std;
@@ -16,7 +16,7 @@ double random(double min, double max) {
     return dis(gen);
 }
 
-auto randomElement(const vector<auto>& elements, const std::vector<double>& weights) {
+Job randomElement(const vector<Job>& elements, const std::vector<double>& weights) {
     // Ensure the weights and elements are the same size
     if (elements.size() != weights.size()) {
         throw std::invalid_argument("Elements and weights must have the same size.");
@@ -43,6 +43,46 @@ vector<double> chanceDistribution(vector<double> weights) {
     }
 
     return weights;
+}
+
+void randomEvent(player& player) {
+
+    int iTempVar;
+
+    int event = static_cast<int>(std::round(random(0,4))); // Zufälliges Ereignis auswählen
+
+
+    switch (event) {
+        case 0:
+            cout << "You found 50$ on the street!" << endl;
+        player.balance += 50;
+        break;
+        case 1:
+            cout << "You got sick and paid 100$ for medical bills." << endl;
+        player.balance -= 100;
+        player.mentalHealth -= 10;
+        break;
+        case 2:
+            iTempVar = static_cast<int>(round(random(player.currentJob.sSalary, player.currentJob.sSalary*4)));
+        cout << "You got a bonus at work: " << iTempVar << endl;
+        player.balance += iTempVar;
+        break;
+        case 3:
+            cout << "You lost your wallet and 50$!" << endl;
+        player.balance -= 50;
+        break;
+    }
+
+    // Begrenzung der Werte
+    if (player.mentalHealth > 100) player.mentalHealth = 100;
+    if (player.mentalHealth < 0) player.mentalHealth = 0;
+    if (player.saturation > 100) player.saturation = 100;
+    if (player.saturation < 0) player.saturation = 0;
+
+    // Aktuellen Zustand ausgeben
+    cout << "Your current balance: " << player.balance << "$" << endl;
+    cout << "Your current mental health: " << player.mentalHealth << "%" << endl;
+    cout << "Your current saturation: " << player.saturation << "%" << endl;
 }
 
 // Set console text and background color

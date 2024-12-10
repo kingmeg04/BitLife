@@ -9,18 +9,17 @@
 #include <string>
 #include <vector>
 
-using namespace std;
 
 struct Family {
-    string spouseName;
-    vector<string> children;
+    std::string spouseName;
+    std::vector<std::string> children;
 };
 
 class FamilyManager {
-public:
-    void getMarried(Family& family, int& balance);
-    void haveChild(Family& family, int& balance);
-    void displayFamily(const Family& family);
+    public:
+        void getMarried(Family& family, int& balance);
+        void haveChild(Family& family, int& balance);
+        void displayFamily(const Family& family);
 };
 
 #endif // FAMILY_H
