@@ -1,3 +1,10 @@
 # ninja log v6
 13	3330	7554515006144333	CMakeFiles/untitled6.dir/main.cpp.obj	a139fb687f4b477f
 3330	3524	7554515039315614	untitled6.exe	8a104b248562d910
+14	499	7555310397266195	build.ninja	45283138cbcb8b92
+41	1327	7555310398128351	CMakeFiles/EFInfoProject.dir/random_events.cpp.obj	f288e9f3208fdb12
+58	1331	7555310398292960	CMakeFiles/EFInfoProject.dir/time_management.cpp.obj	e947260e72e6d4dd
+15	1575	7555310397862464	CMakeFiles/EFInfoProject.dir/family.cpp.obj	7228a627105b5638
+29	1704	7555310398002632	CMakeFiles/EFInfoProject.dir/shop.cpp.obj	c9c95ac10b91ea9c
+3	4529	7555310397747741	CMakeFiles/EFInfoProject.dir/main.cpp.obj	c2933cc505b01d8a
+4534	4865	7555310443056144	EFInfoProject.exe	78b3188d8a0e6477
