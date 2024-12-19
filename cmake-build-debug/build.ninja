@@ -11,7 +11,7 @@
 # =============================================================================
 
 # =============================================================================
-# Project: EFInfoProject
+# Project: EFInfoProjektRevision1
 # Configurations: Debug
 # =============================================================================
 
@@ -39,76 +39,94 @@ include CMakeFiles/rules.ninja
 #############################################
 # Logical path to working directory; prefix for absolute paths.
 
-cmake_ninja_workdir = C$:/Users/jbrui/CLionProjects/CPP$ EF$ Info$ Projekt/cmake-build-debug/
+cmake_ninja_workdir = C$:/Users/jbrui/CLionProjects/EFInfoProjektRevision1/cmake-build-debug/
 # =============================================================================
-# Object build statements for EXECUTABLE target EFInfoProject
+# Object build statements for EXECUTABLE target EFInfoProjektRevision1
 
 
 #############################################
-# Order-only phony target for EFInfoProject
+# Order-only phony target for EFInfoProjektRevision1
 
-build cmake_object_order_depends_target_EFInfoProject: phony || .
+build cmake_object_order_depends_target_EFInfoProjektRevision1: phony || .
 
-build CMakeFiles/EFInfoProject.dir/main.cpp.obj: CXX_COMPILER__EFInfoProject_unscanned_Debug C$:/Users/jbrui/CLionProjects/CPP$ EF$ Info$ Projekt/main.cpp || cmake_object_order_depends_target_EFInfoProject
-  DEP_FILE = CMakeFiles\EFInfoProject.dir\main.cpp.obj.d
+build CMakeFiles/EFInfoProjektRevision1.dir/main.cpp.obj: CXX_COMPILER__EFInfoProjektRevision1_unscanned_Debug C$:/Users/jbrui/CLionProjects/EFInfoProjektRevision1/main.cpp || cmake_object_order_depends_target_EFInfoProjektRevision1
+  DEP_FILE = CMakeFiles\EFInfoProjektRevision1.dir\main.cpp.obj.d
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles\EFInfoProject.dir
-  OBJECT_FILE_DIR = CMakeFiles\EFInfoProject.dir
+  OBJECT_DIR = CMakeFiles\EFInfoProjektRevision1.dir
+  OBJECT_FILE_DIR = CMakeFiles\EFInfoProjektRevision1.dir
 
-build CMakeFiles/EFInfoProject.dir/family.cpp.obj: CXX_COMPILER__EFInfoProject_unscanned_Debug C$:/Users/jbrui/CLionProjects/CPP$ EF$ Info$ Projekt/family.cpp || cmake_object_order_depends_target_EFInfoProject
-  DEP_FILE = CMakeFiles\EFInfoProject.dir\family.cpp.obj.d
+build CMakeFiles/EFInfoProjektRevision1.dir/UniversalStuff/TimeStuff.cpp.obj: CXX_COMPILER__EFInfoProjektRevision1_unscanned_Debug C$:/Users/jbrui/CLionProjects/EFInfoProjektRevision1/UniversalStuff/TimeStuff.cpp || cmake_object_order_depends_target_EFInfoProjektRevision1
+  DEP_FILE = CMakeFiles\EFInfoProjektRevision1.dir\UniversalStuff\TimeStuff.cpp.obj.d
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles\EFInfoProject.dir
-  OBJECT_FILE_DIR = CMakeFiles\EFInfoProject.dir
+  OBJECT_DIR = CMakeFiles\EFInfoProjektRevision1.dir
+  OBJECT_FILE_DIR = CMakeFiles\EFInfoProjektRevision1.dir\UniversalStuff
 
-build CMakeFiles/EFInfoProject.dir/shop.cpp.obj: CXX_COMPILER__EFInfoProject_unscanned_Debug C$:/Users/jbrui/CLionProjects/CPP$ EF$ Info$ Projekt/shop.cpp || cmake_object_order_depends_target_EFInfoProject
-  DEP_FILE = CMakeFiles\EFInfoProject.dir\shop.cpp.obj.d
+build CMakeFiles/EFInfoProjektRevision1.dir/UniversalStuff/RandomStuff.cpp.obj: CXX_COMPILER__EFInfoProjektRevision1_unscanned_Debug C$:/Users/jbrui/CLionProjects/EFInfoProjektRevision1/UniversalStuff/RandomStuff.cpp || cmake_object_order_depends_target_EFInfoProjektRevision1
+  DEP_FILE = CMakeFiles\EFInfoProjektRevision1.dir\UniversalStuff\RandomStuff.cpp.obj.d
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles\EFInfoProject.dir
-  OBJECT_FILE_DIR = CMakeFiles\EFInfoProject.dir
+  OBJECT_DIR = CMakeFiles\EFInfoProjektRevision1.dir
+  OBJECT_FILE_DIR = CMakeFiles\EFInfoProjektRevision1.dir\UniversalStuff
 
-build CMakeFiles/EFInfoProject.dir/random_events.cpp.obj: CXX_COMPILER__EFInfoProject_unscanned_Debug C$:/Users/jbrui/CLionProjects/CPP$ EF$ Info$ Projekt/random_events.cpp || cmake_object_order_depends_target_EFInfoProject
-  DEP_FILE = CMakeFiles\EFInfoProject.dir\random_events.cpp.obj.d
+build CMakeFiles/EFInfoProjektRevision1.dir/UniversalStuff/ConsoleStuff.cpp.obj: CXX_COMPILER__EFInfoProjektRevision1_unscanned_Debug C$:/Users/jbrui/CLionProjects/EFInfoProjektRevision1/UniversalStuff/ConsoleStuff.cpp || cmake_object_order_depends_target_EFInfoProjektRevision1
+  DEP_FILE = CMakeFiles\EFInfoProjektRevision1.dir\UniversalStuff\ConsoleStuff.cpp.obj.d
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles\EFInfoProject.dir
-  OBJECT_FILE_DIR = CMakeFiles\EFInfoProject.dir
+  OBJECT_DIR = CMakeFiles\EFInfoProjektRevision1.dir
+  OBJECT_FILE_DIR = CMakeFiles\EFInfoProjektRevision1.dir\UniversalStuff
 
-build CMakeFiles/EFInfoProject.dir/time_management.cpp.obj: CXX_COMPILER__EFInfoProject_unscanned_Debug C$:/Users/jbrui/CLionProjects/CPP$ EF$ Info$ Projekt/time_management.cpp || cmake_object_order_depends_target_EFInfoProject
-  DEP_FILE = CMakeFiles\EFInfoProject.dir\time_management.cpp.obj.d
+build CMakeFiles/EFInfoProjektRevision1.dir/GameStuff/GameOverStuff.cpp.obj: CXX_COMPILER__EFInfoProjektRevision1_unscanned_Debug C$:/Users/jbrui/CLionProjects/EFInfoProjektRevision1/GameStuff/GameOverStuff.cpp || cmake_object_order_depends_target_EFInfoProjektRevision1
+  DEP_FILE = CMakeFiles\EFInfoProjektRevision1.dir\GameStuff\GameOverStuff.cpp.obj.d
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles\EFInfoProject.dir
-  OBJECT_FILE_DIR = CMakeFiles\EFInfoProject.dir
+  OBJECT_DIR = CMakeFiles\EFInfoProjektRevision1.dir
+  OBJECT_FILE_DIR = CMakeFiles\EFInfoProjektRevision1.dir\GameStuff
 
-build CMakeFiles/EFInfoProject.dir/UniversalStuff.cpp.obj: CXX_COMPILER__EFInfoProject_unscanned_Debug C$:/Users/jbrui/CLionProjects/CPP$ EF$ Info$ Projekt/UniversalStuff.cpp || cmake_object_order_depends_target_EFInfoProject
-  DEP_FILE = CMakeFiles\EFInfoProject.dir\UniversalStuff.cpp.obj.d
+build CMakeFiles/EFInfoProjektRevision1.dir/PlayerStuff/PlayerStuff.cpp.obj: CXX_COMPILER__EFInfoProjektRevision1_unscanned_Debug C$:/Users/jbrui/CLionProjects/EFInfoProjektRevision1/PlayerStuff/PlayerStuff.cpp || cmake_object_order_depends_target_EFInfoProjektRevision1
+  DEP_FILE = CMakeFiles\EFInfoProjektRevision1.dir\PlayerStuff\PlayerStuff.cpp.obj.d
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles\EFInfoProject.dir
-  OBJECT_FILE_DIR = CMakeFiles\EFInfoProject.dir
+  OBJECT_DIR = CMakeFiles\EFInfoProjektRevision1.dir
+  OBJECT_FILE_DIR = CMakeFiles\EFInfoProjektRevision1.dir\PlayerStuff
+
+build CMakeFiles/EFInfoProjektRevision1.dir/PlayerStuff/Money/JobStuff.cpp.obj: CXX_COMPILER__EFInfoProjektRevision1_unscanned_Debug C$:/Users/jbrui/CLionProjects/EFInfoProjektRevision1/PlayerStuff/Money/JobStuff.cpp || cmake_object_order_depends_target_EFInfoProjektRevision1
+  DEP_FILE = CMakeFiles\EFInfoProjektRevision1.dir\PlayerStuff\Money\JobStuff.cpp.obj.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\EFInfoProjektRevision1.dir
+  OBJECT_FILE_DIR = CMakeFiles\EFInfoProjektRevision1.dir\PlayerStuff\Money
+
+build CMakeFiles/EFInfoProjektRevision1.dir/PlayerStuff/Money/CriminalStuff.cpp.obj: CXX_COMPILER__EFInfoProjektRevision1_unscanned_Debug C$:/Users/jbrui/CLionProjects/EFInfoProjektRevision1/PlayerStuff/Money/CriminalStuff.cpp || cmake_object_order_depends_target_EFInfoProjektRevision1
+  DEP_FILE = CMakeFiles\EFInfoProjektRevision1.dir\PlayerStuff\Money\CriminalStuff.cpp.obj.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\EFInfoProjektRevision1.dir
+  OBJECT_FILE_DIR = CMakeFiles\EFInfoProjektRevision1.dir\PlayerStuff\Money
+
+build CMakeFiles/EFInfoProjektRevision1.dir/GameStuff/ShopStuff.cpp.obj: CXX_COMPILER__EFInfoProjektRevision1_unscanned_Debug C$:/Users/jbrui/CLionProjects/EFInfoProjektRevision1/GameStuff/ShopStuff.cpp || cmake_object_order_depends_target_EFInfoProjektRevision1
+  DEP_FILE = CMakeFiles\EFInfoProjektRevision1.dir\GameStuff\ShopStuff.cpp.obj.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\EFInfoProjektRevision1.dir
+  OBJECT_FILE_DIR = CMakeFiles\EFInfoProjektRevision1.dir\GameStuff
 
 
 # =============================================================================
-# Link build statements for EXECUTABLE target EFInfoProject
+# Link build statements for EXECUTABLE target EFInfoProjektRevision1
 
 
 #############################################
-# Link the executable EFInfoProject.exe
+# Link the executable EFInfoProjektRevision1.exe
 
-build EFInfoProject.exe: CXX_EXECUTABLE_LINKER__EFInfoProject_Debug CMakeFiles/EFInfoProject.dir/main.cpp.obj CMakeFiles/EFInfoProject.dir/family.cpp.obj CMakeFiles/EFInfoProject.dir/shop.cpp.obj CMakeFiles/EFInfoProject.dir/random_events.cpp.obj CMakeFiles/EFInfoProject.dir/time_management.cpp.obj CMakeFiles/EFInfoProject.dir/UniversalStuff.cpp.obj
+build EFInfoProjektRevision1.exe: CXX_EXECUTABLE_LINKER__EFInfoProjektRevision1_Debug CMakeFiles/EFInfoProjektRevision1.dir/main.cpp.obj CMakeFiles/EFInfoProjektRevision1.dir/UniversalStuff/TimeStuff.cpp.obj CMakeFiles/EFInfoProjektRevision1.dir/UniversalStuff/RandomStuff.cpp.obj CMakeFiles/EFInfoProjektRevision1.dir/UniversalStuff/ConsoleStuff.cpp.obj CMakeFiles/EFInfoProjektRevision1.dir/GameStuff/GameOverStuff.cpp.obj CMakeFiles/EFInfoProjektRevision1.dir/PlayerStuff/PlayerStuff.cpp.obj CMakeFiles/EFInfoProjektRevision1.dir/PlayerStuff/Money/JobStuff.cpp.obj CMakeFiles/EFInfoProjektRevision1.dir/PlayerStuff/Money/CriminalStuff.cpp.obj CMakeFiles/EFInfoProjektRevision1.dir/GameStuff/ShopStuff.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
-  OBJECT_DIR = CMakeFiles\EFInfoProject.dir
+  OBJECT_DIR = CMakeFiles\EFInfoProjektRevision1.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
-  TARGET_FILE = EFInfoProject.exe
-  TARGET_IMPLIB = libEFInfoProject.dll.a
-  TARGET_PDB = EFInfoProject.exe.dbg
+  TARGET_FILE = EFInfoProjektRevision1.exe
+  TARGET_IMPLIB = libEFInfoProjektRevision1.dll.a
+  TARGET_PDB = EFInfoProjektRevision1.exe.dbg
 
 
 #############################################
 # Utility command for edit_cache
 
 build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D "C:\Users\jbrui\CLionProjects\CPP EF Info Projekt\cmake-build-debug" && "C:\Program Files\JetBrains\CLion 2024.2.2\bin\cmake\win\x64\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\jbrui\CLionProjects\EFInfoProjektRevision1\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2024.2.2\bin\cmake\win\x64\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -119,7 +137,7 @@ build edit_cache: phony CMakeFiles/edit_cache.util
 # Utility command for rebuild_cache
 
 build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D "C:\Users\jbrui\CLionProjects\CPP EF Info Projekt\cmake-build-debug" && "C:\Program Files\JetBrains\CLion 2024.2.2\bin\cmake\win\x64\bin\cmake.exe" --regenerate-during-build -S"C:\Users\jbrui\CLionProjects\CPP EF Info Projekt" -B"C:\Users\jbrui\CLionProjects\CPP EF Info Projekt\cmake-build-debug""
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\jbrui\CLionProjects\EFInfoProjektRevision1\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2024.2.2\bin\cmake\win\x64\bin\cmake.exe" --regenerate-during-build -SC:\Users\jbrui\CLionProjects\EFInfoProjektRevision1 -BC:\Users\jbrui\CLionProjects\EFInfoProjektRevision1\cmake-build-debug"
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -129,7 +147,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 # =============================================================================
 # Target aliases.
 
-build EFInfoProject: phony EFInfoProject.exe
+build EFInfoProjektRevision1: phony EFInfoProjektRevision1.exe
 
 # =============================================================================
 # Folder targets.
@@ -137,9 +155,9 @@ build EFInfoProject: phony EFInfoProject.exe
 # =============================================================================
 
 #############################################
-# Folder: C:/Users/jbrui/CLionProjects/CPP EF Info Projekt/cmake-build-debug
+# Folder: C:/Users/jbrui/CLionProjects/EFInfoProjektRevision1/cmake-build-debug
 
-build all: phony EFInfoProject.exe
+build all: phony EFInfoProjektRevision1.exe
 
 # =============================================================================
 # Built-in targets
@@ -148,14 +166,14 @@ build all: phony EFInfoProject.exe
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeCXXInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeCommonLanguageInclude.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeGenericSystem.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeInitializeConfigs.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeLanguageInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeRCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeSystemSpecificInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeSystemSpecificInitialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/Compiler/GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/Compiler/GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/Compiler/GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-Initialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-windres.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/WindowsPaths.cmake C$:/Users/jbrui/CLionProjects/CPP$ EF$ Info$ Projekt/CMakeLists.txt CMakeCache.txt CMakeFiles/3.29.6/CMakeCCompiler.cmake CMakeFiles/3.29.6/CMakeCXXCompiler.cmake CMakeFiles/3.29.6/CMakeRCCompiler.cmake CMakeFiles/3.29.6/CMakeSystem.cmake
+build build.ninja: RERUN_CMAKE | C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeCXXInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeCommonLanguageInclude.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeGenericSystem.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeInitializeConfigs.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeLanguageInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeRCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeSystemSpecificInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeSystemSpecificInitialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/Compiler/GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/Compiler/GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/Compiler/GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-Initialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-windres.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/WindowsPaths.cmake C$:/Users/jbrui/CLionProjects/EFInfoProjektRevision1/CMakeLists.txt CMakeCache.txt CMakeFiles/3.29.6/CMakeCCompiler.cmake CMakeFiles/3.29.6/CMakeCXXCompiler.cmake CMakeFiles/3.29.6/CMakeRCCompiler.cmake CMakeFiles/3.29.6/CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeCXXInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeCommonLanguageInclude.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeGenericSystem.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeInitializeConfigs.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeLanguageInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeRCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeSystemSpecificInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeSystemSpecificInitialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/Compiler/GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/Compiler/GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/Compiler/GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-Initialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-windres.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/WindowsPaths.cmake C$:/Users/jbrui/CLionProjects/CPP$ EF$ Info$ Projekt/CMakeLists.txt CMakeCache.txt CMakeFiles/3.29.6/CMakeCCompiler.cmake CMakeFiles/3.29.6/CMakeCXXCompiler.cmake CMakeFiles/3.29.6/CMakeRCCompiler.cmake CMakeFiles/3.29.6/CMakeSystem.cmake: phony
+build C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeCXXInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeCommonLanguageInclude.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeGenericSystem.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeInitializeConfigs.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeLanguageInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeRCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeSystemSpecificInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeSystemSpecificInitialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/Compiler/GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/Compiler/GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/Compiler/GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-Initialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-windres.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.2.2/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/WindowsPaths.cmake C$:/Users/jbrui/CLionProjects/EFInfoProjektRevision1/CMakeLists.txt CMakeCache.txt CMakeFiles/3.29.6/CMakeCCompiler.cmake CMakeFiles/3.29.6/CMakeCXXCompiler.cmake CMakeFiles/3.29.6/CMakeRCCompiler.cmake CMakeFiles/3.29.6/CMakeSystem.cmake: phony
 
 
 #############################################
