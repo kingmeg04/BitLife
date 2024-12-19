@@ -1,6 +1,6 @@
 //
 // Created by jbrui on 17.12.2024.
-//e
+//
 
 #ifndef CRIMINALSTUFF_HPP
 #define CRIMINALSTUFF_HPP
