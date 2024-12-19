@@ -1,6 +1,6 @@
 //
 // Created by jbrui on 17.12.2024.
-//
+//e
 
 #ifndef TIMESTUFF_H
 #define TIMESTUFF_H

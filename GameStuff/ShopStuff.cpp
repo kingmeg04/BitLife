@@ -1,6 +1,6 @@
 //
 // Created by jbrui on 19.12.2024.
-//
+//e
 
 #include "ShopStuff.h"
 

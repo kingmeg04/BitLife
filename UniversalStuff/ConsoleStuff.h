@@ -1,6 +1,6 @@
 //
 // Created by jbrui on 17.12.2024.
-//
+//e
 
 #ifndef CONSOLESTUFF_H
 #define CONSOLESTUFF_H
