@@ -21,7 +21,9 @@ public:
     long balance = 0;
     std::vector<std::pair<item, int>> vItems;
 
+
     short playerActionPoints = 5; // how many actions the player can perform per day
+    short playerHealth = 100;
     short saturation = 100;
     short mentalHealth = 100;
     short criminalReputation = 0; //How involved in the crime world you are
