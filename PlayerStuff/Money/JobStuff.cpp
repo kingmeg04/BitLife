@@ -3,6 +3,8 @@
 //
 
 #include "JobStuff.h"
+#include "../../UniversalStuff/RandomStuff.h"
+#include <iostream>
 
 using namespace std;
 
