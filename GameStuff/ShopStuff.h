@@ -43,9 +43,8 @@ public:
         }
     }
     void openShop(player& player);
-    void sellItem(player& player);
+
+
 };
-
-
 
 #endif //SHOPSTUFF_HPP
