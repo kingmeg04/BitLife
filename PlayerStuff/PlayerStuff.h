@@ -21,6 +21,7 @@ public:
     std::vector<std::pair<item, int>> vItems;
     short saturation = 100;
     short mentalHealth = 100;
+    short criminalReputation = 0;
 
     player(job CurrentJob) : jCurrentJob(CurrentJob) {}
 
