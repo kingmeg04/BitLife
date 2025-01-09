@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.29)
 project(EFInfoProjektRevision1)
 
+set(CMAKE_EXE_LINKER_FLAGS "-static -static-libgcc -static-libstdc++")
 set(CMAKE_CXX_STANDARD 20)
 
 add_executable(EFInfoProjektRevision1 main.cpp
@@ -24,4 +25,6 @@ add_executable(EFInfoProjektRevision1 main.cpp
         GameStuff/MarketStuff.h
         GameStuff/RandomEventStuff.cpp
         GameStuff/RandomEventStuff.h
+        UI/UIManager.cpp
+        UI/UIManager.h
 )

@@ -1,12 +1,13 @@
 //
 // Created by jbrui on 19.12.2024.
-//
+////
 
 #ifndef SHOPSTUFF_HPP
 #define SHOPSTUFF_HPP
 
 #include <string>
 #include <vector>
+#include <iostream>
 #include "../PlayerStuff/PlayerStuff.h"
 class player;
 

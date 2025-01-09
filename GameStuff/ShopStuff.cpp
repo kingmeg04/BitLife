@@ -6,14 +6,14 @@
 
 using namespace std;
 
-void shop::openShop(player &player) {
+void shop::openShop(player& player) {
     int selectedItem;
     int buyAmount;
 
-
-    cout << "Welcome to " << this->sShopName << endl;
-    for(int items = 0; items < this->vAvailableItems.size(); items++) {
-        cout << "[" << items + 1 << "]" << this->vAvailableItems[items].sItemName << " for " << this->vAvailableItems[items].iPrice << "$" << endl;
+    cout << "Welcome to " << sShopName << "!\n";
+    cout << "Available items:\n";
+    for (int i = 0; i < vAvailableItems.size(); i++) {
+        cout << "[" << i + 1 << "] " << vAvailableItems[i].sItemName << " - " << vAvailableItems[i].iPrice << "$" << endl;
     }
 
     cout << "What item do you want to purchase: ";
@@ -59,7 +59,7 @@ void shop::openShop(player &player) {
         }
     }
 }
-
+//
 void shop::sellItem(player &player) {
     int sellAmount;
     int selectedItem;

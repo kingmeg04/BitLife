@@ -5,10 +5,8 @@
 #ifndef GAMEOVERSTUFF_H
 #define GAMEOVERSTUFF_H
 
-#include <Windows.h>
 #include <iostream>
-
 
 void gameOver(int reason);
 
-#endif //GAMEOVERSTUFF_H
+#endif // GAMEOVERSTUFF_H

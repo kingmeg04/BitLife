@@ -15,11 +15,11 @@ double random(double min, double max) {
 
 vector<double> chanceDistribution(vector<double> weights) {
     int sum = 0;
-    for(int i = 0; i < weights.size(); i++) {
-        sum += weights[i];
+    for (int weight : weights) {
+        sum += weight;
     }
-    for(int i = 0; i < weights.size(); i++) {
-        weights[i] /= sum;
+    for (int weight : weights) {
+        weight /= sum;
     }
     return weights;
 }

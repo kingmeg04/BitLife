@@ -25,7 +25,7 @@ void randomEventSelector(player &thePlayer, int currentDay) {
             break;
     }
 }
-
+//
 void dating(player &thePlayer) {
     string option;
 

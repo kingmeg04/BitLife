@@ -30,5 +30,7 @@ public:
 
 };
 
+// Deklaration der Funktion
+job getRandomJob();
 
 #endif //JOBSTUFF_H

@@ -9,7 +9,7 @@
 #include "../PlayerStuff/PlayerStuff.h"
 #include "../PlayerStuff/Money/JobStuff.h"
 
-
+//
 
 
 void randomEventSelector(player& thePlayer, int currentDay);
