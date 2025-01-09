@@ -26,7 +26,7 @@ public:
     short playerHealth = 100;
     short saturation = 100;
     short mentalHealth = 100;
-    short criminalReputation = 0; //How involved in the crime world you are
+    short sCriminalReputation = 0; //How involved in the crime world you are
 
     player(job CurrentJob) : jCurrentJob(CurrentJob) {}
 

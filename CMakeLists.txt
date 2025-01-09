@@ -20,4 +20,8 @@ add_executable(EFInfoProjektRevision1 main.cpp
         PlayerStuff/Money/CriminalStuff.h
         GameStuff/ShopStuff.cpp
         GameStuff/ShopStuff.h
+        GameStuff/MarketStuff.cpp
+        GameStuff/MarketStuff.h
+        GameStuff/RandomEventStuff.cpp
+        GameStuff/RandomEventStuff.h
 )

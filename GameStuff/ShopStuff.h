@@ -46,6 +46,8 @@ public:
     void sellItem(player& player);
 };
 
+int checkForItem(player thePlayer, std::string itemName);
+int checkForItem(std::vector<item> itemList, std::string itemName);
 
 
 #endif //SHOPSTUFF_HPP

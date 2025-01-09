@@ -1,7 +1,3 @@
-//
-// Created by jbrui on 17.12.2024.
-//
-
 #ifndef RANDOMSTUFF_H
 #define RANDOMSTUFF_H
 
@@ -13,6 +9,7 @@
 #include "../PlayerStuff/Money/JobStuff.h"
 class job;
 
+
 template <typename T>
 concept IsVector = requires(T t) {
     typename T::value_type; // Requires the type to have a value_type
@@ -21,13 +18,10 @@ concept IsVector = requires(T t) {
 
 using AllVariant = std::variant<unsigned short, short, unsigned, int, float, double, std::string, job>;
 
-
-
-double random(double, double);
+double random(double min, double max);
 std::vector<double> chanceDistribution(std::vector<double> weights);
 
-template <typename Vector> AllVariant randomElement(const Vector& elements, std::vector<double> weights);
+template <typename Vector>
+AllVariant randomElement(const Vector& elements, std::vector<double> weights);
 
-
-
-#endif //RANDOMSTUFF_H
+#endif // RANDOMSTUFF_H

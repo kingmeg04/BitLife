@@ -11,11 +11,13 @@
 #include <variant>
 #include "../../UniversalStuff/RandomStuff.h"
 
+
 class job {
-    bool bIsAdmin = false;
+
 
 public:
 
+    bool bIsAdmin = false;
     short sSalary; //paid weekly
     short sMentalInstability; //range from 1 - 1000
     std::string sName;

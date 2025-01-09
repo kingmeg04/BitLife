@@ -42,14 +42,15 @@ void shop::openShop(player &player) {
             cin >> buyAmount;
         }
         else {
-            for(int items = 0; items < player.vItems.size(); items++) {
-                if(this->vAvailableItems[selectedItem].sItemName == player.vItems[items].first.sItemName) {
-                    player.vItems[items].second += buyAmount;
-                    player.balance -= this->vAvailableItems[selectedItem].iPrice * buyAmount;
-                    cout << "You now own " << player.vItems[items].second;
-                    break;
-                }
+            int items = checkForItem(player, vAvailableItems[selectedItem].sItemName);
+            if (items >= 0) {
+                player.vItems[items].second += buyAmount;
+                player.balance -= this->vAvailableItems[selectedItem].iPrice * buyAmount;
+                cout << "You now own " << player.vItems[items].second;
             }
+
+
+
             player.vItems.push_back({this->vAvailableItems[selectedItem], buyAmount});
             player.balance -= this->vAvailableItems[selectedItem].iPrice * buyAmount;
             cout << " " << vAvailableItems[selectedItem].sItemName << endl;
@@ -105,11 +106,25 @@ void shop::sellItem(player &player) {
         else{break;}
     }
 
-    for (int item = 0; item < this->vAvailableItems.size(); item++) {
-        if (this->vAvailableItems[item].sItemName == player.vItems[selectedItem].first.sItemName) {
-            cout << "You received " << sellAmount * player.vItems[selectedItem].first.iPrice << "$" << endl;
+    cout << "You received " << sellAmount * player.vItems[selectedItem].first.iPrice << "$" << endl;
 
-            return;
+}
+
+int checkForItem(player thePlayer, std::string itemName) {
+    for (int i = 0; i < thePlayer.vItems.size(); i++) {
+        if (thePlayer.vItems[i].first.sItemName == itemName) {
+            return i;
         }
     }
+    return -1;
+}
+
+int checkForItem(vector<item> itemList, std::string itemName) {
+    for (int i = 0; i < itemList.size(); i++) {
+        if (itemList[i].sItemName == itemName) {
+            return i;
+        }
+    }
+    return -1;
+
 }
