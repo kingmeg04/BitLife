@@ -1,5 +1,6 @@
 #include "UI/UIManager.h"
 #include "UniversalStuff/TimeStuff.h"
+#include "UniversalStuff/NamingStuff.h"
 using namespace std;
 
 int main() {

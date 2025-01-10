@@ -27,4 +27,6 @@ add_executable(EFInfoProjektRevision1 main.cpp
         GameStuff/RandomEventStuff.h
         UI/UIManager.cpp
         UI/UIManager.h
+        UniversalStuff/NamingStuff.cpp
+        UniversalStuff/NamingStuff.h
 )
