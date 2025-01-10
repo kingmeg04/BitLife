@@ -1,71 +1,24 @@
 #include "UIManager.h"
-#include <iostream>
-#include <conio.h> // For _getch()
-#include <thread>
-#include <chrono>
+
 
 using namespace std;
 
-void pauseMenu(const string& message = "Press any key to continue...") {
+void pauseMenu(const string& message ) {
     cout << endl << message << endl;
     _getch(); // Wait for any key press
 }
 
-void UIManager::start() {
-    bool running = true;
-
-    while (running) {
-        // Clear screen
-        system("cls");
-
-        // Display sidebar
-        cout << "==== MAIN MENU ====\n";
-        for (size_t i = 0; i < sidebarOptions.size(); i++) {
-            if (i == currentSidebarSelection) {
-                cout << "> " << sidebarOptions[i] << "\n";
-            } else {
-                cout << "  " << sidebarOptions[i] << "\n";
-            }
-        }
-        cout << "===================\n";
-
-        // Handle input
-        char key = _getch();
-        if (key == 72) { // Arrow up
-            currentSidebarSelection = (currentSidebarSelection - 1 + sidebarOptions.size()) % sidebarOptions.size();
-        } else if (key == 80) { // Arrow down
-            currentSidebarSelection = (currentSidebarSelection + 1) % sidebarOptions.size();
-        } else if (key == 13) { // Enter
-            switch (currentSidebarSelection) {
-                case 0: // New Game
-                    newGame();
-                    break;
-                case 1: // Load Game
-                    loadGame();
-                    break;
-                case 2: // Shop
-                    shopMenu();
-                    break;
-                case 3: // Jobs
-                    jobsMenu();
-                    break;
-                case 4: // Crimes
-                    crimesMenu();
-                    break;
-                case 5: // Quit
-                    quitGame();
-                    running = false;
-                    break;
-                default:
-                    cout << "Invalid selection!" << endl;
-            }
-        }
-    }
+bool UIManager::start() {
+    return true;
 }
 
 void UIManager::newGame() {
+    string playerName;
     cout << "Starting a new game...\n";
-    currentPlayer = new player(job(500, 50, "Unemployed"));
+    cout << "Please enter your charachter's name: ";
+    cin >> playerName;
+    cout << endl;
+    pCurrentPlayer = new player(playerName,job(0, 50, "child"));
     cout << "New game started successfully!" << endl;
     pauseMenu();
 }
@@ -75,12 +28,8 @@ void UIManager::loadGame() {
     pauseMenu();
 }
 
-void UIManager::shopMenu() {
-    if (!currentPlayer) {
-        cout << "Start a new game first!\n";
-        pauseMenu();
-        return;
-    }
+void UIManager::shopMenu(int &actions) {
+
 
     shop gameShop("General Store", {
         item("Bread", 10, 0, 20),
@@ -88,34 +37,25 @@ void UIManager::shopMenu() {
         item("Energy Drink", 20, -10, 15)
     });
 
-    gameShop.openShop(*currentPlayer);
+    gameShop.openShop(*pCurrentPlayer);
     pauseMenu();
 }
 
-void UIManager::jobsMenu() {
-    if (!currentPlayer) {
-        cout << "Start a new game first!\n";
-        pauseMenu();
-        return;
-    }
+void UIManager::jobsMenu(int &actions) {
 
-    cout << "Current job: " << currentPlayer->jCurrentJob.sName
-         << " (" << currentPlayer->jCurrentJob.sSalary << "$ per week)\n";
+
+    cout << "Current job: " << pCurrentPlayer->jCurrentJob.sName
+         << " (" << pCurrentPlayer->jCurrentJob.sSalary << "$ per week)\n";
 
     job newJob = getRandomJob();
-    currentPlayer->newJob(newJob);
+    pCurrentPlayer->newJob(newJob);
 
     cout << "New job acquired: " << newJob.sName
          << " with a salary of " << newJob.sSalary << "$ per week.\n";
     pauseMenu();
 }
 
-void UIManager::crimesMenu() {
-    if (!currentPlayer) {
-        cout << "Start a new game first!\n";
-        pauseMenu();
-        return;
-    }
+void UIManager::crimesMenu(int &actions) {
 
     array<crime, 6> crimesArray = {
         crime{50, 0.2, "Shoplifting"},
@@ -127,8 +67,8 @@ void UIManager::crimesMenu() {
     };
 
     cout << "Attempting a crime..." << endl;
-    currentPlayer->vCrimes.push_back({crimesArray[0],1});
-    prisonCharge(*currentPlayer, crimesArray[0]);
+    pCurrentPlayer->vCrimes.push_back({crimesArray[0],1});
+    prisonCharge(*pCurrentPlayer, crimesArray[0]);
     pauseMenu();
 }
 

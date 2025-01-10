@@ -7,11 +7,11 @@
 #include <array>
 
 class TimeManager {
-    int iday;
-
 public:
+    int iDay;
+
     TimeManager(int startDay) {
-        this->iday = startDay;
+        this->iDay = startDay;
     };
     /**
      *
@@ -19,7 +19,7 @@ public:
      * @note year has 360 days, 12 months, 30 days per month
      */
     std::array<int, 3> getDate() {
-        int day = this->iday;
+        int day = this->iDay;
         int month = 0;
         int year = 0;
 

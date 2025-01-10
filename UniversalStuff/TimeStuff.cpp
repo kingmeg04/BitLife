@@ -12,13 +12,16 @@ using namespace std;
 void TimeManager::advanceOneTime(int timeType) { //possibly make it a function that directly asks player how much time to skip
     switch(timeType) {
         case 1:
-            this->iday += 1;
+            this->iDay += 1;
         break;
         case 2:
-            this->iday += 7;
+            this->iDay += 7;
         break;
         case 3:
-            this->iday += 30;
+            this->iDay += 30;
+        break;
+        case 4:
+            this->iDay += 360;
         break;
     }
 

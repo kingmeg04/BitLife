@@ -111,7 +111,6 @@ CMakeFiles/EFInfoProjektRevision1.dir/main.cpp.obj: \
  C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_vector.h \
  C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_bvector.h \
  C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/vector.tcc \
- C:/Users/kingm/CLionProjects/BitLife/PlayerStuff/PlayerStuff.h \
  C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/iostream \
  C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/ostream \
  C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/ios \
@@ -157,18 +156,70 @@ CMakeFiles/EFInfoProjektRevision1.dir/main.cpp.obj: \
  C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/ostream.tcc \
  C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/istream \
  C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/istream.tcc \
- C:/Users/kingm/CLionProjects/BitLife/PlayerStuff/Money/CriminalStuff.h \
- C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/array \
- C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/variant \
- C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/enable_special_members.h \
+ C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/x86_64-w64-mingw32/include/conio.h \
+ C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/x86_64-w64-mingw32/include/sec_api/conio_s.h \
+ C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/thread \
+ C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/stop_token \
+ C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/atomic \
+ C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/atomic_base.h \
+ C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/stdint.h \
+ C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/x86_64-w64-mingw32/include/stdint.h \
+ C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/atomic_lockfree_defines.h \
+ C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/atomic_wait.h \
+ C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/std_mutex.h \
+ C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/std_thread.h \
+ C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/unique_ptr.h \
+ C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/semaphore \
+ C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/semaphore_base.h \
+ C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/chrono.h \
+ C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/ratio \
+ C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/cstdint \
+ C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/limits \
+ C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/ctime \
  C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/parse_numbers.h \
+ C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/atomic_timed_wait.h \
+ C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/this_thread_sleep.h \
+ C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/x86_64-w64-mingw32/include/semaphore.h \
+ C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/chrono \
+ C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/sstream \
+ C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/sstream.tcc \
+ C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_algo.h \
+ C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/algorithmfwd.h \
+ C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_heap.h \
+ C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/uniform_int_dist.h \
+ C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_tempbuf.h \
+ C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/shared_ptr.h \
+ C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/shared_ptr_base.h \
+ C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/allocated_ptr.h \
+ C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/ext/aligned_buffer.h \
+ C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/ext/concurrence.h \
+ C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/align.h \
+ C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/chrono_io.h \
+ C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/iomanip \
+ C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/locale \
+ C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/locale_facets_nonio.h \
+ C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32/bits/time_members.h \
+ C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32/bits/messages_members.h \
+ C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/codecvt.h \
+ C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/locale_facets_nonio.tcc \
+ C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/locale_conv.h \
+ C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/quoted_string.h \
+ C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/format \
+ C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/array \
+ C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/charconv \
+ C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/optional \
+ C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/enable_special_members.h \
+ C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/span \
+ C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/variant \
+ C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/ranges_algobase.h \
+ C:/Users/kingm/CLionProjects/BitLife/PlayerStuff/PlayerStuff.h \
+ C:/Users/kingm/CLionProjects/BitLife/PlayerStuff/Money/CriminalStuff.h \
  C:/Users/kingm/CLionProjects/BitLife/PlayerStuff/PlayerStuff.h \
  C:/Users/kingm/CLionProjects/BitLife/UniversalStuff/RandomStuff.h \
  C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/random \
  C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/cmath \
  C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/x86_64-w64-mingw32/include/math.h \
  C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/specfun.h \
- C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/limits \
  C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/tr1/gamma.tcc \
  C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/tr1/special_function_util.h \
  C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/tr1/bessel_function.tcc \
@@ -181,11 +232,7 @@ CMakeFiles/EFInfoProjektRevision1.dir/main.cpp.obj: \
  C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/tr1/poly_hermite.tcc \
  C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/tr1/poly_laguerre.tcc \
  C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/tr1/riemann_zeta.tcc \
- C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/cstdint \
- C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/stdint.h \
- C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/x86_64-w64-mingw32/include/stdint.h \
  C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/random.h \
- C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/uniform_int_dist.h \
  C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32/bits/opt_random.h \
  C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/pmmintrin.h \
  C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/emmintrin.h \
@@ -201,4 +248,5 @@ CMakeFiles/EFInfoProjektRevision1.dir/main.cpp.obj: \
  C:/Users/kingm/CLionProjects/BitLife/GameStuff/GameOverStuff.h \
  C:/Users/kingm/CLionProjects/BitLife/GameStuff/ShopStuff.h \
  C:/Users/kingm/CLionProjects/BitLife/PlayerStuff/PlayerStuff.h \
- C:/Users/kingm/CLionProjects/BitLife/PlayerStuff/Money/JobStuff.h
+ C:/Users/kingm/CLionProjects/BitLife/PlayerStuff/Money/JobStuff.h \
+ C:\Users\kingm\CLionProjects\BitLife\UniversalStuff/TimeStuff.h

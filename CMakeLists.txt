@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.29)
 project(EFInfoProjektRevision1)
 
 set(CMAKE_EXE_LINKER_FLAGS "-static -static-libgcc -static-libstdc++")
-set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD 23)
 
 add_executable(EFInfoProjektRevision1 main.cpp
         UniversalStuff/TimeStuff.h

@@ -19,7 +19,7 @@ class player {
 
 public:
 
-
+    std::string sPlayerName;
     job jCurrentJob;
     long balance = 0;
     std::vector<std::pair<item, int>> vItems;
@@ -34,7 +34,7 @@ public:
     short mentalHealth = 100;
     short sCriminalReputation = 0; //How involved in the crime world you are
 
-    player(job CurrentJob) : jCurrentJob(CurrentJob) {}
+    player(std::string PlayerName,job CurrentJob) : sPlayerName(PlayerName), jCurrentJob(CurrentJob) {}
 
 
     void newJob(job newJob);
