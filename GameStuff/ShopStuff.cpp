@@ -139,6 +139,8 @@ shop generateShop(vector<unsigned short> posCases) {
     shop generatedShop = {"", {}};
     unsigned short itemsInShop;
 
+
+
     int switchVar;
     vector<shared_ptr<item>> possibleItems = {
         make_shared<consumable>(2, 0, "small water", static_cast<short>(random(1, 3))), // drinks
@@ -160,6 +162,16 @@ shop generateShop(vector<unsigned short> posCases) {
 
     };
 
+    auto generateItems = [&generatedShop, &possibleItems](int start, int end) {
+        int itemsInShop = generatedShop.vAvailableItems.size();
+        while (itemsInShop == generatedShop.vAvailableItems.size()) {
+            for (int i = start; i <= end; i++) {  // Loop between start and end
+                if (random(0, 1) > 0.5) {
+                    generatedShop.vAvailableItems.push_back(possibleItems[i]);
+                }
+            }
+        }
+    };
 
     while (true) {
         // Generate a random value for switchVar
@@ -178,23 +190,15 @@ shop generateShop(vector<unsigned short> posCases) {
         case 1:
             generatedShop.sShopName = generateName() + "'s Convenience Store";
 
-        itemsInShop = generatedShop.vAvailableItems.size();
-        while (itemsInShop == generatedShop.vAvailableItems.size()) {
-            for (int i = 0; i <= 3; i++) { // goes until third element aka last drink in the possibleItems vector
-                if (random(0,1) > 0.5) {
-                    generatedShop.vAvailableItems.push_back(possibleItems[i]);
-                }
-            }
-        }
+            generateItems(0, 3);
+            generateItems(4, 7);
 
-        itemsInShop = generatedShop.vAvailableItems.size();
-        while (itemsInShop == generatedShop.vAvailableItems.size()) {
-            for (int i = 4; i <= 7; i++) { // goes from start of foods to end of foods in the possibleItems vector
-                if (random(0,1) > 0.5) {
-                    generatedShop.vAvailableItems.push_back(possibleItems[i]);
-                }
-            }
-        }
+        break;
+        case 2:
+            generatedShop.sShopName = generateName() + "'s Car Dealership";
+
+            generateItems(8, 13);
+
         break;
     }
 
