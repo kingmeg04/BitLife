@@ -10,6 +10,6 @@
 #include <array>
 #include "RandomStuff.h"
 
-std::string nameGenerator();
+std::string generateName();
 
 #endif //NAMINGSTUFF_H

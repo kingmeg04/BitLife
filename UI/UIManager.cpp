@@ -28,16 +28,38 @@ void UIManager::loadGame() {
     pauseMenu();
 }
 
-void UIManager::shopMenu(int &actions) {
+void UIManager::shopMenu(int &actions, player &thePlayer) {
+    int input;
 
+    for (int shownShop = 0; shownShop < this->vShops.size(); shownShop++) {
+        cout << "[" << shownShop + 1 << "]" << this->vShops[shownShop].sShopName << endl;
+    }
+    cout << "Which shop do you want to visit: ";
+    cin >> input;
+    cout << endl;
 
-    shop gameShop("General Store", {
+    while (true) {
+        if (input >= 1 && input <= this->vShops.size()) {
+            break;
+        }
+        if (input == 0) {
+            return;
+        }
+        cout << "The input was invalid, try again or 0 to exit: ";
+        cin >> input;
+        cout << endl;
+    }
+
+    input--;
+    this->vShops[input].openShop(thePlayer);
+
+    /*shop gameShop("General Store", {
         item("Bread", 10, 0, 20),
         item("Medicine", 50, 30, 0),
         item("Energy Drink", 20, -10, 15)
     });
 
-    gameShop.openShop(*pCurrentPlayer);
+    gameShop.openShop(*pCurrentPlayer);*/
     pauseMenu();
 }
 

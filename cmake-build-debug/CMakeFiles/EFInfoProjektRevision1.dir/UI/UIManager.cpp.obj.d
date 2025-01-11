@@ -213,6 +213,13 @@ CMakeFiles/EFInfoProjektRevision1.dir/UI/UIManager.cpp.obj: \
  C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/variant \
  C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/ranges_algobase.h \
  C:/Users/kingm/CLionProjects/BitLife/PlayerStuff/PlayerStuff.h \
+ C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/memory \
+ C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_raw_storage_iter.h \
+ C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/shared_ptr_atomic.h \
+ C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/backward/auto_ptr.h \
+ C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/ranges_uninitialized.h \
+ C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/pstl/glue_memory_defs.h \
+ C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/pstl/execution_defs.h \
  C:/Users/kingm/CLionProjects/BitLife/PlayerStuff/Money/CriminalStuff.h \
  C:/Users/kingm/CLionProjects/BitLife/PlayerStuff/PlayerStuff.h \
  C:/Users/kingm/CLionProjects/BitLife/UniversalStuff/RandomStuff.h \
@@ -243,9 +250,16 @@ CMakeFiles/EFInfoProjektRevision1.dir/UI/UIManager.cpp.obj: \
  C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/numeric \
  C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_numeric.h \
  C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/pstl/glue_numeric_defs.h \
- C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/pstl/execution_defs.h \
  C:/Users/kingm/CLionProjects/BitLife/PlayerStuff/Money/JobStuff.h \
  C:/Users/kingm/CLionProjects/BitLife/GameStuff/GameOverStuff.h \
  C:/Users/kingm/CLionProjects/BitLife/GameStuff/ShopStuff.h \
  C:/Users/kingm/CLionProjects/BitLife/PlayerStuff/PlayerStuff.h \
+ C:/Users/kingm/CLionProjects/BitLife/UniversalStuff/NamingStuff.h \
+ C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/set \
+ C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_tree.h \
+ C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/node_handle.h \
+ C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_set.h \
+ C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_multiset.h \
+ C:/Users/kingm/AppData/Local/JetBrains/CLion\ 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/erase_if.h \
+ C:/Users/kingm/CLionProjects/BitLife/UniversalStuff/RandomStuff.h \
  C:/Users/kingm/CLionProjects/BitLife/PlayerStuff/Money/JobStuff.h

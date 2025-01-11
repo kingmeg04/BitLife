@@ -22,6 +22,6 @@ double random(double min, double max);
 std::vector<double> chanceDistribution(std::vector<double> weights);
 
 template <typename Vector>
-AllVariant randomElement(const Vector& elements, std::vector<double> weights);
+AllVariant randomElement(const Vector elements, std::vector<int> weights);
 
 #endif // RANDOMSTUFF_H

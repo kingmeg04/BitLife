@@ -12,9 +12,8 @@ int main() {
 
         int actions = 0;
 
-
         bool playerKnown = false;
-        bool renewActions = false;
+        bool newDay = false;
         UIManager uiManager;
 
         int startDate = round(random(0,3600000));
@@ -24,8 +23,17 @@ int main() {
 
 
         while (running) {
-            if (renewActions) {
+            if (newDay) {
                 actions = 0;
+
+                if (uiManager.vShops.size() <= 0 && timeManager.iDay - startDate >= 2160) {
+                    uiManager.vShops.push_back(generateShop({1})); // guarantee to generate at least one convenience store
+
+                    for (int i = 0; i < round(random(0,5)); i++) {
+                        uiManager.vShops.push_back(generateShop({1}));
+                    }
+                }
+
                 if (timeManager.iDay - startDate >= 9000) {
                     actions = 10;
                 }
@@ -43,7 +51,7 @@ int main() {
                 }
 
                 maxActions = actions;
-                renewActions = false;
+                newDay = false;
             }
 
             if (uiManager.pCurrentPlayer != nullptr && !playerKnown) {
@@ -55,6 +63,7 @@ int main() {
 
             // Display sidebar
             cout << "==== MAIN MENU ====\n";
+
             for (int i = 0; i <= 2; i++) {
                 if (i == uiManager.currentSidebarSelection) {
                     cout << "> " << uiManager.sidebarOptions[i] << "\n";
@@ -154,7 +163,7 @@ int main() {
                             break;
                         }
                         uiManager.newGame();
-                        renewActions = true;
+                        newDay = true;
                     break;
                     case 1: // Load Game
                         uiManager.loadGame();
@@ -199,10 +208,10 @@ int main() {
                             timeManager.advanceOneTime(2);
                         }
                         else{timeManager.advanceOneTime(1);}
-                        renewActions = true; //wherever advance time is used renew actions has to be set to new
+                        newDay = true; //wherever advance time is used renew actions has to be set to new
                     break;
                     case 4:
-                        uiManager.shopMenu(actions);
+                        uiManager.shopMenu(actions, *uiManager.pCurrentPlayer);
                     break;
                     case 5: // Crimes
                         uiManager.jobsMenu(actions);

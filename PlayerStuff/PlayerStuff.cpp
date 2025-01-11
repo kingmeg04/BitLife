@@ -20,7 +20,7 @@ void player::newJob(job newJob) {
 
 void player::useItem(item itemUsed, int amountUsed) {
     for(int items = 0; items < this->vItems.size(); items++) {
-        if(this->vItems[items].first.sItemName == itemUsed.sItemName){
+        if(this->vItems[items].first->sItemName == itemUsed.sItemName){
             if(this->vItems[items].second -= amountUsed >= 0) {
                 this->vItems[items].second -= amountUsed;
             }

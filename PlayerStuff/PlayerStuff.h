@@ -7,6 +7,7 @@
 
 #include <vector>
 #include <iostream>
+#include <memory>
 #include "Money/CriminalStuff.h"
 #include "../GameStuff/ShopStuff.h"
 #include "Money/JobStuff.h"
@@ -22,7 +23,7 @@ public:
     std::string sPlayerName;
     job jCurrentJob;
     long balance = 0;
-    std::vector<std::pair<item, int>> vItems;
+    std::vector<std::pair<std::shared_ptr<item>, int>> vItems;
     std::vector<std::pair<crime, int>> vCrimes;
     std::vector<job> vPrevJobs;
     int iJailTime = 0;

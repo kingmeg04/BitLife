@@ -8,11 +8,13 @@
 #include <vector>
 #include "../PlayerStuff/PlayerStuff.h"
 #include "../PlayerStuff/Money/JobStuff.h"
+#include "ShopStuff.h"
+class item;
 
 //
 
 
-void randomEventSelector(player& thePlayer, int currentDay);
+int randomEventSelector(player& thePlayer, int currentDay);
 
 void dating(player& thePlayer); // 50/50 -> be asked out or ask someone out --> rejection decreases mental stability
 void prank(player& thePlayer); // only possible below age of 16 --> if pull prank criminalReputation rises and possibly get caught for action

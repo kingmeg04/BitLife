@@ -6,11 +6,11 @@
 
 using namespace std;
 
-void randomEventSelector(player &thePlayer, int currentDay) {
+int randomEventSelector(player &thePlayer, int currentDay) {
     vector<double> weights = {20,};
     vector<int> options = {1,2,3,4};
-    int chosenElement = get<int>(randomElement(vector<int>{1,2,3,4,5}, vector<double>{20,20,5,}));
-    switch (chosenElement) {
+    int chosenEvent = get<int>(randomElement(vector<int>{1,2,3,4,5}, vector<int>{20,20,5}));
+    switch (chosenEvent) {
         case 1:
             dating(thePlayer);
             break;
@@ -24,6 +24,7 @@ void randomEventSelector(player &thePlayer, int currentDay) {
             winRandomGiveaway(thePlayer);
             break;
     }
+    return chosenEvent;
 }
 //
 void dating(player &thePlayer) {
@@ -40,14 +41,14 @@ void dating(player &thePlayer) {
             if (random(0,1) > 0.25) {
                 cout << "They said yes." << endl;
                 for (int checker = 0; checker < thePlayer.vItems.size(); checker++) {
-                    if (thePlayer.vItems[checker].first.sItemName == "partner") {
+                    if (thePlayer.vItems[checker].first->sItemName == "partner") {
                         thePlayer.vItems[checker].second++;
                         cout << "You now have " << thePlayer.vItems[checker].second << " partners." << endl;
                         return;
                     }
                 }
                 cout << "You now have a partner." << endl;
-                thePlayer.vItems.push_back({{"partner", 0, true, 5}, 1});
+                thePlayer.vItems.push_back({make_shared<item>("partner", 0, true, 5), 1});
             }
             else {
                 cout << "You were rejected." << endl;
@@ -65,14 +66,14 @@ void dating(player &thePlayer) {
         }
         else {
             for (int checker = 0; checker < thePlayer.vItems.size(); checker++) {
-                if (thePlayer.vItems[checker].first.sItemName == "partner") {
+                if (thePlayer.vItems[checker].first->sItemName == "partner") {
                     thePlayer.vItems[checker].second++;
                     cout << "You now have " << thePlayer.vItems[checker].second << " partners." << endl;
                     return;
                 }
             }
             cout << "You now have a partner." << endl;
-            thePlayer.vItems.push_back({{"partner", 0, true, 5}, 1});
+            thePlayer.vItems.push_back({make_shared<item>("partner", 0, true, 5), 1});
         }
     }
 }
@@ -146,7 +147,7 @@ void policeInvestigation(player &thePlayer) {
 
 void winRandomGiveaway(player &thePlayer) {
     unsigned short reward;
-    int item;
+    int currentItem;
 
     cout << "You won a random Giveaway!!!" << endl;
     if (random(0,1) > 0.5) {
@@ -155,38 +156,38 @@ void winRandomGiveaway(player &thePlayer) {
 
     }
     else {
-        reward = get<int>(randomElement(vector<int>{1,2,3},vector<double>{20, 10, 2}));
+        reward = get<int>(randomElement(vector<int>{1,2,3},vector<int>{20, 10, 2}));
         switch (reward) {
             case 1:
                 cout << "You won a phone!" << endl;
                 for (int checker = 0; checker < thePlayer.vItems.size(); checker++) {
-                    if (thePlayer.vItems[checker].first.sItemName == "phone") {
+                    if (thePlayer.vItems[checker].first->sItemName == "phone") {
                         thePlayer.vItems[checker].second++;
                         return;
                     }
                 }
-                thePlayer.vItems.push_back({{"phone", 0, true, 1}, 1});
+                thePlayer.vItems.push_back({make_shared<item>("phone", 0, true, 1), 1});
                 return;
 
             case 2:
                 cout << "You won a VR-headset!" << endl;
-                item = checkForItem(thePlayer, "VR-headset");
-                if (item >= 0) {
-                    thePlayer.vItems[item].second++;
+                currentItem = checkForItem(thePlayer, "VR-headset");
+                if (currentItem >= 0) {
+                    thePlayer.vItems[currentItem].second++;
                     return;
                 }
 
-                thePlayer.vItems.push_back({{"VR-headset", 0, true, 3}, 1});
+                thePlayer.vItems.push_back({make_shared<item>("VR-headset", 0, true, 3), 1});
                 return;
             case 3:
                 cout << "You won a car!" << endl;
-                item = checkForItem(thePlayer, "car");
-                if (item >= 0) {
-                    thePlayer.vItems[item].second++;
+                currentItem = checkForItem(thePlayer, "car");
+                if (currentItem >= 0) {
+                    thePlayer.vItems[currentItem].second++;
                     return;
                 }
 
-                thePlayer.vItems.push_back({{"car", 0, true, 1}, 1});
+                thePlayer.vItems.push_back({make_shared<item>("car", 0, true, 1), 1});
 
 
         }

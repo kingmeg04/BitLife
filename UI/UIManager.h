@@ -15,6 +15,7 @@ class player;
 class UIManager {
 public:
 
+    std::vector<shop> vShops;
     std::vector<std::string> sidebarOptions = {"New Game", "Load Game", "Quit", "Timeskip", "Shop", "Jobs", "Crimes"}; //
 
     int currentSidebarSelection = 0; // Aktuelle Menüauswahl
@@ -26,7 +27,7 @@ public:
 
     void newGame();
     void loadGame();
-    void shopMenu(int &actions);
+    void shopMenu(int &actions, player &thePlayer);
     void jobsMenu(int &actions);
     void crimesMenu(int &actions);
     void quitGame();

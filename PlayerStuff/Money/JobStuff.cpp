@@ -8,7 +8,7 @@
 
 using namespace std;
 
-vector<double> jobWeights = {150, 150, 100, 50, 5, 25, 100, 10, 25, 10, 15, 10, 1};
+vector<int> jobWeights = {150, 150, 100, 50, 5, 25, 100, 10, 25, 10, 15, 10, 1};
 
 
 
@@ -31,7 +31,7 @@ vector<job> getJobVector(){
 }
 
 job getRandomJob() {
-    return get<job>(randomElement(getJobVector(), chanceDistribution(jobWeights)));
+    return get<job>(randomElement(getJobVector(), jobWeights));
 }
 
 job changeJob(job currentJob, int posOptions) {

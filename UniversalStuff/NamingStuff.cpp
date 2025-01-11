@@ -6,7 +6,7 @@
 
 using namespace std;
 
-std::string nameGenerator() {
+std::string generateName() {
     genName:
     string name ="";
     char chosenLetter;

@@ -344,6 +344,30 @@ UniversalStuff/ConsoleStuff.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\EFInfoProjektRevision1.dir\build.make CMakeFiles/EFInfoProjektRevision1.dir/UniversalStuff/ConsoleStuff.cpp.s
 .PHONY : UniversalStuff/ConsoleStuff.cpp.s
 
+UniversalStuff/NamingStuff.obj: UniversalStuff/NamingStuff.cpp.obj
+.PHONY : UniversalStuff/NamingStuff.obj
+
+# target to build an object file
+UniversalStuff/NamingStuff.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\EFInfoProjektRevision1.dir\build.make CMakeFiles/EFInfoProjektRevision1.dir/UniversalStuff/NamingStuff.cpp.obj
+.PHONY : UniversalStuff/NamingStuff.cpp.obj
+
+UniversalStuff/NamingStuff.i: UniversalStuff/NamingStuff.cpp.i
+.PHONY : UniversalStuff/NamingStuff.i
+
+# target to preprocess a source file
+UniversalStuff/NamingStuff.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\EFInfoProjektRevision1.dir\build.make CMakeFiles/EFInfoProjektRevision1.dir/UniversalStuff/NamingStuff.cpp.i
+.PHONY : UniversalStuff/NamingStuff.cpp.i
+
+UniversalStuff/NamingStuff.s: UniversalStuff/NamingStuff.cpp.s
+.PHONY : UniversalStuff/NamingStuff.s
+
+# target to generate assembly for a file
+UniversalStuff/NamingStuff.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\EFInfoProjektRevision1.dir\build.make CMakeFiles/EFInfoProjektRevision1.dir/UniversalStuff/NamingStuff.cpp.s
+.PHONY : UniversalStuff/NamingStuff.cpp.s
+
 UniversalStuff/RandomStuff.obj: UniversalStuff/RandomStuff.cpp.obj
 .PHONY : UniversalStuff/RandomStuff.obj
 
@@ -452,6 +476,9 @@ help:
 	@echo ... UniversalStuff/ConsoleStuff.obj
 	@echo ... UniversalStuff/ConsoleStuff.i
 	@echo ... UniversalStuff/ConsoleStuff.s
+	@echo ... UniversalStuff/NamingStuff.obj
+	@echo ... UniversalStuff/NamingStuff.i
+	@echo ... UniversalStuff/NamingStuff.s
 	@echo ... UniversalStuff/RandomStuff.obj
 	@echo ... UniversalStuff/RandomStuff.i
 	@echo ... UniversalStuff/RandomStuff.s

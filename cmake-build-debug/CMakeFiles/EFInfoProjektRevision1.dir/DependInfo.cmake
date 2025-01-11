@@ -17,6 +17,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/Users/kingm/CLionProjects/BitLife/PlayerStuff/PlayerStuff.cpp" "CMakeFiles/EFInfoProjektRevision1.dir/PlayerStuff/PlayerStuff.cpp.obj" "gcc" "CMakeFiles/EFInfoProjektRevision1.dir/PlayerStuff/PlayerStuff.cpp.obj.d"
   "C:/Users/kingm/CLionProjects/BitLife/UI/UIManager.cpp" "CMakeFiles/EFInfoProjektRevision1.dir/UI/UIManager.cpp.obj" "gcc" "CMakeFiles/EFInfoProjektRevision1.dir/UI/UIManager.cpp.obj.d"
   "C:/Users/kingm/CLionProjects/BitLife/UniversalStuff/ConsoleStuff.cpp" "CMakeFiles/EFInfoProjektRevision1.dir/UniversalStuff/ConsoleStuff.cpp.obj" "gcc" "CMakeFiles/EFInfoProjektRevision1.dir/UniversalStuff/ConsoleStuff.cpp.obj.d"
+  "C:/Users/kingm/CLionProjects/BitLife/UniversalStuff/NamingStuff.cpp" "CMakeFiles/EFInfoProjektRevision1.dir/UniversalStuff/NamingStuff.cpp.obj" "gcc" "CMakeFiles/EFInfoProjektRevision1.dir/UniversalStuff/NamingStuff.cpp.obj.d"
   "C:/Users/kingm/CLionProjects/BitLife/UniversalStuff/RandomStuff.cpp" "CMakeFiles/EFInfoProjektRevision1.dir/UniversalStuff/RandomStuff.cpp.obj" "gcc" "CMakeFiles/EFInfoProjektRevision1.dir/UniversalStuff/RandomStuff.cpp.obj.d"
   "C:/Users/kingm/CLionProjects/BitLife/UniversalStuff/TimeStuff.cpp" "CMakeFiles/EFInfoProjektRevision1.dir/UniversalStuff/TimeStuff.cpp.obj" "gcc" "CMakeFiles/EFInfoProjektRevision1.dir/UniversalStuff/TimeStuff.cpp.obj.d"
   "C:/Users/kingm/CLionProjects/BitLife/main.cpp" "CMakeFiles/EFInfoProjektRevision1.dir/main.cpp.obj" "gcc" "CMakeFiles/EFInfoProjektRevision1.dir/main.cpp.obj.d"
