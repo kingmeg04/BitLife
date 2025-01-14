@@ -290,98 +290,98 @@ void UIManager::saveGame(int startDate, int endDate) {
         }
 
         if (shared_ptr<consumable> savingItem = static_pointer_cast<consumable>(this->pCurrentPlayer->vItems[savingItems].first)) {
-                        if (savingItem->itemType == 1) {
-                            data += to_string(savingItem->itemType) + " "
-                            + to_string(savingItem->iSaturationInfluence) + " "
-                            + to_string(savingItem->iHydrationInfluence) + " "
-                            + savingItem->sItemName + " "
-                            + to_string(savingItem->iPrice) + " "
-                            + to_string(savingItem->bIsReusable) + " "
-                            + to_string(savingItem->iMentalInfluence) + " "
-                            ;
-                            data += to_string(this->pCurrentPlayer->vItems[savingItems].second) + "\n";
-                            continue;
-                            }
-                        }
-
-                    if (shared_ptr<car> savingItem = static_pointer_cast<car>(this->pCurrentPlayer->vItems[savingItems].first)) {
-                        if (savingItem->itemType == 2) {
-                            data += to_string(savingItem->itemType) + " "
-                            + to_string(savingItem->iActionsGained) + " "
-                            + savingItem->sItemName + " "
-                            + to_string(savingItem->iPrice) + " "
-                            + to_string(savingItem->bIsReusable) + " "
-                            + to_string(savingItem->iMentalInfluence) + " "
-                            ;
-
-                            data += to_string(this->pCurrentPlayer->vItems[savingItems].second) + "\n";
-                            continue;
-                        }
-                    }
-                    throw runtime_error("Type handling error2");
+            if (savingItem->itemType == 1) {
+                data += to_string(savingItem->itemType) + " "
+                + to_string(savingItem->iSaturationInfluence) + " "
+                + to_string(savingItem->iHydrationInfluence) + " "
+                + savingItem->sItemName + " "
+                + to_string(savingItem->iPrice) + " "
+                + to_string(savingItem->bIsReusable) + " "
+                + to_string(savingItem->iMentalInfluence) + " "
+                ;
+                data += to_string(this->pCurrentPlayer->vItems[savingItems].second) + "\n";
+                continue;
                 }
+            }
 
-                for (int savingCrimes = 0; savingCrimes < this->pCurrentPlayer->vCrimes.size(); savingCrimes++) {
-                    data += this->pCurrentPlayer->vCrimes[savingCrimes].first.sName + " "
-                    + to_string(this->pCurrentPlayer->vCrimes[savingCrimes].first.fWitnessability) + " "
-                    + to_string(this->pCurrentPlayer->vCrimes[savingCrimes].first.sIllegalness) + " "
-                    + to_string(this->pCurrentPlayer->vCrimes[savingCrimes].second) + "\n"
-                    ;
-                }
+        if (shared_ptr<car> savingItem = static_pointer_cast<car>(this->pCurrentPlayer->vItems[savingItems].first)) {
+            if (savingItem->itemType == 2) {
+                data += to_string(savingItem->itemType) + " "
+                + to_string(savingItem->iActionsGained) + " "
+                + savingItem->sItemName + " "
+                + to_string(savingItem->iPrice) + " "
+                + to_string(savingItem->bIsReusable) + " "
+                + to_string(savingItem->iMentalInfluence) + " "
+                ;
 
-                for (job savingJob : this->pCurrentPlayer->vPrevJobs) {
-                    data += savingJob.sName + " "
-                    + to_string(savingJob.sMentalInstability) + " "
-                    + to_string(savingJob.sSalary) + " "
-                    + to_string(savingJob.bIsAdmin) + "\n";
-                }
+                data += to_string(this->pCurrentPlayer->vItems[savingItems].second) + "\n";
+                continue;
+            }
+        }
+        throw runtime_error("Type handling error2");
+    }
 
-                for (shop savingShops : this->vShops) { // saving shops
-                    data += savingShops.sShopName + " "
-                    + to_string(savingShops.usDistance) + "\n"
-                    ;
-                    for (int savingItems = 0; savingItems < savingShops.vAvailableItems.size(); savingItems++) { // all items will have itemType = 0 CURRENT PROBLEM
-                        if (shared_ptr<item> savingItem = static_pointer_cast<item>(savingShops.vAvailableItems[savingItems])) {
-                            if (savingItem->itemType == 0) {
-                                data += to_string(savingItem->itemType) + " "
-                                + savingItem->sItemName + " "
-                                + to_string(savingItem->iPrice) + " "
-                                + to_string(savingItem->bIsReusable) + " "
-                                + to_string(savingItem->iMentalInfluence) + "\n"
-                                ;
-                                continue;
-                            }
-                        }
+    for (int savingCrimes = 0; savingCrimes < this->pCurrentPlayer->vCrimes.size(); savingCrimes++) {
+        data += this->pCurrentPlayer->vCrimes[savingCrimes].first.sName + " "
+        + to_string(this->pCurrentPlayer->vCrimes[savingCrimes].first.fWitnessability) + " "
+        + to_string(this->pCurrentPlayer->vCrimes[savingCrimes].first.sIllegalness) + " "
+        + to_string(this->pCurrentPlayer->vCrimes[savingCrimes].second) + "\n"
+        ;
+    }
 
-                        if (shared_ptr<consumable> savingItem = static_pointer_cast<consumable>(savingShops.vAvailableItems[savingItems])) {
-                            if (savingItem->itemType == 1) {
-                                data += to_string(savingItem->itemType) + " "
-                                + to_string(savingItem->iSaturationInfluence) + " "
-                                + to_string(savingItem->iHydrationInfluence) + " "
-                                + savingItem->sItemName + " "
-                                + to_string(savingItem->iPrice) + " "
-                                + to_string(savingItem->bIsReusable) + " "
-                                + to_string(savingItem->iMentalInfluence) + "\n"
-                                ;
-                                continue;
-                                }
-                            }
+    for (job savingJob : this->pCurrentPlayer->vPrevJobs) {
+        data += savingJob.sName + " "
+        + to_string(savingJob.sMentalInstability) + " "
+        + to_string(savingJob.sSalary) + " "
+        + to_string(savingJob.bIsAdmin) + "\n";
+    }
 
-                        if (shared_ptr<car> savingItem = static_pointer_cast<car>(savingShops.vAvailableItems[savingItems])) {
-                            if (savingItem->itemType == 2) {
-                                data += to_string(savingItem->itemType) + " "
-                                + to_string(savingItem->iActionsGained) + " "
-                                + savingItem->sItemName + " "
-                                + to_string(savingItem->iPrice) + " "
-                                + to_string(savingItem->bIsReusable) + " "
-                                + to_string(savingItem->iMentalInfluence) + "\n"
-                                ;
-                                continue;
-                            }
-                        }
-                        throw runtime_error("Type handling error1");
+        for (shop savingShops : this->vShops) { // saving shops
+            data += savingShops.sShopName + " "
+            + to_string(savingShops.usDistance) + "\n"
+            ;
+            for (int savingItems = 0; savingItems < savingShops.vAvailableItems.size(); savingItems++) { // all items will have itemType = 0 CURRENT PROBLEM
+                if (shared_ptr<item> savingItem = static_pointer_cast<item>(savingShops.vAvailableItems[savingItems])) {
+                    if (savingItem->itemType == 0) {
+                        data += to_string(savingItem->itemType) + " "
+                        + savingItem->sItemName + " "
+                        + to_string(savingItem->iPrice) + " "
+                        + to_string(savingItem->bIsReusable) + " "
+                        + to_string(savingItem->iMentalInfluence) + "\n"
+                        ;
+                        continue;
                     }
                 }
+
+                if (shared_ptr<consumable> savingItem = static_pointer_cast<consumable>(savingShops.vAvailableItems[savingItems])) {
+                    if (savingItem->itemType == 1) {
+                        data += to_string(savingItem->itemType) + " "
+                        + to_string(savingItem->iSaturationInfluence) + " "
+                        + to_string(savingItem->iHydrationInfluence) + " "
+                        + savingItem->sItemName + " "
+                        + to_string(savingItem->iPrice) + " "
+                        + to_string(savingItem->bIsReusable) + " "
+                        + to_string(savingItem->iMentalInfluence) + "\n"
+                        ;
+                        continue;
+                    }
+                }
+
+                if (shared_ptr<car> savingItem = static_pointer_cast<car>(savingShops.vAvailableItems[savingItems])) {
+                    if (savingItem->itemType == 2) {
+                        data += to_string(savingItem->itemType) + " "
+                        + to_string(savingItem->iActionsGained) + " "
+                        + savingItem->sItemName + " "
+                        + to_string(savingItem->iPrice) + " "
+                        + to_string(savingItem->bIsReusable) + " "
+                        + to_string(savingItem->iMentalInfluence) + "\n"
+                        ;
+                        continue;
+                    }
+                }
+                throw runtime_error("Type handling error1");
+            }
+        }
 
     saveFile << data; // saving end
 }
