@@ -164,7 +164,7 @@ void winRandomGiveaway(player &thePlayer) {
     if (random(0,1) > 0.5) {
         reward = ceil(random(20, 5000));
         cout << "You've received " << reward << "$!" << endl;
-        thePlayer.playerHealth += reward;
+        thePlayer.balance += reward;
     }
     else {
         reward = get<int>(randomElement(vector<int>{1,2,3},vector<int>{20, 10, 2}));
@@ -204,3 +204,83 @@ void winRandomGiveaway(player &thePlayer) {
         }
     }
 }
+
+void naturalDisaster(player &thePlayer) {
+    cout << "There was a natural disaster!" << endl;
+    for (int currentItem = 0; currentItem < thePlayer.vItems.size(); currentItem++) {
+        if (shared_ptr<house> savingItem = static_pointer_cast<house>(thePlayer.vItems[currentItem].first)) {
+            if (savingItem->itemType == 3) {
+                if (random(1,1000) > savingItem->iStrength) {
+                    cout << "Your house got destroyed!" << endl;
+                    thePlayer.vItems[currentItem].second--;
+                }
+            }
+        }
+    }
+};
+
+void makeDonation(player &thePlayer) {
+    string strAnswer;
+    cout << "Do you want to do a donation (Y/N)" << endl;
+    cin >> strAnswer;
+    if (strAnswer == "Y" || strAnswer == "y") {
+        int iDonation;
+        cout << "How much do you want to donate?" << endl;
+        cin >> iDonation;
+        cout << "Thanks for donating" << iDonation << endl;
+        thePlayer.balance -= iDonation;
+    }
+    else {
+        cout << "You are very selfish and lost 5 Mental Health Points" << endl;
+        thePlayer.balance -= 5;
+    }
+};
+
+void becomeAdmin(player &thePlayer) {
+    int iAddition;
+    iAddition = round(random(100,500));
+    thePlayer.jCurrentJob.bIsAdmin = true;
+    thePlayer.jCurrentJob.sSalary += iAddition;
+    cout << "Congratulations to your promotion!, you now make" << iAddition << "$ more" << endl;
+};
+
+void slipOnBananaPeal(player &thePlayer) {
+    int iDamage;
+    iDamage = round(random(5,20));
+    cout << "You have slipped on a banana!" << endl;
+    thePlayer.playerHealth -= iDamage;
+    cout << "You took" << iDamage << "of damage" << endl;
+}
+
+void askedToCommitCrime(player &thePlayer) {
+    cout << "Do you want to commit a crime with other?" << endl;
+    int iAnswer;
+    iAnswer = round(random(1,3));
+    if (iAnswer == 1) {
+        cout << "Unfortunately they didn't want to commit a crime" << endl;
+        thePlayer.sCriminalReputation += round(random(5,10));
+    }
+    else if (iAnswer == 2) {
+        cout << "Unfortunately they snitched on you for planning a robbery" << endl;
+        thePlayer.sCriminalReputation += round(random(10,20));
+        prisonCharge(thePlayer, "Illegal Planning");
+    }
+    else {
+        cout << "They accepted to join you on your crime" << endl;
+        thePlayer.sCriminalReputation += round(random(10,30));
+        // Open to what happens next
+    }
+};
+
+void explosiveDiarrheaInPublicSpace(player &thePlayer) {
+    cout << "You had explosive diarrhea!" << endl;
+    int iFine;
+    iFine = round(random(50,200));
+    cout << "You need to pay" << iFine << "$ to the state for cleaning your mess" << endl;
+    thePlayer.balance -= iFine;
+};
+
+void organisedCrime(player &thePlayer) {
+    // Dont know what to do
+}
+
