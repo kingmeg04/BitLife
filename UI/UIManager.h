@@ -8,6 +8,7 @@
 #include <conio.h> // For _getch()
 #include <thread>
 #include <chrono>
+#include <fstream>
 
 #include "../PlayerStuff/PlayerStuff.h"
 
@@ -35,9 +36,11 @@ public:
     void crimesMenu(int &actions);
     void quitGame();
     void updatePlayerStatesOnNewDay();
+    void saveGame(int startDate, int endDate);
 
     bool start(); // called to start the programm
 };
+
 
 void pauseMenu(const std::string& message = "Press any key to continue...");
 #endif //UIMANAGER_H
