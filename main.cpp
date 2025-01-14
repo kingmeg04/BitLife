@@ -61,9 +61,7 @@ int main() {
 
                 uiManager.updatePlayerStatesOnNewDay();
 
-
-
-
+                uiManager.saveGame(startDate, timeManager.iDay);
 
                 actions = 0;
 
