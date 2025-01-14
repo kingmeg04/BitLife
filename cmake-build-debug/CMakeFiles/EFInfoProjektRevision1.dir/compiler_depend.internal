@@ -1529,6 +1529,7 @@ CMakeFiles/EFInfoProjektRevision1.dir/UI/UIManager.cpp.obj
  C:/Users/kingm/AppData/Local/JetBrains/CLion 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/exception.h
  C:/Users/kingm/AppData/Local/JetBrains/CLion 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/exception_defines.h
  C:/Users/kingm/AppData/Local/JetBrains/CLion 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/exception_ptr.h
+ C:/Users/kingm/AppData/Local/JetBrains/CLion 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/fstream.tcc
  C:/Users/kingm/AppData/Local/JetBrains/CLion 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/functexcept.h
  C:/Users/kingm/AppData/Local/JetBrains/CLion 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/functional_hash.h
  C:/Users/kingm/AppData/Local/JetBrains/CLion 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/hash_bytes.h
@@ -1632,6 +1633,7 @@ CMakeFiles/EFInfoProjektRevision1.dir/UI/UIManager.cpp.obj
  C:/Users/kingm/AppData/Local/JetBrains/CLion 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/ext/string_conversions.h
  C:/Users/kingm/AppData/Local/JetBrains/CLion 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/ext/type_traits.h
  C:/Users/kingm/AppData/Local/JetBrains/CLion 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/format
+ C:/Users/kingm/AppData/Local/JetBrains/CLion 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/fstream
  C:/Users/kingm/AppData/Local/JetBrains/CLion 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/initializer_list
  C:/Users/kingm/AppData/Local/JetBrains/CLion 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/iomanip
  C:/Users/kingm/AppData/Local/JetBrains/CLion 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/ios
@@ -1682,8 +1684,10 @@ CMakeFiles/EFInfoProjektRevision1.dir/UI/UIManager.cpp.obj
  C:/Users/kingm/AppData/Local/JetBrains/CLion 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/variant
  C:/Users/kingm/AppData/Local/JetBrains/CLion 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/vector
  C:/Users/kingm/AppData/Local/JetBrains/CLion 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32/bits/atomic_word.h
+ C:/Users/kingm/AppData/Local/JetBrains/CLion 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32/bits/basic_file.h
  C:/Users/kingm/AppData/Local/JetBrains/CLion 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32/bits/c++allocator.h
  C:/Users/kingm/AppData/Local/JetBrains/CLion 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32/bits/c++config.h
+ C:/Users/kingm/AppData/Local/JetBrains/CLion 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32/bits/c++io.h
  C:/Users/kingm/AppData/Local/JetBrains/CLion 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32/bits/c++locale.h
  C:/Users/kingm/AppData/Local/JetBrains/CLion 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32/bits/cpu_defines.h
  C:/Users/kingm/AppData/Local/JetBrains/CLion 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32/bits/ctype_base.h
@@ -2626,6 +2630,7 @@ CMakeFiles/EFInfoProjektRevision1.dir/main.cpp.obj
  C:/Users/kingm/AppData/Local/JetBrains/CLion 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/exception.h
  C:/Users/kingm/AppData/Local/JetBrains/CLion 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/exception_defines.h
  C:/Users/kingm/AppData/Local/JetBrains/CLion 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/exception_ptr.h
+ C:/Users/kingm/AppData/Local/JetBrains/CLion 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/fstream.tcc
  C:/Users/kingm/AppData/Local/JetBrains/CLion 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/functexcept.h
  C:/Users/kingm/AppData/Local/JetBrains/CLion 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/functional_hash.h
  C:/Users/kingm/AppData/Local/JetBrains/CLion 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/hash_bytes.h
@@ -2729,6 +2734,7 @@ CMakeFiles/EFInfoProjektRevision1.dir/main.cpp.obj
  C:/Users/kingm/AppData/Local/JetBrains/CLion 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/ext/string_conversions.h
  C:/Users/kingm/AppData/Local/JetBrains/CLion 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/ext/type_traits.h
  C:/Users/kingm/AppData/Local/JetBrains/CLion 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/format
+ C:/Users/kingm/AppData/Local/JetBrains/CLion 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/fstream
  C:/Users/kingm/AppData/Local/JetBrains/CLion 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/initializer_list
  C:/Users/kingm/AppData/Local/JetBrains/CLion 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/iomanip
  C:/Users/kingm/AppData/Local/JetBrains/CLion 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/ios
@@ -2779,8 +2785,10 @@ CMakeFiles/EFInfoProjektRevision1.dir/main.cpp.obj
  C:/Users/kingm/AppData/Local/JetBrains/CLion 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/variant
  C:/Users/kingm/AppData/Local/JetBrains/CLion 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/vector
  C:/Users/kingm/AppData/Local/JetBrains/CLion 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32/bits/atomic_word.h
+ C:/Users/kingm/AppData/Local/JetBrains/CLion 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32/bits/basic_file.h
  C:/Users/kingm/AppData/Local/JetBrains/CLion 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32/bits/c++allocator.h
  C:/Users/kingm/AppData/Local/JetBrains/CLion 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32/bits/c++config.h
+ C:/Users/kingm/AppData/Local/JetBrains/CLion 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32/bits/c++io.h
  C:/Users/kingm/AppData/Local/JetBrains/CLion 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32/bits/c++locale.h
  C:/Users/kingm/AppData/Local/JetBrains/CLion 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32/bits/cpu_defines.h
  C:/Users/kingm/AppData/Local/JetBrains/CLion 2024.3.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32/bits/ctype_base.h
@@ -2852,6 +2860,8 @@ CMakeFiles/EFInfoProjektRevision1.dir/main.cpp.obj
  C:/Users/kingm/CLionProjects/BitLife/PlayerStuff/PlayerStuff.h
  C:/Users/kingm/CLionProjects/BitLife/UniversalStuff/NamingStuff.h
  C:/Users/kingm/CLionProjects/BitLife/UniversalStuff/RandomStuff.h
+ C:/Users/kingm/CLionProjects/BitLife/GameStuff/RandomEventStuff.h
+ C:/Users/kingm/CLionProjects/BitLife/GameStuff/ShopStuff.h
  C:/Users/kingm/CLionProjects/BitLife/UI/UIManager.h
  C:/Users/kingm/CLionProjects/BitLife/UniversalStuff/NamingStuff.h
  C:/Users/kingm/CLionProjects/BitLife/UniversalStuff/TimeStuff.h

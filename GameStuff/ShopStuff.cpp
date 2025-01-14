@@ -18,6 +18,11 @@ void shop::openShop(player& player) {
 
     cout << "What item do you want to purchase: ";
     cin >> selectedItem;
+    if (cin.fail()) {
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        selectedItem = -1;
+    }
     cout << endl;
 
     while(true) {
@@ -25,8 +30,14 @@ void shop::openShop(player& player) {
         selectedItem--;
         if(this->vAvailableItems[selectedItem]->iPrice > player.balance || selectedItem < 0 || selectedItem > this->vAvailableItems.size()) {
             cout << "Invalid item selected or not affordable." << endl;
-            cout << "You can try again or exit the shop by typing 0: " << endl;
+            cout << "You can try again or exit the shop by typing 0: ";
             cin >> selectedItem;
+            if (cin.fail()) {
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                selectedItem = -1;
+            }
+            cout << endl;
 
         }
         else {break;}
@@ -34,12 +45,23 @@ void shop::openShop(player& player) {
 
     cout << "How many times would you like to buy " << this->vAvailableItems[selectedItem]->sItemName << ":" << endl;
     cin >> buyAmount;
+    if (cin.fail()) {
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        buyAmount = -1;
+    }
     while(true) {
         if(buyAmount == 0) {return;}
         if(this->vAvailableItems[selectedItem]->iPrice * buyAmount >= player.balance || this->vAvailableItems[selectedItem]->iPrice * buyAmount <= 0) {
             cout << "Invalid amount selected or not affordable." << endl;
-            cout << "You can try again or exit the shop by typing 0: " << endl;
+            cout << "You can try again or exit the shop by typing 0: ";
             cin >> buyAmount;
+            if (cin.fail()) {
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                buyAmount = -1;
+            }
+            cout << endl;
         }
         else {
             int items = checkForItem(player, vAvailableItems[selectedItem]->sItemName);
@@ -51,7 +73,7 @@ void shop::openShop(player& player) {
 
 
 
-            player.vItems.push_back({this->vAvailableItems[selectedItem], buyAmount});
+            player.vItems.push_back({(this->vAvailableItems[selectedItem]), buyAmount});
             player.balance -= this->vAvailableItems[selectedItem]->iPrice * buyAmount;
             cout << " " << vAvailableItems[selectedItem]->sItemName << endl;
             cout << "Your balance is now " << player.balance << endl;
@@ -72,9 +94,15 @@ void shop::sellItem(player &player) {
 
     cout << "What item would you like to sell: ";
     cin >> selectedItem;
+    if (cin.fail()) {
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        selectedItem = -1;
+    }
     cout << endl;
 
     while (true) {
+
         if (selectedItem == 0) {
             return;
         }
@@ -84,6 +112,11 @@ void shop::sellItem(player &player) {
         if (selectedItem >= player.vItems.size()) {
             cout << "Invalid item selection, try again or type 0 to exit: ";
             cin >> selectedItem;
+            if (cin.fail()) {
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                selectedItem = -1;
+            }
             cout << endl;
         }
         else{break;}
@@ -91,6 +124,11 @@ void shop::sellItem(player &player) {
 
     cout << "How many do you want to sell: ";
     cin >> sellAmount;
+    if (cin.fail()) {
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        sellAmount = -1;
+    }
     cout << endl;
 
     while (true) {
@@ -98,9 +136,14 @@ void shop::sellItem(player &player) {
             return;
         }
 
-        if (sellAmount > player.vItems[selectedItem].second) {
+        if (sellAmount > player.vItems[selectedItem].second || sellAmount < 0) {
             cout << "Invalid amount of " << player.vItems[selectedItem].first->sItemName << " to sell, try again or type 0 to exit:";
             cin >> sellAmount;
+            if (cin.fail()) {
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                sellAmount = -1;
+            }
             cout << endl;
         }
         else{break;}
@@ -119,9 +162,9 @@ int checkForItem(player thePlayer, std::string itemName) {
     return -1;
 }
 
-int checkForItem(vector<item> itemList, std::string itemName) {
+int checkForItem(std::vector<std::shared_ptr<item>> itemList, std::string itemName) {
     for (int i = 0; i < itemList.size(); i++) {
-        if (itemList[i].sItemName == itemName) {
+        if (itemList[i]->sItemName == itemName) {
             return i;
         }
     }
@@ -131,22 +174,22 @@ int checkForItem(vector<item> itemList, std::string itemName) {
 
 
 /**
- * 
+ *
  * @param posCases 1 = convenience store | 2 = car dealership | 3 = hardware store | 4 = pawn shop
- * @return 
+ * @return
  */
-shop generateShop(vector<unsigned short> posCases) {
-    shop generatedShop = {"", {}};
+shop generateShop(vector<unsigned short> posCases, unsigned short maxDistance) {
+    shop generatedShop = {"", static_cast<unsigned short>(random(1,maxDistance)), {}};
     unsigned short itemsInShop;
 
 
 
     int switchVar;
     vector<shared_ptr<item>> possibleItems = {
-        make_shared<consumable>(2, 0, "small water", static_cast<short>(random(1, 3))), // drinks
-        make_shared<consumable>(5, 0, "large water", static_cast<short>(random(2, 5))),
-        make_shared<consumable>(2, 0, "energy drink", static_cast<short>(random(2, 5)), false, 5),
-        make_shared<consumable>(3, 0, "soda", static_cast<short>(random(2, 5)), false, 3),
+        make_shared<consumable>(5, 0, "small water", static_cast<short>(random(1, 3))), // drinks
+        make_shared<consumable>(10, 0, "large water", static_cast<short>(random(2, 5))),
+        make_shared<consumable>(3, 0, "energy drink", static_cast<short>(random(2, 5)), false, 5),
+        make_shared<consumable>(5, 0, "soda", static_cast<short>(random(2, 5)), false, 3),
 
         make_shared<consumable>(0, 3, "sandwich", static_cast<short>(random(2, 5))), // food
         make_shared<consumable>(-3, 5, "noodles", static_cast<short>(random(2, 5))),

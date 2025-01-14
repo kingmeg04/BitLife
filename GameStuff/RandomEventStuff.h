@@ -29,6 +29,7 @@ void slipOnBananaPeal(player& thePlayer); //take some damage
 void getCaughtInStripclubByMedia(player& thePlayer); // reduce mentalStability and dependent on Job lower the income
 void askedToCommitCrime(player& thePlayer); // asked to commit a certain crime (help out in bank robbery, be get away driver, etc.) --> raises criminalLife and have the option of getting caught
 void explosiveDiarrheaInPublicSpace(player& thePlayer); // add the crime of diarrheaInPublicSpace to the players charges
+void organisedCrime(player& thePlayer); // organised crime like robbing a bank
 
 
 #endif //RANDOMEVENTSTUFF_H

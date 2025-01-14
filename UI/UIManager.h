@@ -1,12 +1,14 @@
 #ifndef UIMANAGER_H
 #define UIMANAGER_H
 
+#include <iostream>
+#include <fstream>
 #include <string>
 #include <vector>
-#include <iostream>
 #include <conio.h> // For _getch()
 #include <thread>
 #include <chrono>
+
 #include "../PlayerStuff/PlayerStuff.h"
 
 
@@ -16,7 +18,7 @@ class UIManager {
 public:
 
     std::vector<shop> vShops;
-    std::vector<std::string> sidebarOptions = {"New Game", "Load Game", "Quit", "Timeskip", "Shop", "Jobs", "Crimes"}; //
+    std::vector<std::string> sidebarOptions = {"New Game", "Load Game", "Quit", "Timeskip", "Inventory", "Shop", "Jobs", "Crimes"}; //
 
     int currentSidebarSelection = 0; // Aktuelle Menüauswahl
     player *pCurrentPlayer = nullptr;
@@ -27,10 +29,12 @@ public:
 
     void newGame();
     void loadGame();
-    void shopMenu(int &actions, player &thePlayer);
+    void inventory(int &actions);
+    void shopMenu(int &actions);
     void jobsMenu(int &actions);
     void crimesMenu(int &actions);
     void quitGame();
+    void updatePlayerStatesOnNewDay();
 
     bool start(); // called to start the programm
 };

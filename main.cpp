@@ -1,3 +1,4 @@
+#include "GameStuff/RandomEventStuff.h"
 #include "UI/UIManager.h"
 #include "UniversalStuff/TimeStuff.h"
 #include "UniversalStuff/NamingStuff.h"
@@ -6,11 +7,15 @@ using namespace std;
 int main() {
     bool running;
     int maxActions;
+    string data;
+
+
 
     while (true) {
         string input;
 
         int actions = 0;
+        unsigned short randomEventChance = 50; // chance of random event occuring in %
 
         bool playerKnown = false;
         bool newDay = false;
@@ -21,16 +26,181 @@ int main() {
 
         running = uiManager.start();
 
+        auto printSidebarOptions = [&](int from, int to) {
+            for (int i = from; i <= to; i++) {
+                if (i == uiManager.currentSidebarSelection) {
+                    cout << "> " << uiManager.sidebarOptions[i] << "\n";
+                } else {
+                    cout << "  " << uiManager.sidebarOptions[i] << "\n";
+                }
+            }
+        };
+
+        auto randomEventDecider = [&](int daysSkipped) {
+            if (randomEventChance > 100) {
+                randomEventChance = 100;
+            }
+            for (int i = 0; i < daysSkipped; i++){
+                randomEventChance++;
+                while (random(0, randomEventChance/100) > 0.5) {
+                    cout << randomEventChance << "------------------------------------------------\n";
+                    randomEventChance -= 3;
+                    randomEventSelector(*uiManager.pCurrentPlayer, timeManager.iDay - startDate);
+                    pauseMenu();
+                }
+            }
+        };
+
+        // Example usage:
+        printSidebarOptions(0, 2);
+
+
 
         while (running) {
             if (newDay) {
+
+                uiManager.updatePlayerStatesOnNewDay();
+
+                fstream saveFile; // saving process start
+                saveFile.open(uiManager.pCurrentPlayer->sPlayerName + ".txt", ios::out);
+                data = to_string(timeManager.iDay) + "\n" // date
+                + to_string(startDate) + "\n" // startDate
+                + to_string(uiManager.pCurrentPlayer->playerHealth) + "\n" // health
+                + to_string(uiManager.pCurrentPlayer->saturation) + "\n" // saturation
+                + to_string(uiManager.pCurrentPlayer->hydration) + "\n" // hydration
+                + to_string(uiManager.pCurrentPlayer->mentalHealth) + "\n" // mental health
+                + to_string(uiManager.pCurrentPlayer->sCriminalReputation) + "\n" // criminal reputation
+                + to_string(uiManager.pCurrentPlayer->balance) + "\n" // balance/money
+                + to_string(uiManager.pCurrentPlayer->iJailTime) + "\n" // jail time
+                + uiManager.pCurrentPlayer->jCurrentJob.sName + " " // player's job's name
+                + to_string(uiManager.pCurrentPlayer->jCurrentJob.sMentalInstability) + " " // player's job's mental instability
+                + to_string(uiManager.pCurrentPlayer->jCurrentJob.sSalary) + " " // player's job's salary
+                + to_string(uiManager.pCurrentPlayer->jCurrentJob.bIsAdmin) + "\n"; // true if player's job is admin type
+
+
+                for (int savingItems = 0; savingItems < uiManager.pCurrentPlayer->vItems.size(); savingItems++) { // all items will have itemType = 0 CURRENT PROBLEM
+                    if (shared_ptr<item> savingItem = static_pointer_cast<item>(uiManager.pCurrentPlayer->vItems[savingItems].first)) {
+                        if (savingItem->itemType == 0) {
+                            data += to_string(savingItem->itemType) + " "
+                            + savingItem->sItemName + " "
+                            + to_string(savingItem->iPrice) + " "
+                            + to_string(savingItem->bIsReusable) + " "
+                            + to_string(savingItem->iMentalInfluence) + " "
+                            ;
+                            data += to_string(uiManager.pCurrentPlayer->vItems[savingItems].second) + "\n";
+                            continue;
+                        }
+                    }
+
+                    if (shared_ptr<consumable> savingItem = static_pointer_cast<consumable>(uiManager.pCurrentPlayer->vItems[savingItems].first)) {
+                        if (savingItem->itemType == 1) {
+                            data += to_string(savingItem->itemType) + " "
+                            + to_string(savingItem->iSaturationInfluence) + " "
+                            + to_string(savingItem->iHydrationInfluence) + " "
+                            + savingItem->sItemName + " "
+                            + to_string(savingItem->iPrice) + " "
+                            + to_string(savingItem->bIsReusable) + " "
+                            + to_string(savingItem->iMentalInfluence) + " "
+                            ;
+                            data += to_string(uiManager.pCurrentPlayer->vItems[savingItems].second) + "\n";
+                            continue;
+                            }
+                        }
+
+                    if (shared_ptr<car> savingItem = static_pointer_cast<car>(uiManager.pCurrentPlayer->vItems[savingItems].first)) {
+                        if (savingItem->itemType == 2) {
+                            data += to_string(savingItem->itemType) + " "
+                            + to_string(savingItem->iActionsGained) + " "
+                            + savingItem->sItemName + " "
+                            + to_string(savingItem->iPrice) + " "
+                            + to_string(savingItem->bIsReusable) + " "
+                            + to_string(savingItem->iMentalInfluence) + " "
+                            ;
+
+                            data += to_string(uiManager.pCurrentPlayer->vItems[savingItems].second) + "\n";
+                            continue;
+                        }
+                    }
+                    throw runtime_error("Type handling error2");
+                }
+
+                for (int savingCrimes = 0; savingCrimes < uiManager.pCurrentPlayer->vCrimes.size(); savingCrimes++) {
+                    data += uiManager.pCurrentPlayer->vCrimes[savingCrimes].first.sName + " "
+                    + to_string(uiManager.pCurrentPlayer->vCrimes[savingCrimes].first.fWitnessability) + " "
+                    + to_string(uiManager.pCurrentPlayer->vCrimes[savingCrimes].first.sIllegalness) + " "
+                    + to_string(uiManager.pCurrentPlayer->vCrimes[savingCrimes].second) + "\n"
+                    ;
+                }
+
+                for (job savingJob : uiManager.pCurrentPlayer->vPrevJobs) {
+                    data += savingJob.sName + " "
+                    + to_string(savingJob.sMentalInstability) + " "
+                    + to_string(savingJob.sSalary) + " "
+                    + to_string(savingJob.bIsAdmin) + "\n";
+                }
+
+                for (shop savingShops : uiManager.vShops) { // saving shops
+                    data += savingShops.sShopName + " "
+                    + to_string(savingShops.usDistance) + "\n"
+                    ;
+                    for (int savingItems = 0; savingItems < savingShops.vAvailableItems.size(); savingItems++) { // all items will have itemType = 0 CURRENT PROBLEM
+                        if (shared_ptr<item> savingItem = static_pointer_cast<item>(savingShops.vAvailableItems[savingItems])) {
+                            if (savingItem->itemType == 0) {
+                                data += to_string(savingItem->itemType) + " "
+                                + savingItem->sItemName + " "
+                                + to_string(savingItem->iPrice) + " "
+                                + to_string(savingItem->bIsReusable) + " "
+                                + to_string(savingItem->iMentalInfluence) + "\n"
+                                ;
+                                continue;
+                            }
+                        }
+
+                        if (shared_ptr<consumable> savingItem = static_pointer_cast<consumable>(savingShops.vAvailableItems[savingItems])) {
+                            if (savingItem->itemType == 1) {
+                                data += to_string(savingItem->itemType) + " "
+                                + to_string(savingItem->iSaturationInfluence) + " "
+                                + to_string(savingItem->iHydrationInfluence) + " "
+                                + savingItem->sItemName + " "
+                                + to_string(savingItem->iPrice) + " "
+                                + to_string(savingItem->bIsReusable) + " "
+                                + to_string(savingItem->iMentalInfluence) + "\n"
+                                ;
+                                continue;
+                                }
+                            }
+
+                        if (shared_ptr<car> savingItem = static_pointer_cast<car>(savingShops.vAvailableItems[savingItems])) {
+                            if (savingItem->itemType == 2) {
+                                data += to_string(savingItem->itemType) + " "
+                                + to_string(savingItem->iActionsGained) + " "
+                                + savingItem->sItemName + " "
+                                + to_string(savingItem->iPrice) + " "
+                                + to_string(savingItem->bIsReusable) + " "
+                                + to_string(savingItem->iMentalInfluence) + "\n"
+                                ;
+                                continue;
+                            }
+                        }
+                        throw runtime_error("Type handling error1");
+                    }
+                }
+
+                saveFile << data; // saving end
+
+
+
                 actions = 0;
 
+                if (uiManager.pCurrentPlayer != nullptr && uiManager.pCurrentPlayer->vItems.size() == 0) {
+                    uiManager.pCurrentPlayer->vItems.push_back(std::make_pair(std::make_shared<car>(5, "used car", 1000, true), 1));
+                    uiManager.pCurrentPlayer->vItems.push_back(std::make_pair(std::make_shared<consumable>(5, 5, "small water", 1000), 1));
+                }
                 if (uiManager.vShops.size() <= 0 && timeManager.iDay - startDate >= 2160) {
-                    uiManager.vShops.push_back(generateShop({1})); // guarantee to generate at least one convenience store
+                    uiManager.vShops.push_back(generateShop({1}, 1)); // guarantee to generate at least one convenience store
 
                     for (int i = 0; i < round(random(0,5)); i++) {
-                        uiManager.vShops.push_back(generateShop({1}));
+                        uiManager.vShops.push_back(generateShop({1},7));
                     }
                 }
 
@@ -50,6 +220,15 @@ int main() {
                     actions += ceil(uiManager.pCurrentPlayer->mentalHealth / 20);
                 }
 
+                for (int i = 0; i < uiManager.pCurrentPlayer->vItems.size(); i++) {
+                    if (shared_ptr<car> carItem = static_pointer_cast<car>(uiManager.pCurrentPlayer->vItems[i].first)) {
+                        if (carItem->itemType == 2) {
+                            actions += carItem->iActionsGained;
+                        }
+
+                    }
+                }
+
                 maxActions = actions;
                 newDay = false;
             }
@@ -64,38 +243,18 @@ int main() {
             // Display sidebar
             cout << "==== MAIN MENU ====\n";
 
-            for (int i = 0; i <= 2; i++) {
-                if (i == uiManager.currentSidebarSelection) {
-                    cout << "> " << uiManager.sidebarOptions[i] << "\n";
-                } else {
-                    cout << "  " << uiManager.sidebarOptions[i] << "\n";
-                }
-            }
+            printSidebarOptions(0, 2);
 
             if (uiManager.pCurrentPlayer != nullptr) {
                 cout << "==== GAME MENU ====\n";
-                if (3 == uiManager.currentSidebarSelection) {
-                    cout << "> " << uiManager.sidebarOptions[3] << "\n";
-                } else {
-                    cout << "  " << uiManager.sidebarOptions[3] << "\n";
-                }
+                printSidebarOptions(3, 4);
 
                 if (timeManager.iDay - startDate >= 2160) {
-                    if (4 == uiManager.currentSidebarSelection) {
-                        cout << "> " << uiManager.sidebarOptions[4] << "\n";
-                    } else {
-                        cout << "  " << uiManager.sidebarOptions[4] << "\n";
-                    }
+                    printSidebarOptions(5,5);
                 }
 
                 if (timeManager.iDay - startDate >= 4320) {
-                    for (int i = 5; i <= 6; i++) {
-                        if (i == uiManager.currentSidebarSelection) {
-                            cout << "> " << uiManager.sidebarOptions[i] << "\n";
-                        } else {
-                            cout << "  " << uiManager.sidebarOptions[i] << "\n";
-                        }
-                    }
+                    printSidebarOptions(6,7);
                 }
             }
             cout << "===================\n";
@@ -107,6 +266,7 @@ int main() {
                 cout << "Age: " << floor((timeManager.iDay - startDate)/360) << endl;
                 cout << "Health: " << uiManager.pCurrentPlayer->playerHealth << endl;
                 cout << "Saturation: " << uiManager.pCurrentPlayer->saturation << endl;
+                cout << "Hydration: " << uiManager.pCurrentPlayer->hydration << endl;
                 if (timeManager.iDay - startDate >= 2160) {
                     cout << "Mental stability: " << uiManager.pCurrentPlayer->mentalHealth << endl;
                 }
@@ -124,30 +284,30 @@ int main() {
                         uiManager.currentSidebarSelection = 2;
                     }
                     else if (timeManager.iDay - startDate >= 4320) {
-                        uiManager.currentSidebarSelection = 6;
+                        uiManager.currentSidebarSelection = 7;
                     }
                     else if (timeManager.iDay - startDate >= 2160) {
-                        uiManager.currentSidebarSelection = 4;
+                        uiManager.currentSidebarSelection = 5;
                     }
-                    else {uiManager.currentSidebarSelection = 3;}
+                    else {uiManager.currentSidebarSelection = 4;}
                 }
             } else if (key == 80) { // Arrow down
                 uiManager.currentSidebarSelection = (uiManager.currentSidebarSelection + 1);// % uiManager.sidebarOptions.size();
                 if (uiManager.currentSidebarSelection > 2 && uiManager.pCurrentPlayer == nullptr) {
                     uiManager.currentSidebarSelection = 0;
                 }
-                else if (uiManager.currentSidebarSelection > 6 && timeManager.iDay - startDate >= 4320) {
+                else if (uiManager.currentSidebarSelection > 7 && timeManager.iDay - startDate >= 4320) {
                     uiManager.currentSidebarSelection = 0;
                 }
-                else if (uiManager.currentSidebarSelection > 4 && timeManager.iDay - startDate >= 2160 && timeManager.iDay - startDate < 4320) {
+                else if (uiManager.currentSidebarSelection > 5 && timeManager.iDay - startDate >= 2160 && timeManager.iDay - startDate < 4320) {
                     uiManager.currentSidebarSelection = 0;
                 }
-                else if (uiManager.currentSidebarSelection > 3 && timeManager.iDay - startDate < 2160){
+                else if (uiManager.currentSidebarSelection > 4 && timeManager.iDay - startDate < 2160){
                     uiManager.currentSidebarSelection = 0;
                 }
 
             } else if (key == 13) { // Enter
-                if (uiManager.currentSidebarSelection >= 3 && uiManager.currentSidebarSelection <= 6) {
+                if (uiManager.currentSidebarSelection >= 3 && uiManager.currentSidebarSelection <= 7) {
                     if (actions <= 0) {
                         cout << "You don't have enough remaining actions!" << endl;
                         pauseMenu();
@@ -173,7 +333,8 @@ int main() {
                         running = false;
 
                     break;
-                    case 3: // jobs
+                    case 3: // timeskip
+                        newDay = true; //wherever advance time is used renew actions has to be set to new
                         cout << "How much time do you want to skip? (D/W/M";
                         if (timeManager.iDay - startDate < 4320) {
                             cout << "/Y";
@@ -203,22 +364,39 @@ int main() {
                         }
                         else if (input == "M" || input == "m") {
                             timeManager.advanceOneTime(3);
+                            if (timeManager.iDay - startDate < 4320) {
+                                break;
+                            }
+                            randomEventDecider(30);
                         }
                         else if (input == "W" || input == "w") {
                             timeManager.advanceOneTime(2);
+                            if (timeManager.iDay - startDate < 4320) {
+                                break;
+                            }
+                            randomEventDecider(7);
                         }
-                        else{timeManager.advanceOneTime(1);}
-                        newDay = true; //wherever advance time is used renew actions has to be set to new
+                        else {
+                            timeManager.advanceOneTime(1);
+                            if (timeManager.iDay - startDate < 4320) {
+                                break;
+                            }
+                            randomEventDecider(1);
+                        }
+
+
                     break;
-                    case 4:
-                        uiManager.shopMenu(actions, *uiManager.pCurrentPlayer);
+                    case 4: // Inventory
+                        uiManager.inventory(actions);
                     break;
-                    case 5: // Crimes
+                    case 5: // Shop
+                        uiManager.shopMenu(actions);
+                    break;
+                    case 6: // Jobs
                         uiManager.jobsMenu(actions);
                     break;
-                    case 6: // Quit
+                    case 7: // Crimes
                         uiManager.crimesMenu(actions);
-                    break;
                     default:
                         cout << "Invalid selection!" << endl;
                 }

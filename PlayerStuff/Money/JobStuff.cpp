@@ -14,19 +14,19 @@ vector<int> jobWeights = {150, 150, 100, 50, 5, 25, 100, 10, 25, 10, 15, 10, 1};
 
 vector<job> getJobVector(){
     return {
-        job(static_cast<short>(round(random(50, 750))), static_cast<short>(round(random(0, 250))), "farmer"),
-        job(static_cast<short>(round(random(50, 750))), static_cast<short>(round(random(0, 250))), "fisher"),
-        job(static_cast<short>(round(random(100, 200))), static_cast<short>(round(random(250, 500))), "cashier"),
-        job(static_cast<short>(round(random(200, 1200))), static_cast<short>(round(random(400, 600))), "teacher"),
-        job(static_cast<short>(round(random(500, 2000))), static_cast<short>(round(random(100, 300))), "cool teacher"),
-        job(static_cast<short>(round(random(1000, 3000))), static_cast<short>(round(random(250, 750))), "professor"),
-        job(static_cast<short>(round(random(75, 350))), static_cast<short>(round(random(0, 150))), "janitor"),
-        job(static_cast<short>(round(random(0, 100))), static_cast<short>(round(random(250, 1000))), "homeless"),
-        job(static_cast<short>(round(random(0, 0))), static_cast<short>(round(random(100, 500))), "jobless"),
-        job(static_cast<short>(round(random(100, 400))), static_cast<short>(round(random(0, 50))), "workless"),
-        job(static_cast<short>(round(random(500, 3000))), static_cast<short>(round(random(300, 700))), "mayor"),
-        job(static_cast<short>(round(random(2000, 5000))), static_cast<short>(round(random(500, 800))), "politician"),
-        job(static_cast<short>(round(random(5000, 10000))), static_cast<short>(round(random(700, 1000))), "prime Minister")
+        job(static_cast<short>(round(random(50, 750))), static_cast<short>(round(random(0, 25))), "farmer"),
+        job(static_cast<short>(round(random(50, 750))), static_cast<short>(round(random(0, 25))), "fisher"),
+        job(static_cast<short>(round(random(100, 200))), static_cast<short>(round(random(25, 50))), "cashier"),
+        job(static_cast<short>(round(random(200, 1200))), static_cast<short>(round(random(40, 60))), "teacher"),
+        job(static_cast<short>(round(random(500, 2000))), static_cast<short>(round(random(10, 30))), "cool teacher"),
+        job(static_cast<short>(round(random(1000, 3000))), static_cast<short>(round(random(25, 75))), "professor"),
+        job(static_cast<short>(round(random(75, 350))), static_cast<short>(round(random(0, 15))), "janitor"),
+        job(static_cast<short>(round(random(0, 100))), static_cast<short>(round(random(25, 100))), "homeless"),
+        job(static_cast<short>(round(random(0, 0))), static_cast<short>(round(random(10, 50))), "jobless"),
+        job(static_cast<short>(round(random(100, 400))), static_cast<short>(round(random(0, 5))), "workless"),
+        job(static_cast<short>(round(random(500, 3000))), static_cast<short>(round(random(30, 70))), "mayor"),
+        job(static_cast<short>(round(random(2000, 5000))), static_cast<short>(round(random(50, 80))), "politician"),
+        job(static_cast<short>(round(random(5000, 10000))), static_cast<short>(round(random(70, 100))), "prime Minister")
     };
 }
 

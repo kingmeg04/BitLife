@@ -19,7 +19,7 @@ public:
 
     bool bIsAdmin = false;
     short sSalary; //paid weekly
-    short sMentalInstability; //range from 1 - 1000
+    short sMentalInstability; //range from 1 - 100
     std::string sName;
 
     job(short Salary, short MentalInstability, std::string Name){

@@ -11,6 +11,8 @@ class player;
 
 class item {
 public:
+
+    const unsigned short itemType = 0;
     std::string sItemName;
     int iPrice;
     bool bIsReusable = false;
@@ -25,16 +27,18 @@ public:
 
 class consumable : public item {
 public:
-    int iSaturationInfluence = 0;
-    int iHydrationInfluence = 0;
+    const unsigned short itemType = 1;
+    int iSaturationInfluence;
+    int iHydrationInfluence;
 
-    consumable(int HydrationInfluence = 0, int SaturationInfluence = 0, std::string ItemName = "", int Price = 0, bool IsReusable = false, int MentalInfluence = 0)
+    consumable(int HydrationInfluence, int SaturationInfluence, std::string ItemName = "", int Price = 0, bool IsReusable = false, int MentalInfluence = 0)
         : item(ItemName, Price, IsReusable, MentalInfluence), iHydrationInfluence(HydrationInfluence), iSaturationInfluence(SaturationInfluence) {}
 
 };
 
 class car : public item {
 public:
+    const unsigned short itemType = 2;
     int iActionsGained;
 
     car(int ActionsGained, std::string ItemName = "", int Price = 0, bool IsReusable = true, int MentalInfluence = 0)
@@ -44,11 +48,12 @@ public:
 
 class shop {
 public:
+    unsigned short usDistance;
     std::string sShopName;
     std::vector<std::shared_ptr<item>> vAvailableItems; // Use shared_ptr to manage polymorphic objects
 
-    shop(std::string ShopName, std::vector<std::shared_ptr<item>> AvailableItems = {})
-        : sShopName(ShopName), vAvailableItems(AvailableItems) {}
+    shop(std::string ShopName, unsigned short Distance, std::vector<std::shared_ptr<item>> AvailableItems = {})
+        : sShopName(ShopName),usDistance(Distance), vAvailableItems(AvailableItems) {}
 
     void openShop(player& player);
     void sellItem(player& player);
@@ -56,6 +61,6 @@ public:
 
 int checkForItem(player thePlayer, std::string itemName);
 int checkForItem(std::vector<std::shared_ptr<item>> itemList, std::string itemName);
-shop generateShop(std::vector<unsigned short> posCases);
+shop generateShop(std::vector<unsigned short> posCases, unsigned short maxDistance);
 
 #endif //SHOPSTUFF_HPP

@@ -29,9 +29,10 @@ public:
     int iJailTime = 0;
 
 
-    short playerActionPoints = 5; // how many actions the player can perform per day
+
     short playerHealth = 100;
     short saturation = 100;
+    short hydration = 100;
     short mentalHealth = 100;
     short sCriminalReputation = 0; //How involved in the crime world you are
 

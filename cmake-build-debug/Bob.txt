@@ -1,0 +1,25 @@
+1031500
+1029319
+-48
+0
+0
+0
+0
+10000
+0
+child 50 0 0
+0 used car 1000 1 0 1
+0 small water 1000 0 0 1
+Paktum's Convenience Store 1
+0 large water 3 0 0
+0 soda 4 0 3
+0 sandwich 4 0 0
+0 hamburger 4 0 0
+0 ice cream 9 0 3
+Pekpo's Convenience Store 5
+0 soda 2 0 3
+0 ice cream 7 0 3
+Vefnem's Convenience Store 3
+0 small water 2 0 0
+0 large water 3 0 0
+0 ice cream 7 0 3

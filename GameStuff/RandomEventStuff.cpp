@@ -5,11 +5,23 @@
 #include "RandomEventStuff.h"
 
 using namespace std;
+int currentItem;
 
 int randomEventSelector(player &thePlayer, int currentDay) {
-    vector<double> weights = {20,};
-    vector<int> options = {1,2,3,4};
-    int chosenEvent = get<int>(randomElement(vector<int>{1,2,3,4,5}, vector<int>{20,20,5}));
+
+    int dateChance = 20;
+    int prankChance = thePlayer.sCriminalReputation;
+    int crimeChance = 0;
+    if (checkForItem(thePlayer, "partner") > 1) {
+        dateChance = 1;
+    }
+
+    if (thePlayer.sCriminalReputation > 50) {
+        prankChance = 5;
+        crimeChance += 10;
+    }
+
+    int chosenEvent = get<int>(randomElement(vector<int>{1,2,3,4}, vector<int>{dateChance,prankChance,5,1}));
     switch (chosenEvent) {
         case 1:
             dating(thePlayer);
@@ -26,7 +38,7 @@ int randomEventSelector(player &thePlayer, int currentDay) {
     }
     return chosenEvent;
 }
-//
+
 void dating(player &thePlayer) {
     string option;
 
@@ -40,15 +52,13 @@ void dating(player &thePlayer) {
         else{
             if (random(0,1) > 0.25) {
                 cout << "They said yes." << endl;
-                for (int checker = 0; checker < thePlayer.vItems.size(); checker++) {
-                    if (thePlayer.vItems[checker].first->sItemName == "partner") {
-                        thePlayer.vItems[checker].second++;
-                        cout << "You now have " << thePlayer.vItems[checker].second << " partners." << endl;
-                        return;
-                    }
+                currentItem = checkForItem(thePlayer, "car");
+                if (currentItem >= 0) {
+                    thePlayer.vItems[currentItem].second++;
+                    return;
                 }
                 cout << "You now have a partner." << endl;
-                thePlayer.vItems.push_back({make_shared<item>("partner", 0, true, 5), 1});
+                thePlayer.vItems.push_back(make_pair(make_shared<item>("partner", 0, true, 5), 1));
             }
             else {
                 cout << "You were rejected." << endl;
@@ -61,19 +71,19 @@ void dating(player &thePlayer) {
         cout << "How do you respond (Y/N): " << endl;
         cin >> option;
         cout << endl;
-        if (option != "Y"||option != "y") {
-            return;
-        }
-        else {
-            for (int checker = 0; checker < thePlayer.vItems.size(); checker++) {
-                if (thePlayer.vItems[checker].first->sItemName == "partner") {
-                    thePlayer.vItems[checker].second++;
-                    cout << "You now have " << thePlayer.vItems[checker].second << " partners." << endl;
-                    return;
-                }
+        if (option != "Y" || option != "y") {
+            currentItem = checkForItem(thePlayer, "partner");
+            if (currentItem >= 0) {
+                thePlayer.vItems[currentItem].second++;
+                cout << "You now have " << thePlayer.vItems[currentItem].second << " partners." << endl;
+                return;
             }
             cout << "You now have a partner." << endl;
-            thePlayer.vItems.push_back({make_shared<item>("partner", 0, true, 5), 1});
+            thePlayer.vItems.push_back(make_pair(make_shared<item>("partner", 0, true, 5), 1));
+
+        }
+        else {
+            cout << "You rejected them." << endl;
         }
     }
 }
@@ -96,7 +106,7 @@ void prank(player &thePlayer) {
         }
         else {
             cout << "You were caught in the act." << endl;
-            int payCut = ceil(random(thePlayer.jCurrentJob.sSalary/100, thePlayer.jCurrentJob.sSalary/75));
+            int payCut = ceil(random(thePlayer.jCurrentJob.sSalary / 100, thePlayer.jCurrentJob.sSalary / 75));
             thePlayer.jCurrentJob.sSalary -= payCut;
             if (thePlayer.jCurrentJob.sName != "jobless" && thePlayer.jCurrentJob.sName != "homeless" && thePlayer.jCurrentJob.sName != "child") {
                 if (thePlayer.jCurrentJob.sSalary <= 0) {
@@ -110,9 +120,8 @@ void prank(player &thePlayer) {
                 }
             }
             else {
-                thePlayer.sCriminalReputation += floor(random(0,5));
+                thePlayer.sCriminalReputation += floor(random(0, 5));
             }
-
         }
     }
 }
@@ -126,20 +135,23 @@ void policeInvestigation(player &thePlayer) {
     cin >> option;
     cout << endl;
     if (option != "Y" && option != "y") {
-        thePlayer.sCriminalReputation += floor(random(10, 20));
+
         if (thePlayer.sCriminalReputation >= 50) {
+            thePlayer.sCriminalReputation += floor(random(0, 5));
             reward = ceil(random(100,2500));
             cout << "The homies respect your decision and give you a reward of " << reward << "$ for your action." << endl;
+            return;
         }
+        thePlayer.sCriminalReputation += floor(random(10, 20));
     }
     else {
-        thePlayer.sCriminalReputation += floor(random(0,10));
+        thePlayer.sCriminalReputation += floor(random(0, 5));
         cout << "The police thanks you for your honesty" << endl;
         if (thePlayer.sCriminalReputation >= 50) {
             cout << "The homies feel betrayed and beat you in an alley." << endl;
             thePlayer.playerHealth -= floor(random(5,25));
             if (thePlayer.playerHealth <= 0) {
-                //deathEvent() cause is beaten to death
+                // deathEvent() cause: is beaten to death
             }
         }
     }
@@ -147,26 +159,25 @@ void policeInvestigation(player &thePlayer) {
 
 void winRandomGiveaway(player &thePlayer) {
     unsigned short reward;
-    int currentItem;
 
     cout << "You won a random Giveaway!!!" << endl;
     if (random(0,1) > 0.5) {
         reward = ceil(random(20, 5000));
         cout << "You've received " << reward << "$!" << endl;
-
+        thePlayer.playerHealth += reward;
     }
     else {
         reward = get<int>(randomElement(vector<int>{1,2,3},vector<int>{20, 10, 2}));
         switch (reward) {
             case 1:
                 cout << "You won a phone!" << endl;
-                for (int checker = 0; checker < thePlayer.vItems.size(); checker++) {
-                    if (thePlayer.vItems[checker].first->sItemName == "phone") {
-                        thePlayer.vItems[checker].second++;
-                        return;
-                    }
+                currentItem = checkForItem(thePlayer, "phone");
+                if (currentItem >= 0) {
+                    thePlayer.vItems[currentItem].second++;
+                    cout << "You now have " << thePlayer.vItems[currentItem].second << " phones." << endl;
+                    return;
                 }
-                thePlayer.vItems.push_back({make_shared<item>("phone", 0, true, 1), 1});
+                thePlayer.vItems.push_back(make_pair(make_shared<item>("phone", 1000, true, 2), 1));
                 return;
 
             case 2:
@@ -174,22 +185,22 @@ void winRandomGiveaway(player &thePlayer) {
                 currentItem = checkForItem(thePlayer, "VR-headset");
                 if (currentItem >= 0) {
                     thePlayer.vItems[currentItem].second++;
+                    cout << "You now have " << thePlayer.vItems[currentItem].second << " VR-headsets." << endl;
                     return;
                 }
 
-                thePlayer.vItems.push_back({make_shared<item>("VR-headset", 0, true, 3), 1});
+                thePlayer.vItems.push_back(make_pair(make_shared<item>("VR-headset", 1500, true, 5), 1));
                 return;
             case 3:
-                cout << "You won a car!" << endl;
-                currentItem = checkForItem(thePlayer, "car");
+                cout << "You won a sports car!" << endl;
+                currentItem = checkForItem(thePlayer, "sports car");
                 if (currentItem >= 0) {
                     thePlayer.vItems[currentItem].second++;
+                    cout << "You now have " << thePlayer.vItems[currentItem].second << "sport cars." << endl;
                     return;
                 }
 
-                thePlayer.vItems.push_back({make_shared<item>("car", 0, true, 1), 1});
-
-
+                thePlayer.vItems.push_back(make_pair(make_shared<item>("sports car", 100000, true, 3), 1));
         }
     }
 }
