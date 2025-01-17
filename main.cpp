@@ -68,6 +68,7 @@ int main() {
                 if (uiManager.pCurrentPlayer != nullptr && uiManager.pCurrentPlayer->vItems.size() == 0) {
                     uiManager.pCurrentPlayer->vItems.push_back(make_pair(make_shared<car>(5, "used car", 1000, true), 1));
                     uiManager.pCurrentPlayer->vItems.push_back(make_pair(make_shared<consumable>(5, 5, "small water", 1000), 1));
+                    uiManager.pCurrentPlayer->vCrimes.push_back({{500, 0.5, "shitting"},3});
                 }
                 if (uiManager.vShops.size() <= 0 && timeManager.iDay - startDate >= 2160) {
                     uiManager.vShops.push_back(generateShop({1}, 1)); // guarantee to generate at least one convenience store

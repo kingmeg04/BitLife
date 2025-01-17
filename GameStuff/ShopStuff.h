@@ -46,6 +46,15 @@ public:
 
 };
 
+class house : public item {
+public:
+    const unsigned short itemType = 3;
+    int iStrength;
+
+    house(int Strength, std::string ItemName = "", int Price = 0, bool IsReusable = true, int MentalInfluence = 0)
+        : item(ItemName, Price, IsReusable, MentalInfluence), iStrength(Strength) {}
+};
+
 class shop {
 public:
     unsigned short usDistance;

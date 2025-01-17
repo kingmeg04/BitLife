@@ -263,7 +263,7 @@ void askedToCommitCrime(player &thePlayer) {
     else if (iAnswer == 2) {
         cout << "Unfortunately they snitched on you for planning a robbery" << endl;
         thePlayer.sCriminalReputation += round(random(10,20));
-        prisonCharge(thePlayer, "Illegal Planning");
+        prisonCharge(thePlayer, {500,0.2,"Illegal planning"});
     }
     else {
         cout << "They accepted to join you on your crime" << endl;
