@@ -25,9 +25,9 @@ vector<double> chanceDistribution(vector<double> weights) {
 }
 
 // This is an explicit template instantiation (not needed if inline in header)
-template AllVariant randomElement<std::vector<job>>(const std::vector<job>, std::vector<int>);
-template AllVariant randomElement<std::vector<int>>(const std::vector<int>, std::vector<int>);
-template AllVariant randomElement<std::vector<string>>(const std::vector<string>, std::vector<int>);
+template AllVariant randomElement<vector<job>>(const vector<job>, vector<int>);
+template AllVariant randomElement<vector<int>>(const vector<int>, vector<int>);
+template AllVariant randomElement<vector<string>>(const vector<string>, vector<int>);
 
 template <typename Vector> AllVariant randomElement(const Vector elements, vector<int> weights) {
 

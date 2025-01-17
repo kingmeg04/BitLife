@@ -15,7 +15,7 @@ class player;
 
 struct crime{
     short sIllegalness; //range from 1 - 100
-    float fWitnessability;
+    float fWitnessability; // range from 0 to 1
     std::string sName;
 };
 

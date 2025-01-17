@@ -153,7 +153,7 @@ void shop::sellItem(player &player) {
 
 }
 
-int checkForItem(player thePlayer, std::string itemName) {
+int checkForItem(player thePlayer, string itemName) {
     for (int i = 0; i < thePlayer.vItems.size(); i++) {
         if (thePlayer.vItems[i].first->sItemName == itemName) {
             return i;
@@ -162,7 +162,7 @@ int checkForItem(player thePlayer, std::string itemName) {
     return -1;
 }
 
-int checkForItem(std::vector<std::shared_ptr<item>> itemList, std::string itemName) {
+int checkForItem(vector<shared_ptr<item>> itemList, string itemName) {
     for (int i = 0; i < itemList.size(); i++) {
         if (itemList[i]->sItemName == itemName) {
             return i;

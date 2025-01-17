@@ -9,6 +9,8 @@
 #include <thread>
 #include <chrono>
 #include <fstream>
+#include <filesystem>
+#include <shlobj.h>
 
 #include "../PlayerStuff/PlayerStuff.h"
 
@@ -29,16 +31,18 @@ public:
     }
 
     void newGame();
-    void loadGame();
+    std::array<int,2> loadGame();
     void inventory(int &actions);
     void shopMenu(int &actions);
     void jobsMenu(int &actions);
     void crimesMenu(int &actions);
     void quitGame();
     void updatePlayerStatesOnNewDay();
+
     void saveGame(int startDate, int endDate);
 
     bool start(); // called to start the programm
+
 };
 
 

@@ -8,6 +8,7 @@ int main() {
     bool running;
     int maxActions;
     string data;
+    array<int,2> temp;
 
 
 
@@ -55,7 +56,6 @@ int main() {
         printSidebarOptions(0, 2);
 
 
-
         while (running) {
             if (newDay) {
 
@@ -66,8 +66,8 @@ int main() {
                 actions = 0;
 
                 if (uiManager.pCurrentPlayer != nullptr && uiManager.pCurrentPlayer->vItems.size() == 0) {
-                    uiManager.pCurrentPlayer->vItems.push_back(std::make_pair(std::make_shared<car>(5, "used car", 1000, true), 1));
-                    uiManager.pCurrentPlayer->vItems.push_back(std::make_pair(std::make_shared<consumable>(5, 5, "small water", 1000), 1));
+                    uiManager.pCurrentPlayer->vItems.push_back(make_pair(make_shared<car>(5, "used car", 1000, true), 1));
+                    uiManager.pCurrentPlayer->vItems.push_back(make_pair(make_shared<consumable>(5, 5, "small water", 1000), 1));
                 }
                 if (uiManager.vShops.size() <= 0 && timeManager.iDay - startDate >= 2160) {
                     uiManager.vShops.push_back(generateShop({1}, 1)); // guarantee to generate at least one convenience store
@@ -180,7 +180,7 @@ int main() {
                 }
 
             } else if (key == 13) { // Enter
-                if (uiManager.currentSidebarSelection >= 3 && uiManager.currentSidebarSelection <= 7) {
+                if (uiManager.currentSidebarSelection >= 4 && uiManager.currentSidebarSelection <= 7) {
                     if (actions <= 0) {
                         cout << "You don't have enough remaining actions!" << endl;
                         pauseMenu();
@@ -199,7 +199,10 @@ int main() {
                         newDay = true;
                     break;
                     case 1: // Load Game
-                        uiManager.loadGame();
+                        temp = uiManager.loadGame();
+                        timeManager.iDay = temp[0];
+                        startDate = temp[1];
+                        pauseMenu();
                     break;
                     case 2: // Shop
                         uiManager.quitGame();
