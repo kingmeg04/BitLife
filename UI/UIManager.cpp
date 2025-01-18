@@ -298,7 +298,6 @@ array<int,2> UIManager::loadGame() {
     dataPos += 6;
     tempData.clear();
     while (dataPos < data.size()) {
-        cout << dataPos << endl;
         shop loadingShop = {"",0,{}};
         while (data[dataPos] != '|' && data[dataPos] != '\n') {
             tempData.push_back(data[dataPos]);
@@ -315,10 +314,8 @@ array<int,2> UIManager::loadGame() {
         tempData.clear();
         dataPos++;
         while (data[dataPos] != '\\' && dataPos < data.size()) { // loads items in a shop
-            cout << dataPos << "shit\n";
 
             tempData.push_back(data[dataPos]);
-            cout << "|" << tempData << dataPos << data[dataPos--] << data[dataPos++] << "|" << endl;
             if (stoi(tempData) == 0) {
                 tempData.clear();
                 shared_ptr<item> loadingItem = make_shared<item>("", 0);
@@ -397,6 +394,7 @@ array<int,2> UIManager::loadGame() {
         this->vShops.push_back(loadingShop);
     }
 
+    cout << "Game loaded successfully" << endl;
     return returnArr;
 }
 

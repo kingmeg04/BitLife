@@ -61,8 +61,6 @@ int main() {
 
                 uiManager.updatePlayerStatesOnNewDay();
 
-                uiManager.saveGame(startDate, timeManager.iDay);
-
                 actions = 0;
 
                 if (uiManager.pCurrentPlayer != nullptr && uiManager.pCurrentPlayer->vItems.size() == 0) {
@@ -104,7 +102,9 @@ int main() {
                 }
 
                 maxActions = actions;
+                uiManager.saveGame(startDate, timeManager.iDay);
                 newDay = false;
+
             }
 
             if (uiManager.pCurrentPlayer != nullptr && !playerKnown) {
@@ -181,7 +181,7 @@ int main() {
                 }
 
             } else if (key == 13) { // Enter
-                if (uiManager.currentSidebarSelection >= 4 && uiManager.currentSidebarSelection <= 7) {
+                if (uiManager.currentSidebarSelection >= 5 && uiManager.currentSidebarSelection <= 7) {
                     if (actions <= 0) {
                         cout << "You don't have enough remaining actions!" << endl;
                         pauseMenu();
