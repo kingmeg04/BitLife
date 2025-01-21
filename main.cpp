@@ -42,6 +42,7 @@ int main() {
                 randomEventChance = 100;
             }
             for (int i = 0; i < daysSkipped; i++){
+                uiManager.updatePlayerStatesOnNewDay();
                 randomEventChance++;
                 if (timeManager.iDay - startDate >= 4320) {
                     while (true) {
@@ -71,9 +72,10 @@ int main() {
                     else {
                         uiManager.pCurrentPlayer->vItems.push_back(make_pair(make_shared<consumable>(10, 0, "large water", 3), 2));
                     }
+
                     while (uiManager.pCurrentPlayer->saturation <= 95) {
                         itemSelect = checkForItem(*uiManager.pCurrentPlayer, "hamburger");
-                        if (itemSelect != -1) {
+                        if (itemSelect == -1) {
                             break;
                         }
                         if (uiManager.pCurrentPlayer->vItems[itemSelect].second <= 0) {
@@ -86,7 +88,7 @@ int main() {
 
                     while (uiManager.pCurrentPlayer->hydration <= 90) {
                         itemSelect = checkForItem(*uiManager.pCurrentPlayer, "large water");
-                        if (itemSelect != -1) {
+                        if (itemSelect == -1) {
                             break;
                         }
                         if (uiManager.pCurrentPlayer->vItems[itemSelect].second <= 0) {
@@ -106,8 +108,6 @@ int main() {
 
         while (running) {
             if (newDay) {
-
-                uiManager.updatePlayerStatesOnNewDay();
 
                 actions = 0;
 
@@ -274,40 +274,46 @@ int main() {
                             while (true) {
                                 if (2160 - (timeManager.iDay - startDate) >= 360) {
                                     timeManager.advanceOneTime(4);
-
+                                    daySkipper(360);
                                 }
                                 else if (2160 - (timeManager.iDay - startDate) >= 30) {
                                     timeManager.advanceOneTime(3);
+                                    daySkipper(30);
                                 }
+
                                 else if (2160 - (timeManager.iDay - startDate) > 0){
                                     timeManager.advanceOneTime(1);
+                                    daySkipper(1);
                                 }
                                 else{break;}
                             }
                         }
                         else if (input == "Y" || input == "y" && timeManager.iDay - startDate < 4320) {
                             timeManager.advanceOneTime(4);
+                            daySkipper(360);
                         }
                         else if (input == "M" || input == "m") {
                             timeManager.advanceOneTime(3);
+                            daySkipper(30);
                             if (timeManager.iDay - startDate < 4320) {
                                 break;
                             }
-                            daySkipper(30);
+
                         }
                         else if (input == "W" || input == "w") {
                             timeManager.advanceOneTime(2);
+                            daySkipper(7);
                             if (timeManager.iDay - startDate < 4320) {
                                 break;
                             }
-                            daySkipper(7);
+
                         }
                         else {
                             timeManager.advanceOneTime(1);
+                            daySkipper(1);
                             if (timeManager.iDay - startDate < 4320) {
                                 break;
                             }
-                            daySkipper(1);
                         }
 
 

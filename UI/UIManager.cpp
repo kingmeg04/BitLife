@@ -637,7 +637,7 @@ void UIManager::updatePlayerStatesOnNewDay() {
         pCurrentPlayer->saturation = 100;
     }
 
-    pCurrentPlayer->saturation -= round(random(10,20)); //saturation decrease because new day
+    pCurrentPlayer->saturation -= round(random(13,17.004)); //saturation decrease because new day
 
     if (pCurrentPlayer->saturation < 0) {
         pCurrentPlayer->saturation = 0;
@@ -648,7 +648,7 @@ void UIManager::updatePlayerStatesOnNewDay() {
         pCurrentPlayer->hydration = 100;
     }
 
-    pCurrentPlayer->hydration -= round(random(15,25)); // hydration decrease because new day
+    pCurrentPlayer->hydration -= round(random(18,22)); // hydration decrease because new day
 
     if (pCurrentPlayer->hydration < 0) {
         pCurrentPlayer->hydration = 0;
