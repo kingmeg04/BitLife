@@ -32,5 +32,6 @@ public:
 
 // Deklaration der Funktion
 job getRandomJob();
+job changeJob(int options);
 
 #endif //JOBSTUFF_H

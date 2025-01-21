@@ -155,7 +155,9 @@ void shop::sellItem(player &player) {
 
 int checkForItem(player thePlayer, string itemName) {
     for (int i = 0; i < thePlayer.vItems.size(); i++) {
+        thePlayer.vItems[i].first->sItemName;
         if (thePlayer.vItems[i].first->sItemName == itemName) {
+
             return i;
         }
     }

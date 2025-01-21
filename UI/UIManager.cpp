@@ -123,13 +123,13 @@ array<int,2> UIManager::loadGame() {
         switch (iterator) {
             case 1: returnArr[0] = stoi(tempData); break;
             case 2: returnArr[1] = stoi(tempData); break;
-            case 3: this->pCurrentPlayer->playerHealth = static_cast<short>(stoi(tempData)); break;
-            case 4: this->pCurrentPlayer->saturation = static_cast<short>(stoi(tempData)); break;
-            case 5: this->pCurrentPlayer->hydration = static_cast<short>(stoi(tempData)); break;
-            case 6: this->pCurrentPlayer->mentalHealth = static_cast<short>(stoi(tempData)); break;
-            case 7: this->pCurrentPlayer->sCriminalReputation = static_cast<short>(stoi(tempData)); break;
-            case 8: this->pCurrentPlayer->balance = stoi(tempData); break;
-            case 9: this->pCurrentPlayer->iJailTime = stoi(tempData); break;
+            case 3: pCurrentPlayer->playerHealth = static_cast<short>(stoi(tempData)); break;
+            case 4: pCurrentPlayer->saturation = static_cast<short>(stoi(tempData)); break;
+            case 5: pCurrentPlayer->hydration = static_cast<short>(stoi(tempData)); break;
+            case 6: pCurrentPlayer->mentalHealth = static_cast<short>(stoi(tempData)); break;
+            case 7: pCurrentPlayer->sCriminalReputation = static_cast<short>(stoi(tempData)); break;
+            case 8: pCurrentPlayer->balance = stoi(tempData); break;
+            case 9: pCurrentPlayer->iJailTime = stoi(tempData); break;
             default: break;
         }
         tempData.clear();
@@ -144,10 +144,10 @@ array<int,2> UIManager::loadGame() {
             dataPos++;
         }
         switch (iterator) {
-            case 1: this->pCurrentPlayer->jCurrentJob.sName = tempData; break;
-            case 2: this->pCurrentPlayer->jCurrentJob.sMentalInstability = static_cast<short>(stoi(tempData)); break;
-            case 3: this->pCurrentPlayer->jCurrentJob.sSalary = static_cast<short>(stoi(tempData)); break;
-            case 4: this->pCurrentPlayer->jCurrentJob.bIsAdmin = static_cast<bool>(stoi(tempData)); break;
+            case 1: pCurrentPlayer->jCurrentJob.sName = tempData; break;
+            case 2: pCurrentPlayer->jCurrentJob.sMentalInstability = static_cast<short>(stoi(tempData)); break;
+            case 3: pCurrentPlayer->jCurrentJob.sSalary = static_cast<short>(stoi(tempData)); break;
+            case 4: pCurrentPlayer->jCurrentJob.bIsAdmin = static_cast<bool>(stoi(tempData)); break;
             default: break;
         }
         tempData.clear();
@@ -180,7 +180,7 @@ array<int,2> UIManager::loadGame() {
                 tempData.push_back(data[dataPos]);
                 dataPos++;
             }
-            this->pCurrentPlayer->vItems.push_back({loadingItem, stoi(tempData)});
+            pCurrentPlayer->vItems.push_back({loadingItem, stoi(tempData)});
         }
         else if (stoi(tempData) == 1) {
             tempData.clear();
@@ -210,7 +210,7 @@ array<int,2> UIManager::loadGame() {
                 tempData.push_back(data[dataPos]);
                 dataPos++;
             }
-            this->pCurrentPlayer->vItems.push_back({loadingItem, stoi(tempData)});
+            pCurrentPlayer->vItems.push_back({loadingItem, stoi(tempData)});
         }
         else if (stoi(tempData) == 2) {
             tempData.clear();
@@ -238,7 +238,7 @@ array<int,2> UIManager::loadGame() {
                 tempData.push_back(data[dataPos]);
                 dataPos++;
             }
-            this->pCurrentPlayer->vItems.push_back({loadingItem, stoi(tempData)});
+            pCurrentPlayer->vItems.push_back({loadingItem, stoi(tempData)});
         }
         tempData.clear();
         dataPos++;
@@ -266,7 +266,7 @@ array<int,2> UIManager::loadGame() {
             tempData.push_back(data[dataPos]);
             dataPos++;
         }
-        this->pCurrentPlayer->vCrimes.push_back({loadingCrime, stoi(tempData)});
+        pCurrentPlayer->vCrimes.push_back({loadingCrime, stoi(tempData)});
         tempData.clear();
         dataPos++;
     }
@@ -290,7 +290,7 @@ array<int,2> UIManager::loadGame() {
             tempData.clear();
             dataPos++;
         }
-        this->pCurrentPlayer->vPrevJobs.push_back(loadingJob);
+        pCurrentPlayer->vPrevJobs.push_back(loadingJob);
         tempData.clear();
         dataPos++;
     }
@@ -402,8 +402,8 @@ void UIManager::inventory(int &actions) {
     int input;
 
     cout << "Your belongings: " << endl;
-    for (int currentItem = 0; currentItem < this->pCurrentPlayer->vItems.size(); currentItem++) {
-        cout << "[" << currentItem + 1 << "] " << this->pCurrentPlayer->vItems[currentItem].first->sItemName << '|' << this->pCurrentPlayer->vItems[currentItem].second << "x" << endl;
+    for (int currentItem = 0; currentItem < pCurrentPlayer->vItems.size(); currentItem++) {
+        cout << "[" << currentItem + 1 << "] " << pCurrentPlayer->vItems[currentItem].first->sItemName << '|' << pCurrentPlayer->vItems[currentItem].second << "x" << endl;
     }
     getInput:
     cout << "Which item do you want to use (0 to exit): ";
@@ -422,7 +422,7 @@ void UIManager::inventory(int &actions) {
             return;
         }
         input--;
-        if (input < 0 || input >= this->pCurrentPlayer->vItems.size()) {
+        if (input < 0 || input >= pCurrentPlayer->vItems.size()) {
             cout << "Invalid input, try again or enter 0 to exit: ";
             cin >> input;
             if (cin.fail()) {
@@ -433,7 +433,7 @@ void UIManager::inventory(int &actions) {
             cout << endl;
             continue;
         }
-        if (shared_ptr<consumable> consumableItem = static_pointer_cast<consumable>(this->pCurrentPlayer->vItems[input].first)) {
+        if (shared_ptr<consumable> consumableItem = static_pointer_cast<consumable>(pCurrentPlayer->vItems[input].first)) {
             if (consumableItem->itemType != 1){
                 cout << "This item isn't consumable, try again or type 0 to exit: ";
                 cin >> input;
@@ -445,25 +445,25 @@ void UIManager::inventory(int &actions) {
                 cout << endl;
                 continue;
             }
-            if (this->pCurrentPlayer->vItems[input].second > 0) {
-                this->pCurrentPlayer->saturation += consumableItem->iSaturationInfluence;
-                this->pCurrentPlayer->hydration += consumableItem->iHydrationInfluence;
-                this->pCurrentPlayer->mentalHealth += consumableItem->iMentalInfluence;
+            if (pCurrentPlayer->vItems[input].second > 0) {
+                pCurrentPlayer->saturation += consumableItem->iSaturationInfluence;
+                pCurrentPlayer->hydration += consumableItem->iHydrationInfluence;
+                pCurrentPlayer->mentalHealth += consumableItem->iMentalInfluence;
 
-                if (this->pCurrentPlayer->saturation > 100) {
-                    this->pCurrentPlayer->saturation = 100;
+                if (pCurrentPlayer->saturation > 100) {
+                    pCurrentPlayer->saturation = 100;
                 }
-                if (this->pCurrentPlayer->hydration > 100) {
-                    this->pCurrentPlayer->hydration = 100;
+                if (pCurrentPlayer->hydration > 100) {
+                    pCurrentPlayer->hydration = 100;
                 }
-                if (this->pCurrentPlayer->mentalHealth > 100) {
-                    this->pCurrentPlayer->mentalHealth = 100;
+                if (pCurrentPlayer->mentalHealth > 100) {
+                    pCurrentPlayer->mentalHealth = 100;
                 }
 
                 if (!consumableItem->bIsReusable) {
-                    this->pCurrentPlayer->vItems[input].second--;
-                    if (this->pCurrentPlayer->vItems[input].second < 0) {
-                        this->pCurrentPlayer->vItems.erase(this->pCurrentPlayer->vItems.begin() + input); // delete element at position of input
+                    pCurrentPlayer->vItems[input].second--;
+                    if (pCurrentPlayer->vItems[input].second < 0) {
+                        pCurrentPlayer->vItems.erase(pCurrentPlayer->vItems.begin() + input); // delete element at position of input
                     }
                 }
             }
@@ -534,20 +534,70 @@ void UIManager::shopMenu(int &actions) {
         cout << endl;
     }
 
-    this->vShops[input].openShop(*this->pCurrentPlayer);
+    this->vShops[input].openShop(*pCurrentPlayer);
 
     pauseMenu();
 }
 
 void UIManager::jobsMenu(int &actions) {
+    unsigned short input;
+    job newJob = getRandomJob();
 
+    if (pCurrentPlayer->jCurrentJob.sName == "child") {
+        goto getNewJob;
+    }
 
     cout << "Current job: " << pCurrentPlayer->jCurrentJob.sName
          << " (" << pCurrentPlayer->jCurrentJob.sSalary << "$ per week)\n";
 
-    job newJob = getRandomJob();
-    pCurrentPlayer->newJob(newJob);
+    cout << "What do you want to do (0 to exit): " << endl;
+    cout << "[1] Work" << endl;
+    cout << "[2] Get a new job" << endl;
+    cin >> input;
+    if (cin.fail()) {
+        cin.clear();
+        cin.ignore();
+        input = 3;
+    }
+    cout << endl;
 
+    while (true) {
+        if (input == 0) {
+            return;
+        }
+
+        if (input >= 1 && input <=2) {
+            break;
+        }
+        cout << "Invalid input, try again or type 0 to exit:";
+        cin >> input;
+        if (cin.fail()) {
+            cin.clear();
+            cin.ignore();
+            input = 3;
+        }
+        cout << endl;
+    }
+
+    switch (input) {
+        case 1:
+            actions--;
+            pCurrentPlayer->mentalHealth -= round(pCurrentPlayer->jCurrentJob.sMentalInstability / 10); // figure out how to check how many times player has worked this week (Idea: 0.33 for each time you work (max 1.66/day) and then two factors end of week: 1-> do you get paid, 2-> do you loos your job
+        break;
+        case 2:
+            for (int prevJob = 0; prevJob < pCurrentPlayer->vPrevJobs.size(); prevJob++) {
+                if (pCurrentPlayer->vPrevJobs[prevJob].sName == pCurrentPlayer->jCurrentJob.sName) {
+                    pCurrentPlayer->vPrevJobs.erase(pCurrentPlayer->vPrevJobs.begin() + prevJob);
+                    break;
+                }
+            }
+            pCurrentPlayer->vPrevJobs.push_back(pCurrentPlayer->jCurrentJob);
+            pCurrentPlayer->jCurrentJob = changeJob(round(random(3, pCurrentPlayer->mentalHealth / 10)));
+        break;
+    }
+
+
+    getNewJob:
     cout << "New job acquired: " << newJob.sName
          << " with a salary of " << newJob.sSalary << "$ per week.\n";
     pauseMenu();
@@ -577,55 +627,55 @@ void UIManager::quitGame() {
 }
 
 void UIManager::updatePlayerStatesOnNewDay() {
-    if (this->pCurrentPlayer->playerHealth > 100) {
-        this->pCurrentPlayer->playerHealth = 100;
+    if (pCurrentPlayer->playerHealth > 100) {
+        pCurrentPlayer->playerHealth = 100;
     }
-    else if (this->pCurrentPlayer->playerHealth < 0) {
+    else if (pCurrentPlayer->playerHealth < 0) {
         //death() cause: died
     }
-    if (this->pCurrentPlayer->saturation > 100) {
-        this->pCurrentPlayer->saturation = 100;
+    if (pCurrentPlayer->saturation > 100) {
+        pCurrentPlayer->saturation = 100;
     }
 
-    this->pCurrentPlayer->saturation -= round(random(10,20)); //saturation decrease because new day
+    pCurrentPlayer->saturation -= round(random(10,20)); //saturation decrease because new day
 
-    if (this->pCurrentPlayer->saturation < 0) {
-        this->pCurrentPlayer->saturation = 0;
-        this->pCurrentPlayer->playerHealth -= round(random(1,5));
+    if (pCurrentPlayer->saturation < 0) {
+        pCurrentPlayer->saturation = 0;
+        pCurrentPlayer->playerHealth -= round(random(1,5));
     }
 
-    if (this->pCurrentPlayer->hydration > 100) {
-        this->pCurrentPlayer->hydration = 100;
+    if (pCurrentPlayer->hydration > 100) {
+        pCurrentPlayer->hydration = 100;
     }
 
-    this->pCurrentPlayer->hydration -= round(random(20,30)); // hydration decrease because new day
+    pCurrentPlayer->hydration -= round(random(15,25)); // hydration decrease because new day
 
-    if (this->pCurrentPlayer->hydration < 0) {
-        this->pCurrentPlayer->hydration = 0;
-        this->pCurrentPlayer->playerHealth -= round(random(1,10));
+    if (pCurrentPlayer->hydration < 0) {
+        pCurrentPlayer->hydration = 0;
+        pCurrentPlayer->playerHealth -= round(random(1,10));
     }
 
-    if (this->pCurrentPlayer->mentalHealth > 100) {
-        this->pCurrentPlayer->mentalHealth = 100;
+    if (pCurrentPlayer->mentalHealth > 100) {
+        pCurrentPlayer->mentalHealth = 100;
     }
 
-    this->pCurrentPlayer->mentalHealth -= this->pCurrentPlayer->jCurrentJob.sMentalInstability / 10;
+    pCurrentPlayer->mentalHealth -= round(pCurrentPlayer->jCurrentJob.sMentalInstability / 25);
 
-    if (this->pCurrentPlayer->mentalHealth < 0) {
-        this->pCurrentPlayer->mentalHealth = 0;
+    if (pCurrentPlayer->mentalHealth < 0) {
+        pCurrentPlayer->mentalHealth = 0;
     }
 
-    if (this->pCurrentPlayer->sCriminalReputation > 100) {
-        this->pCurrentPlayer->sCriminalReputation = 100;
+    if (pCurrentPlayer->sCriminalReputation > 100) {
+        pCurrentPlayer->sCriminalReputation = 100;
     }
 
-    else if (this->pCurrentPlayer->sCriminalReputation < 0){
-        this->pCurrentPlayer->sCriminalReputation = 0;
+    else if (pCurrentPlayer->sCriminalReputation < 0){
+        pCurrentPlayer->sCriminalReputation = 0;
     }
 
-    for (int item = 0; item < this->pCurrentPlayer->vItems.size(); item++) {
-        if (this->pCurrentPlayer->vItems[item].second <= 0) {
-            this->pCurrentPlayer->vItems.erase(this->pCurrentPlayer->vItems.begin() + item);
+    for (int item = 0; item < pCurrentPlayer->vItems.size(); item++) {
+        if (pCurrentPlayer->vItems[item].second <= 0) {
+            pCurrentPlayer->vItems.erase(pCurrentPlayer->vItems.begin() + item);
         }
     }
 }
@@ -656,7 +706,7 @@ void UIManager::saveGame(int startDate, int endDate) {
     }
 
     // Construct the full file path
-    string filePath = folderPath + "\\" + this->pCurrentPlayer->sPlayerName + ".txt";
+    string filePath = folderPath + "\\" + pCurrentPlayer->sPlayerName + ".txt";
 
     // Saving process start
     saveFile.open(filePath, ios::out);
@@ -667,21 +717,21 @@ void UIManager::saveGame(int startDate, int endDate) {
 
     data = to_string(endDate) + '\n' // date
     + to_string(startDate) + '\n' // startDate
-    + to_string(this->pCurrentPlayer->playerHealth) + '\n' // health
-    + to_string(this->pCurrentPlayer->saturation) + '\n' // saturation
-    + to_string(this->pCurrentPlayer->hydration) + '\n' // hydration
-    + to_string(this->pCurrentPlayer->mentalHealth) + '\n' // mental health
-    + to_string(this->pCurrentPlayer->sCriminalReputation) + '\n' // criminal reputation
-    + to_string(this->pCurrentPlayer->balance) + '\n' // balance/money
-    + to_string(this->pCurrentPlayer->iJailTime) + '\n' // jail time
-    + this->pCurrentPlayer->jCurrentJob.sName + '|' // player's job's name
-    + to_string(this->pCurrentPlayer->jCurrentJob.sMentalInstability) + '|' // player's job's mental instability
-    + to_string(this->pCurrentPlayer->jCurrentJob.sSalary) + '|' // player's job's salary
-    + to_string(this->pCurrentPlayer->jCurrentJob.bIsAdmin) + '\n'; // true if player's job is admin type
+    + to_string(pCurrentPlayer->playerHealth) + '\n' // health
+    + to_string(pCurrentPlayer->saturation) + '\n' // saturation
+    + to_string(pCurrentPlayer->hydration) + '\n' // hydration
+    + to_string(pCurrentPlayer->mentalHealth) + '\n' // mental health
+    + to_string(pCurrentPlayer->sCriminalReputation) + '\n' // criminal reputation
+    + to_string(pCurrentPlayer->balance) + '\n' // balance/money
+    + to_string(pCurrentPlayer->iJailTime) + '\n' // jail time
+    + pCurrentPlayer->jCurrentJob.sName + '|' // player's job's name
+    + to_string(pCurrentPlayer->jCurrentJob.sMentalInstability) + '|' // player's job's mental instability
+    + to_string(pCurrentPlayer->jCurrentJob.sSalary) + '|' // player's job's salary
+    + to_string(pCurrentPlayer->jCurrentJob.bIsAdmin) + '\n'; // true if player's job is admin type
 
 
-    for (int savingItems = 0; savingItems < this->pCurrentPlayer->vItems.size(); savingItems++) {
-        if (shared_ptr<consumable> savingItem = static_pointer_cast<consumable>(this->pCurrentPlayer->vItems[savingItems].first)) {
+    for (int savingItems = 0; savingItems < pCurrentPlayer->vItems.size(); savingItems++) {
+        if (shared_ptr<consumable> savingItem = static_pointer_cast<consumable>(pCurrentPlayer->vItems[savingItems].first)) {
             if (savingItem->itemType == 1) {
                 data += to_string(savingItem->itemType) + '|'
                 + to_string(savingItem->iSaturationInfluence) + '|'
@@ -691,12 +741,12 @@ void UIManager::saveGame(int startDate, int endDate) {
                 + to_string(savingItem->bIsReusable) + '|'
                 + to_string(savingItem->iMentalInfluence) + '|'
                 ;
-                data += to_string(this->pCurrentPlayer->vItems[savingItems].second) + '\n';
+                data += to_string(pCurrentPlayer->vItems[savingItems].second) + '\n';
                 continue;
                 }
             }
 
-        if (shared_ptr<car> savingItem = static_pointer_cast<car>(this->pCurrentPlayer->vItems[savingItems].first)) {
+        if (shared_ptr<car> savingItem = static_pointer_cast<car>(pCurrentPlayer->vItems[savingItems].first)) {
             if (savingItem->itemType == 2) {
                 data += to_string(savingItem->itemType) + '|'
                 + to_string(savingItem->iActionsGained) + '|'
@@ -706,11 +756,11 @@ void UIManager::saveGame(int startDate, int endDate) {
                 + to_string(savingItem->iMentalInfluence) + '|'
                 ;
 
-                data += to_string(this->pCurrentPlayer->vItems[savingItems].second) + '\n';
+                data += to_string(pCurrentPlayer->vItems[savingItems].second) + '\n';
                 continue;
             }
         }
-        if (shared_ptr<item> savingItem = static_pointer_cast<item>(this->pCurrentPlayer->vItems[savingItems].first)) {
+        if (shared_ptr<item> savingItem = static_pointer_cast<item>(pCurrentPlayer->vItems[savingItems].first)) {
             if (savingItem->itemType == 0) {
                 data += to_string(savingItem->itemType) + '|'
                 + savingItem->sItemName + '|'
@@ -718,22 +768,22 @@ void UIManager::saveGame(int startDate, int endDate) {
                 + to_string(savingItem->bIsReusable) + '|'
                 + to_string(savingItem->iMentalInfluence) + '|'
                 ;
-                data += to_string(this->pCurrentPlayer->vItems[savingItems].second) + '\n';
+                data += to_string(pCurrentPlayer->vItems[savingItems].second) + '\n';
                 continue;
             }
         }
         throw runtime_error("Type handling error2");
     }
     data += "\\^-^/\n";
-    for (int savingCrimes = 0; savingCrimes < this->pCurrentPlayer->vCrimes.size(); savingCrimes++) {
-        data += this->pCurrentPlayer->vCrimes[savingCrimes].first.sName + '|'
-        + to_string(this->pCurrentPlayer->vCrimes[savingCrimes].first.fWitnessability) + '|'
-        + to_string(this->pCurrentPlayer->vCrimes[savingCrimes].first.sIllegalness) + '|'
-        + to_string(this->pCurrentPlayer->vCrimes[savingCrimes].second) + '\n'
+    for (int savingCrimes = 0; savingCrimes < pCurrentPlayer->vCrimes.size(); savingCrimes++) {
+        data += pCurrentPlayer->vCrimes[savingCrimes].first.sName + '|'
+        + to_string(pCurrentPlayer->vCrimes[savingCrimes].first.fWitnessability) + '|'
+        + to_string(pCurrentPlayer->vCrimes[savingCrimes].first.sIllegalness) + '|'
+        + to_string(pCurrentPlayer->vCrimes[savingCrimes].second) + '\n'
         ;
     }
     data += "\\^-^/\n";
-    for (job savingJob : this->pCurrentPlayer->vPrevJobs) {
+    for (job savingJob : pCurrentPlayer->vPrevJobs) {
         data += savingJob.sName + '|'
         + to_string(savingJob.sMentalInstability) + '|'
         + to_string(savingJob.sSalary) + '|'

@@ -16,7 +16,7 @@ int main() {
         string input;
 
         int actions = 0;
-        unsigned short randomEventChance = 50; // chance of random event occuring in %
+        unsigned short randomEventChance = 0;
 
         bool playerKnown = false;
         bool newDay = false;
@@ -37,17 +37,65 @@ int main() {
             }
         };
 
-        auto randomEventDecider = [&](int daysSkipped) {
+        auto daySkipper = [&](int daysSkipped) { // Doesn't work for some reason
             if (randomEventChance > 100) {
                 randomEventChance = 100;
             }
             for (int i = 0; i < daysSkipped; i++){
                 randomEventChance++;
-                while (random(0, randomEventChance/100) > 0.5) {
-                    cout << randomEventChance << "------------------------------------------------\n";
-                    randomEventChance -= 3;
-                    randomEventSelector(*uiManager.pCurrentPlayer, timeManager.iDay - startDate);
-                    pauseMenu();
+                if (timeManager.iDay - startDate >= 4320) {
+                    while (true) {
+                        if (random(0, 1) > randomEventChance/100) {
+                            break;
+                        }
+                        cout << randomEventChance << "------------------------------------------------\n";
+                        randomEventChance -= 3;
+                        randomEventSelector(*uiManager.pCurrentPlayer, timeManager.iDay - startDate);
+                        pauseMenu();
+                    }
+                }
+
+                if (timeManager.iDay - startDate <= 6480) {
+                    int itemSelect;
+                    itemSelect = checkForItem(*uiManager.pCurrentPlayer, "hamburger");
+                    if (itemSelect != -1) {
+                        uiManager.pCurrentPlayer->vItems[itemSelect].second += 3;
+                    }
+                    else {
+                        uiManager.pCurrentPlayer->vItems.push_back(make_pair(make_shared<consumable>(0, 5, "hamburger", 5), 3));
+                    }
+                    itemSelect = checkForItem(*uiManager.pCurrentPlayer, "large water");
+                    if (itemSelect != -1) {
+                        uiManager.pCurrentPlayer->vItems[itemSelect].second += 2;
+                    }
+                    else {
+                        uiManager.pCurrentPlayer->vItems.push_back(make_pair(make_shared<consumable>(10, 0, "large water", 3), 2));
+                    }
+                    while (uiManager.pCurrentPlayer->saturation <= 95) {
+                        itemSelect = checkForItem(*uiManager.pCurrentPlayer, "hamburger");
+                        if (itemSelect != -1) {
+                            break;
+                        }
+                        if (uiManager.pCurrentPlayer->vItems[itemSelect].second <= 0) {
+                            uiManager.pCurrentPlayer->vItems.erase(uiManager.pCurrentPlayer->vItems.begin() + itemSelect);
+                            break;
+                        }
+                        uiManager.pCurrentPlayer->vItems[itemSelect].second--;
+                        uiManager.pCurrentPlayer->saturation += 5;
+                    }
+
+                    while (uiManager.pCurrentPlayer->hydration <= 90) {
+                        itemSelect = checkForItem(*uiManager.pCurrentPlayer, "large water");
+                        if (itemSelect != -1) {
+                            break;
+                        }
+                        if (uiManager.pCurrentPlayer->vItems[itemSelect].second <= 0) {
+                            uiManager.pCurrentPlayer->vItems.erase(uiManager.pCurrentPlayer->vItems.begin() + itemSelect);
+                            break;
+                        }
+                        uiManager.pCurrentPlayer->vItems[itemSelect].second--;
+                        uiManager.pCurrentPlayer->hydration += 10;
+                    }
                 }
             }
         };
@@ -79,14 +127,14 @@ int main() {
                 if (timeManager.iDay - startDate >= 9000) {
                     actions = 10;
                 }
-                else if (timeManager.iDay - startDate >= 6480) {
-                    actions = 7;
-                }
+                /*else if (timeManager.iDay - startDate >= 6480) {
+                    actions = 10;
+                }*/
                 else if (timeManager.iDay - startDate >= 4320) {
-                    actions = 5;
+                    actions = 8;
                 }
                 else {
-                    actions = 3;
+                    actions = 6;
                 }
                 if (uiManager.pCurrentPlayer != nullptr && timeManager.iDay - startDate >= 2160) {
                     actions += ceil(uiManager.pCurrentPlayer->mentalHealth / 20);
@@ -226,6 +274,7 @@ int main() {
                             while (true) {
                                 if (2160 - (timeManager.iDay - startDate) >= 360) {
                                     timeManager.advanceOneTime(4);
+
                                 }
                                 else if (2160 - (timeManager.iDay - startDate) >= 30) {
                                     timeManager.advanceOneTime(3);
@@ -244,21 +293,21 @@ int main() {
                             if (timeManager.iDay - startDate < 4320) {
                                 break;
                             }
-                            randomEventDecider(30);
+                            daySkipper(30);
                         }
                         else if (input == "W" || input == "w") {
                             timeManager.advanceOneTime(2);
                             if (timeManager.iDay - startDate < 4320) {
                                 break;
                             }
-                            randomEventDecider(7);
+                            daySkipper(7);
                         }
                         else {
                             timeManager.advanceOneTime(1);
                             if (timeManager.iDay - startDate < 4320) {
                                 break;
                             }
-                            randomEventDecider(1);
+                            daySkipper(1);
                         }
 
 

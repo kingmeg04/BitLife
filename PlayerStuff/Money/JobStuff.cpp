@@ -34,7 +34,7 @@ job getRandomJob() {
     return get<job>(randomElement(getJobVector(), jobWeights));
 }
 
-job changeJob(job currentJob, int posOptions) {
+job changeJob(int posOptions) {
     vector<job> opportunities;
     int chosenOption;
 
