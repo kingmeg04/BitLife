@@ -37,9 +37,22 @@ Der C++-Code implementiert verschiedene zufällige Ereignisse, die während des 
 
 Diese Ereignisse bringen verschiedene Auswirkungen auf den Spieler, wie z. B. die Veränderung der Mental Health, des Geldes oder der kriminellen Reputation.
 ### Criminal Activity
+Die Funktion prisonCharge behandelt die Strafe für ein begangenes Verbrechen:
+- Der Spieler wird basierend auf der Schwere des Verbrechens (Illegalness) mit einer Geldstrafe und/oder Gefängniszeit belegt.
+- Der Spieler kann durch Bezahlung einen Teil der Gefängnisstrafe verkürzen.
+- Bei schwerwiegenden Verbrechen endet das Spiel, wenn die Strafe zu hoch ist.
 
+Es simuliert die rechtlichen Folgen von Verbrechen und bietet die Möglichkeit, durch Bezahlung aus der Gefängnisstrafe zu entkommen.
 ### Name Generator
-
+Die Funktion generateName erzeugt zufällig einen Namen mit bestimmten Regeln:
+1. Startbuchstabe: Der Name beginnt mit einem zufällig gewählten Großbuchstaben.
+1. Regeln für Buchstaben: Der Name besteht aus zufällig gewählten Buchstaben, wobei bestimmte Regeln beachtet werden:
+1. Keine wiederholten Buchstaben hintereinander.
+1. Keine unnatürlichen Kombinationen wie Vokal-Vokal oder Konsonant-Konsonant am Ende.
+1. Es gibt Einschränkungen für die Wahl der Buchstaben basierend auf der vorherigen Auswahl (z. B. bestimmte Konsonanten folgen auf andere).
+1. Endung: Der Name darf nicht mit zwei Konsonanten enden. Falls dies der Fall ist, wird der letzte Buchstabe entfernt.
+1. Minimale Länge: Der Name muss mindestens 4 Zeichen lang sein, andernfalls wird ein neuer Name generiert.
+Ziel ist es, einen einzigartigen und phonetisch realistisch klingenden Namen zu erzeugen.
 ### Time Management
 
 ### Save Funktion
