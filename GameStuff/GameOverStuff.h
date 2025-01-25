@@ -1,3 +1,4 @@
+// not enough time to do this
 #ifndef GAMEOVERSTUFF_H
 #define GAMEOVERSTUFF_H
 

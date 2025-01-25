@@ -238,7 +238,7 @@ void makeDonation(player &thePlayer) {
 
 void becomeAdmin(player &thePlayer) {
     int iAddition;
-    iAddition = round(random(100,500));
+    iAddition = round(random(100,5000));
     thePlayer.jCurrentJob.bIsAdmin = true;
     thePlayer.jCurrentJob.sSalary += iAddition;
     cout << "Congratulations to your promotion!, you now make" << iAddition << "$ more" << endl;

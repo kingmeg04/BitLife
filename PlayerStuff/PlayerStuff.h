@@ -39,7 +39,7 @@ public:
     player(std::string PlayerName,job CurrentJob) : sPlayerName(PlayerName), jCurrentJob(CurrentJob) {}
 
 
-    void newJob(job newJob);
+    void newJob(job newJob); // oopsie, may have forgotten about this.
     void useItem(item itemUsed, int amountUsed);
 
 };

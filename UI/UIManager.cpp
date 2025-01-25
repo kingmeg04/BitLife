@@ -35,7 +35,7 @@ array<int,2> UIManager::loadGame() {
     vector<fs::path> filePaths;
     int input;
 
-    // Get the AppData\Local folder path
+    // Get the AppData\Local folder path --> from chatGPT
     char appDataPath[MAX_PATH];
     if (SHGetFolderPath(nullptr, CSIDL_LOCAL_APPDATA, nullptr, 0, appDataPath) != S_OK) {
         cerr << "Failed to get AppData path." << endl;
@@ -273,7 +273,7 @@ array<int,2> UIManager::loadGame() {
 
     dataPos += 6;
     tempData.clear();
-    while (data[dataPos] != '\\' && dataPos < data.size()) {// loading crimes
+    while (data[dataPos] != '\\' && dataPos < data.size()) {// loading previous jobs
         job loadingJob = {0,0,""};
         for (iterator = 1; iterator <= 4; iterator++) {
             while (data[dataPos] != '|' && data[dataPos] != '\n') {
@@ -292,7 +292,6 @@ array<int,2> UIManager::loadGame() {
         }
         pCurrentPlayer->vPrevJobs.push_back(loadingJob);
         tempData.clear();
-        dataPos++;
     }
 
     dataPos += 6;
@@ -583,6 +582,7 @@ void UIManager::jobsMenu(int &actions) {
         case 1:
             actions--;
             pCurrentPlayer->mentalHealth -= round(pCurrentPlayer->jCurrentJob.sMentalInstability / 10); // figure out how to check how many times player has worked this week (Idea: 0.33 for each time you work (max 1.66/day) and then two factors end of week: 1-> do you get paid, 2-> do you loos your job
+            fTimesWorkedThisWeek += 0.5;
         break;
         case 2:
             for (int prevJob = 0; prevJob < pCurrentPlayer->vPrevJobs.size(); prevJob++) {
@@ -595,11 +595,12 @@ void UIManager::jobsMenu(int &actions) {
             pCurrentPlayer->jCurrentJob = changeJob(round(random(3, pCurrentPlayer->mentalHealth / 10)));
         break;
     }
-
+    goto end;
 
     getNewJob:
-    cout << "New job acquired: " << newJob.sName
-         << " with a salary of " << newJob.sSalary << "$ per week.\n";
+    pCurrentPlayer->jCurrentJob = changeJob(round(random(0,pCurrentPlayer->vPrevJobs.size()/3)));
+
+    end:
     pauseMenu();
 }
 
@@ -685,7 +686,7 @@ void UIManager::saveGame(int startDate, int endDate) {
     string data;
     fstream saveFile;
 
-    // Define the target folder path
+    // Define the target folder path --> from chatGPT
     char appDataPath[MAX_PATH];
     if (SHGetFolderPath(nullptr, CSIDL_LOCAL_APPDATA, nullptr, 0, appDataPath) != S_OK) {
         cerr << "Failed to get AppData path." << endl;

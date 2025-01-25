@@ -33,5 +33,5 @@ public:
 // Deklaration der Funktion
 job getRandomJob();
 job changeJob(int options);
-
+std::vector<job> getJobVector();
 #endif //JOBSTUFF_H

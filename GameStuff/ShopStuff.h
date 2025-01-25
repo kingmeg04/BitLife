@@ -3,7 +3,7 @@
 
 #include <string>
 #include <vector>
-#include <memory> // For smart pointers
+#include <memory> // For smart pointers aka shared pointers, formatted by chatGPT, but I kinda understand (for what I needed it for -> putting parent and child objects into same vector)
 #include <iostream>
 #include "../PlayerStuff/PlayerStuff.h"
 #include "../UniversalStuff/NamingStuff.h"

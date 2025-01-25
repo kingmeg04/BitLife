@@ -8,7 +8,7 @@
 #include <conio.h> // For _getch()
 #include <thread>
 #include <chrono>
-#include <fstream>
+#include <fstream> // Credit here goes to app on Jeremy's phone for containing an advanced c++ course which included reading and saving files
 #include <filesystem>
 #include <shlobj.h>
 
@@ -21,6 +21,8 @@ class UIManager {
 public:
 
     std::vector<shop> vShops;
+    float fTimesWorkedThisWeek = 0;
+    shop sFavShop = {"filler",500,{}};
     std::vector<std::string> sidebarOptions = {"New Game", "Load Game", "Quit", "Timeskip", "Inventory", "Shop", "Jobs", "Crimes"}; //
 
     int currentSidebarSelection = 0; // Aktuelle Menüauswahl
@@ -37,7 +39,7 @@ public:
     void jobsMenu(int &actions);
     void crimesMenu(int &actions);
     void quitGame();
-    void updatePlayerStatesOnNewDay();
+    void updatePlayerStatesOnNewDay(); // OH NO - A TYPO. Well- it is what it is now ig...
 
     void saveGame(int startDate, int endDate);
 
