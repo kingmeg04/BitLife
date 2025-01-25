@@ -280,6 +280,7 @@ int main() {
                 if (uiManager.pCurrentPlayer->jCurrentJob.sName != "child") {
                     if (daysSkipped >= 7) {
                         uiManager.pCurrentPlayer->balance += daysSkipped/7 * uiManager.pCurrentPlayer->jCurrentJob.sSalary;
+                        prevPayDay = timeManager.iDay;
                     }
                 }
             }
