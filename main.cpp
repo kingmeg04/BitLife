@@ -8,7 +8,7 @@ int main() {
     bool running;
     int maxActions;
     string data;
-    array<int,2> temp;
+    array<int,5> temp;
 
 
 
@@ -390,7 +390,7 @@ int main() {
                 }
 
                 maxActions = actions;
-                uiManager.saveGame(startDate, timeManager.iDay);
+                uiManager.saveGame(startDate, timeManager.iDay, prevPayDay, jobCountdown, randomEventChance);
                 newDay = false;
 
             }
@@ -494,7 +494,7 @@ int main() {
                     case 0: // New Game
                         if (uiManager.pCurrentPlayer != nullptr) {
                             running = false;
-                            uiManager.saveGame(startDate, timeManager.iDay);
+                            uiManager.saveGame(startDate, timeManager.iDay, prevPayDay, jobCountdown, randomEventChance);
                             uiManager.pCurrentPlayer == nullptr;
                             break;
                         }
@@ -505,6 +505,9 @@ int main() {
                         temp = uiManager.loadGame();
                         timeManager.iDay = temp[0];
                         startDate = temp[1];
+                        prevPayDay = temp[2];
+                        jobCountdown = temp[3];
+                        randomEventChance = temp[4];
                         newDay = true;
                         prefSItem = -1;
                         prefHItem = -1;
