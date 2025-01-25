@@ -26,11 +26,11 @@ void UIManager::newGame() {
     pauseMenu();
 }
 
-array<int,2> UIManager::loadGame() {
+array<int,5> UIManager::loadGame() {
     this->vShops.clear();
     int dataPos = 0;
     string tempData;
-    array<int,2> returnArr;
+    array<int,5> returnArr;
     fstream saveFile;
     vector<fs::path> filePaths;
     int input;
@@ -39,7 +39,7 @@ array<int,2> UIManager::loadGame() {
     char appDataPath[MAX_PATH];
     if (SHGetFolderPath(nullptr, CSIDL_LOCAL_APPDATA, nullptr, 0, appDataPath) != S_OK) {
         cerr << "Failed to get AppData path." << endl;
-        return array<int,2>{-1,-1};
+        return array<int,5>{-1,-1,-1,-1,-1};
     }
 
     // Define the target folder path in AppData
@@ -52,7 +52,7 @@ array<int,2> UIManager::loadGame() {
         }
     } catch (const exception& e) {
         cerr << "Failed to create folder: " << e.what() << endl;
-        return array<int,2>{-1,-1};
+        return array<int,5>{-1,-1,-1,-1,-1};
     }
 
     // Iterate through files in the folder
@@ -64,7 +64,7 @@ array<int,2> UIManager::loadGame() {
         }
     } catch (const exception& e) {
         cerr << "Error accessing folder: " << e.what() << endl;
-        return array<int,2>{-1,-1};
+        return array<int,5>{-1,-1,-1,-1,-1};
     }
 
     // Display the files
@@ -85,7 +85,7 @@ array<int,2> UIManager::loadGame() {
 
     while (true) {
         if (input == 0) {
-            return array<int,2>{-1,-1};
+            return array<int,5>{-1,-1,-1,-1,-1};
         }
         input--;
 
@@ -105,7 +105,7 @@ array<int,2> UIManager::loadGame() {
     saveFile.open(filePaths[input], ios::in);
     if (!saveFile.is_open()) {
         cerr << "Failed to open the selected file." << endl;
-        return array<int,2>{-1,-1};
+        return array<int,5>{-1,-1,-1,-1,-1};
     }
 
     string data = string((istreambuf_iterator<char>(saveFile)), istreambuf_iterator<char>());
@@ -137,7 +137,6 @@ array<int,2> UIManager::loadGame() {
     }
     dataPos++;
 
-
     for (iterator = 1; iterator <= 4; iterator++) {
         while (data[dataPos] != '|' && data[dataPos] != '\n') {
             tempData.push_back(data[dataPos]);
@@ -153,6 +152,119 @@ array<int,2> UIManager::loadGame() {
         tempData.clear();
         dataPos++;
     }
+
+    for (iterator = 1; iterator <= 3; iterator++) { // player prevPayDay, jobCountdown and randomEventChance
+        while (data[dataPos] != '\n') {
+            tempData.push_back(data[dataPos]);
+            dataPos++;
+        }
+        switch (iterator) {
+            case 1: returnArr[2] = stoi(tempData); break;
+            case 2: returnArr[3] = stoi(tempData); break;
+            case 3: returnArr[3] = stoi(tempData); break;
+            default: break;
+        }
+        tempData.clear();
+        dataPos++;
+    }
+    dataPos+=3;
+
+    for (iterator = 1; iterator <= 3; iterator++) { //favorite shop
+        while (data[dataPos] != '|' && data[dataPos] != '\n') {
+            tempData.push_back(data[dataPos]);
+            dataPos++;
+        }
+        switch (iterator) {
+            case 1: sFavShop.sShopName = tempData; break;
+            case 2: sFavShop.usDistance = static_cast<unsigned short>(stoi(tempData));break;
+            case 3:
+                if (tempData == "-_-") {dataPos += 6; break;}
+
+                while (data[dataPos] != '\\' && dataPos < data.size()) { // loads items in a shop
+
+                    tempData.push_back(data[dataPos]);
+                    if (stoi(tempData) == 0) {
+                        tempData.clear();
+                        shared_ptr<item> loadingItem = make_shared<item>("", 0);
+                        dataPos+=2;
+
+                        for (iterator = 1; iterator <= 4; iterator++) {
+                            while (data[dataPos] != '|' && data[dataPos] != '\n') {
+                                tempData.push_back(data[dataPos]);
+                                dataPos++;
+                            }
+                            switch (iterator) {
+                                case 1: loadingItem->sItemName = tempData; break;
+                                case 2: loadingItem->iPrice = stoi(tempData); break;
+                                case 3: loadingItem->bIsReusable = static_cast<bool>(stoi(tempData)); break;
+                                case 4: loadingItem->iMentalInfluence = stoi(tempData); break;
+                            }
+                            tempData.clear();
+                            dataPos++;
+                        }
+                        loadingItem = make_shared<item>(loadingItem->sItemName, loadingItem->iPrice,loadingItem->bIsReusable, loadingItem->iMentalInfluence);
+                        sFavShop.vAvailableItems.push_back(loadingItem);
+                    }
+                    else if (stoi(tempData) == 1) {
+                        tempData.clear();
+                        shared_ptr<consumable> loadingItem = make_shared<consumable>(0, 0);
+                        dataPos+=2;
+
+                        for (iterator = 1; iterator <= 6; iterator++) {
+                            while (data[dataPos] != '|' && data[dataPos] != '\n') {
+                                tempData.push_back(data[dataPos]);
+                                dataPos++;
+                            }
+
+                            switch (iterator) {
+                                case 1: loadingItem->iSaturationInfluence = stoi(tempData); break;
+                                case 2: loadingItem->iHydrationInfluence = stoi(tempData); break;
+                                case 3: loadingItem->sItemName = tempData; break;
+                                case 4: loadingItem->iPrice = stoi(tempData); break;
+                                case 5: loadingItem->bIsReusable = static_cast<bool>(stoi(tempData)); break;
+                                case 6: loadingItem->iMentalInfluence = stoi(tempData); break;
+                                default: break;
+                            }
+                            tempData.clear();
+                            dataPos++;
+                        }
+                        loadingItem = make_shared<consumable>(loadingItem->iHydrationInfluence, loadingItem->iSaturationInfluence, loadingItem->sItemName, loadingItem->iPrice,loadingItem->bIsReusable, loadingItem->iMentalInfluence);
+                        sFavShop.vAvailableItems.push_back(loadingItem);
+                    }
+                    else if (stoi(tempData) == 2) {
+                        tempData.clear();
+                        shared_ptr<car> loadingItem = make_shared<car>(0);
+                        dataPos+=2;
+
+                        for (iterator = 1; iterator <= 5; iterator++) {
+                            while (data[dataPos] != '|' && data[dataPos] != '\n') {
+                                tempData.push_back(data[dataPos]);
+                                dataPos++;
+                            }
+                            switch (iterator) {
+                                case 1: loadingItem->iActionsGained = stoi(tempData); break;
+                                case 2: loadingItem->sItemName = tempData; break;
+                                case 3: loadingItem->iPrice = stoi(tempData); break;
+                                case 4: loadingItem->bIsReusable = static_cast<bool>(stoi(tempData)); break;
+                                case 5: loadingItem->iMentalInfluence = stoi(tempData); break;
+                                default: break;
+                            }
+                            tempData.clear();
+                            dataPos++;
+                        }
+                        loadingItem = make_shared<car>(loadingItem->iActionsGained, loadingItem->sItemName, loadingItem->iPrice,loadingItem->bIsReusable, loadingItem->iMentalInfluence);
+                        sFavShop.vAvailableItems.push_back(loadingItem);
+                    }
+                    tempData.clear();
+                }
+            dataPos += 6;
+        break;
+        default: break;
+        }
+        tempData.clear();
+        dataPos++;
+    }
+
 
     while (data[dataPos] != '\\' && dataPos < data.size()) { // loads items in player's inventory
         tempData.push_back(data[dataPos]);
@@ -294,6 +406,7 @@ array<int,2> UIManager::loadGame() {
         tempData.clear();
     }
 
+
     dataPos += 6;
     tempData.clear();
     while (dataPos < data.size()) {
@@ -312,6 +425,7 @@ array<int,2> UIManager::loadGame() {
         loadingShop.usDistance = static_cast<unsigned short>(stoi(tempData));
         tempData.clear();
         dataPos++;
+
         while (data[dataPos] != '\\' && dataPos < data.size()) { // loads items in a shop
 
             tempData.push_back(data[dataPos]);
@@ -681,7 +795,7 @@ void UIManager::updatePlayerStatesOnNewDay() {
     }
 }
 
-void UIManager::saveGame(int startDate, int endDate) {
+void UIManager::saveGame(int startDate, int endDate, unsigned short prevPayDay, short jobCountdown, unsigned short randomEventChance) {
 
     string data;
     fstream saveFile;
@@ -728,8 +842,62 @@ void UIManager::saveGame(int startDate, int endDate) {
     + pCurrentPlayer->jCurrentJob.sName + '|' // player's job's name
     + to_string(pCurrentPlayer->jCurrentJob.sMentalInstability) + '|' // player's job's mental instability
     + to_string(pCurrentPlayer->jCurrentJob.sSalary) + '|' // player's job's salary
-    + to_string(pCurrentPlayer->jCurrentJob.bIsAdmin) + '\n'; // true if player's job is admin type
+    + to_string(pCurrentPlayer->jCurrentJob.bIsAdmin) + '\n' // true if player's job is admin type
+    + to_string(pCurrentPlayer->jCurrentJob.bIsAdmin) + '\n'
+    + to_string(prevPayDay) + '\n'
+    + to_string(jobCountdown) + '\n'
+    + to_string(randomEventChance) + '\n';
 
+
+    data += sFavShop.sShopName + '|'
+    + to_string(sFavShop.usDistance) + '\n';
+    if (sFavShop.vAvailableItems.size() == 0) {
+        data += "-_-\n";
+    }
+    for (int savingItems = 0; savingItems < sFavShop.vAvailableItems.size(); savingItems++) {
+
+        if (shared_ptr<consumable> savingItem = static_pointer_cast<consumable>(sFavShop.vAvailableItems[savingItems])) {
+            if (savingItem->itemType == 1) {
+                data += to_string(savingItem->itemType) + '|'
+                + to_string(savingItem->iSaturationInfluence) + '|'
+                + to_string(savingItem->iHydrationInfluence) + '|'
+                + savingItem->sItemName + '|'
+                + to_string(savingItem->iPrice) + '|'
+                + to_string(savingItem->bIsReusable) + '|'
+                + to_string(savingItem->iMentalInfluence) + '\n'
+                ;
+                continue;
+            }
+        }
+
+        if (shared_ptr<car> savingItem = static_pointer_cast<car>(sFavShop.vAvailableItems[savingItems])) {
+            if (savingItem->itemType == 2) {
+                data += to_string(savingItem->itemType) + '|'
+                + to_string(savingItem->iActionsGained) + '|'
+                + savingItem->sItemName + '|'
+                + to_string(savingItem->iPrice) + '|'
+                + to_string(savingItem->bIsReusable) + '|'
+                + to_string(savingItem->iMentalInfluence) + '\n'
+                ;
+                continue;
+            }
+        }
+
+        if (shared_ptr<item> savingItem = static_pointer_cast<item>(sFavShop.vAvailableItems[savingItems])) {
+            if (savingItem->itemType == 0) {
+                data += to_string(savingItem->itemType) + '|'
+                + savingItem->sItemName + '|'
+                + to_string(savingItem->iPrice) + '|'
+                + to_string(savingItem->bIsReusable) + '|'
+                + to_string(savingItem->iMentalInfluence) + '\n'
+                ;
+                continue;
+            }
+        }
+        throw runtime_error("Type handling error1");
+    }
+
+    data += "\\^-^/\n";
 
     for (int savingItems = 0; savingItems < pCurrentPlayer->vItems.size(); savingItems++) {
         if (shared_ptr<consumable> savingItem = static_pointer_cast<consumable>(pCurrentPlayer->vItems[savingItems].first)) {
@@ -795,7 +963,7 @@ void UIManager::saveGame(int startDate, int endDate) {
         data += savingShops.sShopName + '|'
         + to_string(savingShops.usDistance) + '\n'
         ;
-        for (int savingItems = 0; savingItems < savingShops.vAvailableItems.size(); savingItems++) { // all items will have itemType = 0 CURRENT PROBLEM
+        for (int savingItems = 0; savingItems < savingShops.vAvailableItems.size(); savingItems++) {
 
             if (shared_ptr<consumable> savingItem = static_pointer_cast<consumable>(savingShops.vAvailableItems[savingItems])) {
                 if (savingItem->itemType == 1) {

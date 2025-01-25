@@ -501,7 +501,7 @@ int main() {
                         uiManager.newGame();
                         newDay = true;
                     break;
-                    case 1: // Load Game
+                    case 1: // Load Gamee
                         temp = uiManager.loadGame();
                         timeManager.iDay = temp[0];
                         startDate = temp[1];

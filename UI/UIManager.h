@@ -33,7 +33,6 @@ public:
     }
 
     void newGame();
-    std::array<int,2> loadGame();
     void inventory(int &actions);
     void shopMenu(int &actions);
     void jobsMenu(int &actions);
@@ -41,7 +40,8 @@ public:
     void quitGame();
     void updatePlayerStatesOnNewDay(); // OH NO - A TYPO. Well- it is what it is now ig...
 
-    void saveGame(int startDate, int endDate);
+    std::array<int,5> loadGame();
+    void saveGame(int startDate, int endDate, unsigned short prevPayDay, short jobCountdown, unsigned short randomEventChance);
 
     bool start(); // called to start the programm
 
