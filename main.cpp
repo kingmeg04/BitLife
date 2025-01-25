@@ -15,7 +15,7 @@ int main() {
     while (true) {
         string input;
         int numInput;
-        unsigned short prevPayDay = 0;
+        unsigned short prevPayDay = 0; // unused because I tried to use it but didn't want to work
         short jobCountdown = 0;
         int prefSItem = -1;
         int prefHItem = -1;
@@ -28,6 +28,7 @@ int main() {
         UIManager uiManager;
 
         int startDate = round(random(0,3600000));
+        prevPayDay = startDate;
         TimeManager timeManager({startDate});
 
         running = uiManager.start();
@@ -64,6 +65,9 @@ int main() {
 
 
                 if (timeManager.iDay - startDate <= 6480) {
+                    if (uiManager.pCurrentPlayer->playerHealth < 100) {
+                        uiManager.pCurrentPlayer->playerHealth = 100;
+                    }
                     int itemSelect;
                     itemSelect = checkForItem(*uiManager.pCurrentPlayer, "hamburger");
                     if (itemSelect != -1) {
@@ -277,11 +281,12 @@ int main() {
                     }
 
                 }
-                if (uiManager.pCurrentPlayer->jCurrentJob.sName != "child") {
-                    if (daysSkipped >= 7) {
-                        uiManager.pCurrentPlayer->balance += daysSkipped/7 * uiManager.pCurrentPlayer->jCurrentJob.sSalary;
-                        prevPayDay = timeManager.iDay;
-                    }
+
+                }
+            if (uiManager.pCurrentPlayer->jCurrentJob.sName != "child") {
+                if (daysSkipped >= 7) {
+                    uiManager.pCurrentPlayer->balance += daysSkipped/7 * uiManager.pCurrentPlayer->jCurrentJob.sSalary;
+                    prevPayDay = timeManager.iDay;
                 }
             }
             newDay = true;
@@ -294,14 +299,11 @@ int main() {
         while (running) {
             if (newDay) {
 
-                if (uiManager.pCurrentPlayer->jCurrentJob.sName != "child") {
+                if (uiManager.pCurrentPlayer->jCurrentJob.sName == "child" || uiManager.pCurrentPlayer == nullptr) {
                     prevPayDay = timeManager.iDay;
                 }
-                if (timeManager.iDay - prevPayDay >= 7) { // getting paid
+                else if (timeManager.iDay % 7 == 5) { // getting paid
                     prevPayDay = timeManager.iDay;
-                    while (prevPayDay % 7 != 5) {
-                        prevPayDay--;
-                    }
 
                     if (uiManager.pCurrentPlayer->jCurrentJob.sName == "workless") {
                         if (jobCountdown <= 0) {
@@ -322,7 +324,7 @@ int main() {
                             cout << "You won't have any benefits in " << jobCountdown << " weeks." << endl;
                         }
                     }
-                    else if (timeManager.iDay - prevPayDay < 6480) {
+                    else if (timeManager.iDay - startDate < 6480) {
                         uiManager.pCurrentPlayer->balance += round(uiManager.pCurrentPlayer->jCurrentJob.sSalary / 10);
                         cout << "You received: " << round(uiManager.pCurrentPlayer->jCurrentJob.sSalary/10) << "$ on pay day.";
                     }

@@ -135,9 +135,9 @@ array<int,5> UIManager::loadGame() {
         tempData.clear();
         dataPos++;
     }
-    dataPos++;
 
-    for (iterator = 1; iterator <= 4; iterator++) {
+
+    for (iterator = 1; iterator <= 4; iterator++) {// player's job
         while (data[dataPos] != '|' && data[dataPos] != '\n') {
             tempData.push_back(data[dataPos]);
             dataPos++;
@@ -167,7 +167,7 @@ array<int,5> UIManager::loadGame() {
         tempData.clear();
         dataPos++;
     }
-    dataPos+=3;
+
 
     for (iterator = 1; iterator <= 3; iterator++) { //favorite shop
         while (data[dataPos] != '|' && data[dataPos] != '\n') {
@@ -264,7 +264,6 @@ array<int,5> UIManager::loadGame() {
         tempData.clear();
         dataPos++;
     }
-
 
     while (data[dataPos] != '\\' && dataPos < data.size()) { // loads items in player's inventory
         tempData.push_back(data[dataPos]);
@@ -699,6 +698,7 @@ void UIManager::jobsMenu(int &actions) {
             fTimesWorkedThisWeek += 0.5;
         break;
         case 2:
+            getNewJob:
             for (int prevJob = 0; prevJob < pCurrentPlayer->vPrevJobs.size(); prevJob++) {
                 if (pCurrentPlayer->vPrevJobs[prevJob].sName == pCurrentPlayer->jCurrentJob.sName) {
                     pCurrentPlayer->vPrevJobs.erase(pCurrentPlayer->vPrevJobs.begin() + prevJob);
@@ -709,12 +709,7 @@ void UIManager::jobsMenu(int &actions) {
             pCurrentPlayer->jCurrentJob = changeJob(round(random(3, pCurrentPlayer->mentalHealth / 10)));
         break;
     }
-    goto end;
 
-    getNewJob:
-    pCurrentPlayer->jCurrentJob = changeJob(round(random(0,pCurrentPlayer->vPrevJobs.size()/3)));
-
-    end:
     pauseMenu();
 }
 
@@ -843,7 +838,6 @@ void UIManager::saveGame(int startDate, int endDate, unsigned short prevPayDay, 
     + to_string(pCurrentPlayer->jCurrentJob.sMentalInstability) + '|' // player's job's mental instability
     + to_string(pCurrentPlayer->jCurrentJob.sSalary) + '|' // player's job's salary
     + to_string(pCurrentPlayer->jCurrentJob.bIsAdmin) + '\n' // true if player's job is admin type
-    + to_string(pCurrentPlayer->jCurrentJob.bIsAdmin) + '\n'
     + to_string(prevPayDay) + '\n'
     + to_string(jobCountdown) + '\n'
     + to_string(randomEventChance) + '\n';
