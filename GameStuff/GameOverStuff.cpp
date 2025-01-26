@@ -9,7 +9,7 @@ using namespace std;
 void gameOver(int reason) {
     switch (reason) {
         case 1:
-            cout << reason << endl;
+            cout << "Death" << endl;
         break;
     }
 }

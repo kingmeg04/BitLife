@@ -19,6 +19,7 @@ struct crime{
     std::string sName;
 };
 
+std::vector<crime> getCrimeVector();
 void prisonCharge(player& thePlayer, crime crimeCaughtFor);
 
 #endif // CRIMINALSTUFF_H

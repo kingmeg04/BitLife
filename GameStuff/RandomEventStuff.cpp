@@ -22,23 +22,23 @@ int randomEventSelector(player &thePlayer, int currentDay) {
     int CinSCChance;
 
     if (thePlayer.iJailTime <= 0) {
-        dateChance = 200;
-        if (checkForItem(thePlayer, "partner") > 1) {
+        dateChance = 50;
+        if (checkForItem(thePlayer, "partner") >= 0) {
             dateChance = 5;
         }
         prankChance = 5 * thePlayer.sCriminalReputation / 2;
-        investigationChance = 50;
+        investigationChance = 25;
         giveawayChance = 5;
-        NDChance = 25;
+        NDChance = 5;
         donationChance = thePlayer.balance/1000;
         if (donationChance > 250) {
-            donationChance = 50;
+            donationChance = 250;
         }
         adminChance = 1;
-        bananaChance = 25;
+        bananaChance = 10;
         crimeChance = thePlayer.sCriminalReputation * 5;
-        EDIPSChance = round(random(0,1000));
-        CinSCChance = 50;
+        EDIPSChance = round(random(0,100));
+        CinSCChance = 10;
 
 
     }
@@ -105,10 +105,7 @@ void dating(player &thePlayer) {
         cout << "Do you want to ask someone out on a date(Y/N): ";
         cin >> option;
         cout << endl;
-        if (option != "Y" && option != "y") {
-            return;
-        }
-        else{
+        if (option == "Y" && option == "y") {
             if (random(0,1) > 0.25) {
                 cout << "They said yes." << endl;
                 currentItem = checkForItem(thePlayer, "partner");
@@ -125,13 +122,16 @@ void dating(player &thePlayer) {
                 thePlayer.mentalHealth -= floor(round(random(0,15)));
             }
         }
+        else{
+            return;
+        }
     }
     else {
         cout << "Someone asked you out on a date." << endl;
         cout << "How do you respond (Y/N): " << endl;
         cin >> option;
         cout << endl;
-        if (option != "Y" || option != "y") {
+        if (option == "Y" || option == "y") {
             currentItem = checkForItem(thePlayer, "partner");
             if (currentItem >= 0) {
                 thePlayer.vItems[currentItem].second++;
@@ -350,30 +350,48 @@ void slipOnBananaPeal(player &thePlayer) {
 }
 
 void askedToCommitCrime(player &thePlayer) {
-    cout << "Do you want to commit a crime with other?" << endl;
-    int iAnswer;
-    iAnswer = round(random(1,3));
-    if (iAnswer == 1) {
-        cout << "Unfortunately they didn't want to commit a crime" << endl;
-        thePlayer.sCriminalReputation += round(random(5,10));
-    }
-    else if (iAnswer == 2) {
-        cout << "Unfortunately they snitched on you for planning a robbery" << endl;
-        thePlayer.sCriminalReputation += round(random(10,20));
-        prisonCharge(thePlayer, {500,0.2,"Illegal planning"});
-    }
-    else {
-        cout << "They accepted to join you on your crime" << endl;
-        thePlayer.sCriminalReputation += round(random(10,30));
-        // Open to what happens next
+    cout << "Do you want to commit a crime with other people (Y/N)?" << endl;
+    string iAnswer;
+    cin >> iAnswer;
+    cout << endl;
+
+    bool found = false;
+    if (iAnswer == "Y" || iAnswer == "y") {
+        for (int crimeFinder = 0; crimeFinder < thePlayer.vCrimes.size(); crimeFinder++) {
+            if ("Illegal planning" == thePlayer.vCrimes[crimeFinder].first.sName) {
+                thePlayer.vCrimes[crimeFinder].second++;
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            thePlayer.vCrimes.push_back({{500,0.2,"Illegal planning"}, 1});
+        }
+        int option = round(random(1,3));
+        if (option == 1) {
+            cout << "Unfortunately they didn't want to commit a crime" << endl;
+            thePlayer.sCriminalReputation += round(random(5,10));
+        }
+        else if (option == 2) {
+            cout << "Unfortunately they snitched on you for planning a robbery" << endl;
+            thePlayer.sCriminalReputation += round(random(10,20));
+            prisonCharge(thePlayer, {500,0.2,"Illegal planning"});
+        }
+        else {
+            cout << "They accepted to join you on your crime" << endl;
+            thePlayer.sCriminalReputation += round(random(10,30));
+            cout << "You robbed a bank and gained 5000$" << endl;
+            thePlayer.balance += 5000;
+        }
     }
 };
 
 void explosiveDiarrheaInPublicSpace(player &thePlayer) {
-    cout << "You had explosive diarrhea!" << endl;
+    cout << "You had explosive diarrhea in public space!" << endl;
     int iFine;
     iFine = round(random(50,200));
-    cout << "You need to pay" << iFine << "$ to the state for cleaning your mess" << endl;
+    thePlayer.vCrimes.push_back({{100,1,"explosive diarrhea in public space"}, 1});
+    prisonCharge(thePlayer, {100,1,"explosive diarrhea in public space"});
     thePlayer.balance -= iFine;
 };
 

@@ -65,6 +65,9 @@ int main() {
 
 
                 if (timeManager.iDay - startDate <= 6480) {
+                    if (uiManager.pCurrentPlayer->playerHealth < 0) {
+                        uiManager.updatePlayerStatesOnNewDay();
+                    }
                     if (uiManager.pCurrentPlayer->playerHealth < 100) {
                         uiManager.pCurrentPlayer->playerHealth = 100;
                     }
@@ -297,6 +300,7 @@ int main() {
                 else {
                     cout << "You still need to spend " << uiManager.pCurrentPlayer->iJailTime << " days in prison." << endl;
                 }
+                pauseMenu();
             }
             newDay = true;
         };
@@ -308,7 +312,7 @@ int main() {
         while (running) {
             if (newDay) {
 
-                if (uiManager.pCurrentPlayer->jCurrentJob.sName == "child" || uiManager.pCurrentPlayer == nullptr) {
+                if (uiManager.pCurrentPlayer->jCurrentJob.sName == "child" || uiManager.pCurrentPlayer == nullptr || uiManager.pCurrentPlayer->iJailTime > 0) {
                     prevPayDay = timeManager.iDay;
                 }
                 else if (timeManager.iDay % 7 == 5) { // getting paid

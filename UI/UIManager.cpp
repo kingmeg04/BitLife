@@ -715,11 +715,70 @@ void UIManager::jobsMenu(int &actions) {
 
 void UIManager::crimesMenu(int &actions) {
 
+    if (pCurrentPlayer->iJailTime > 0) {
+        cout << "You can't commit any crimes while in prison." << endl;
+        pauseMenu();
+        return;
+    }
+    int input;
 
+    cout << "Which crime do you want to commit:" << endl;
+    for (int counter = 0; counter < getCrimeVector().size(); counter++) {
+        cout << "[" << counter + 1 << "] " << getCrimeVector()[counter].sName << endl;
+    }
 
-    cout << "Attempting a crime..." << endl;
-    pCurrentPlayer->vCrimes.push_back({crimesArray[0],1});
-    prisonCharge(*pCurrentPlayer, crimesArray[0]);
+    cin >> input;
+
+    if (cin.fail()) {
+        cin.clear();
+        cin.ignore();
+        input = -1;
+    }
+
+    cout << endl;
+    while (true) {
+        if (input == 0) {
+            return;
+        }
+        input--;
+        if (input >= 0 && input < getCrimeVector().size()) {
+            break;
+        }
+        cout << "Invalid input, try again or type 0 to exit: ";
+        if (cin.fail()) {
+            cin.clear();
+            cin.ignore();
+            input = -1;
+        }
+
+        cout << endl;
+    }
+
+    bool found = false;
+    cout << "You commited " << getCrimeVector()[input].sName << " and gained satisfaction." << endl;
+    pCurrentPlayer->sCriminalReputation += getCrimeVector()[input].sIllegalness * 0.1;
+    for (int crimeFinder = 0; crimeFinder < pCurrentPlayer->vCrimes.size(); crimeFinder++) {
+        if (getCrimeVector()[input].sName == pCurrentPlayer->vCrimes[crimeFinder].first.sName) {
+            pCurrentPlayer->vCrimes[crimeFinder].second++;
+            found = true;
+            break;
+        }
+    }
+    if (!found) {
+        pCurrentPlayer->vCrimes.push_back({getCrimeVector()[input], 1});
+    }
+    if (random(0,1) < getCrimeVector()[input].fWitnessability*0.75) {
+        cout << "You were caught committing the crime" << endl;
+        prisonCharge(*pCurrentPlayer, getCrimeVector()[input]);
+        updatePlayerStatesOnNewDay();
+        pauseMenu();
+        return;
+    }
+    pCurrentPlayer->mentalHealth += getCrimeVector()[input].sIllegalness * 0.25;
+    if (getCrimeVector()[input].sName == "shoplifting" || getCrimeVector()[input].sName == "fraud" || getCrimeVector()[input].sName == "robbery" || getCrimeVector()[input].sName == "pickpocketing" || getCrimeVector()[input].sName == "burglary") {
+        pCurrentPlayer->balance += getCrimeVector()[input].sIllegalness * 20;
+        cout << "You gained " << getCrimeVector()[input].sIllegalness * 20 << "$" << endl;
+    }
     pauseMenu();
 }
 
@@ -734,7 +793,35 @@ void UIManager::updatePlayerStatesOnNewDay() {
         pCurrentPlayer->playerHealth = 100;
     }
     else if (pCurrentPlayer->playerHealth < 0) {
-        //death() cause: died
+        gameOver(1);
+        cout << "Current save will be deleted" << endl;
+        pauseMenu();
+        char appDataPath[MAX_PATH];
+        if (SHGetFolderPath(nullptr, CSIDL_LOCAL_APPDATA, nullptr, 0, appDataPath) != S_OK) {
+            cerr << "Failed to get AppData path." << endl;
+            return;
+        }
+
+        // Define the target folder path in AppData
+        string folderPath = string(appDataPath) + "\\TheRealBitLife";
+
+        // Construct the full file path
+        string filePath = folderPath + "\\" + pCurrentPlayer->sPlayerName + ".txt";
+
+        // Check if the file exists and delete it
+        try {
+            if (fs::exists(filePath)) {
+                fs::remove(filePath);
+                cout << "File deleted successfully: " << filePath << endl;
+            } else {
+                cerr << "File does not exist: " << filePath << endl;
+            }
+        } catch (const exception& e) {
+            cerr << "Error deleting file: " << e.what() << endl;
+        }
+
+    quitGame();
+
     }
     if (pCurrentPlayer->saturation > 100) {
         pCurrentPlayer->saturation = 100;
