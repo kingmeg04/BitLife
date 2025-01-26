@@ -9,32 +9,91 @@ int currentItem;
 
 int randomEventSelector(player &thePlayer, int currentDay) {
 
-    int dateChance = 20;
-    int prankChance = thePlayer.sCriminalReputation;
-    int crimeChance = 0;
-    if (checkForItem(thePlayer, "partner") > 1) {
-        dateChance = 1;
+    int dateChance;
+    int prankChance;
+    int investigationChance;
+    int giveawayChance;
+    int NDChance;
+    int donationChance;
+    int adminChance;
+    int bananaChance;
+    int crimeChance;
+    int EDIPSChance;
+    int CinSCChance;
+
+    if (thePlayer.iJailTime <= 0) {
+        dateChance = 200;
+        if (checkForItem(thePlayer, "partner") > 1) {
+            dateChance = 5;
+        }
+        prankChance = 5 * thePlayer.sCriminalReputation / 2;
+        investigationChance = 50;
+        giveawayChance = 5;
+        NDChance = 25;
+        donationChance = thePlayer.balance/1000;
+        if (donationChance > 250) {
+            donationChance = 50;
+        }
+        adminChance = 1;
+        bananaChance = 25;
+        crimeChance = thePlayer.sCriminalReputation * 5;
+        EDIPSChance = round(random(0,1000));
+        CinSCChance = 50;
+
+
+    }
+    else {
+        dateChance = 0;
+        prankChance = 0;
+        investigationChance = 250;
+        giveawayChance = 0;
+        NDChance = 25;
+        donationChance = thePlayer.balance/1000;
+        if (donationChance > 250) {
+            donationChance = 50;
+        }
+        adminChance = 1;
+        bananaChance = 25;
+        crimeChance = 0;
+        EDIPSChance = round(random(0,1000));
+        CinSCChance = 0;
     }
 
-    if (thePlayer.sCriminalReputation > 50) {
-        prankChance = 5;
-        crimeChance += 10;
-    }
-
-    int chosenEvent = get<int>(randomElement(vector<int>{1,2,3,4}, vector<int>{dateChance,prankChance,5,1}));
+    int chosenEvent = get<int>(randomElement(vector<int>{1,2,3,4,5,6,7,8,9,10,11}, vector<int>{dateChance, prankChance, investigationChance, giveawayChance, NDChance, donationChance, adminChance, bananaChance, crimeChance, EDIPSChance, CinSCChance}));
     switch (chosenEvent) {
         case 1:
             dating(thePlayer);
-            break;
+        break;
         case 2:
             prank(thePlayer);
-            break;
+        break;
         case 3:
             policeInvestigation(thePlayer);
-            break;
+        break;
         case 4:
             winRandomGiveaway(thePlayer);
-            break;
+        break;
+        case 5:
+            naturalDisaster(thePlayer);
+        break;
+        case 6:
+            makeDonation(thePlayer);
+        break;
+        case 7:
+            becomeAdmin(thePlayer);
+        break;
+        case 8:
+            slipOnBananaPeal(thePlayer);
+        break;
+        case 9:
+            askedToCommitCrime(thePlayer);
+        break;
+        case 10:
+            explosiveDiarrheaInPublicSpace(thePlayer);
+        break;
+        case 11:
+            getCaughtInStripclubByMedia(thePlayer);
+        break;
     }
     return chosenEvent;
 }
@@ -52,9 +111,10 @@ void dating(player &thePlayer) {
         else{
             if (random(0,1) > 0.25) {
                 cout << "They said yes." << endl;
-                currentItem = checkForItem(thePlayer, "car");
+                currentItem = checkForItem(thePlayer, "partner");
                 if (currentItem >= 0) {
                     thePlayer.vItems[currentItem].second++;
+                    cout << "You now have " << thePlayer.vItems[currentItem].second << " partners." << endl;
                     return;
                 }
                 cout << "You now have a partner." << endl;
@@ -148,7 +208,7 @@ void policeInvestigation(player &thePlayer) {
         thePlayer.sCriminalReputation += floor(random(0, 5));
         cout << "The police thanks you for your honesty" << endl;
         if (thePlayer.sCriminalReputation >= 50) {
-            cout << "The homies feel betrayed and beat you in an alley." << endl;
+            cout << "The homies feel betrayed and beat you up." << endl;
             thePlayer.playerHealth -= floor(random(5,25));
             if (thePlayer.playerHealth <= 0) {
                 // deathEvent() cause: is beaten to death
@@ -206,13 +266,38 @@ void winRandomGiveaway(player &thePlayer) {
 }
 
 void naturalDisaster(player &thePlayer) {
+    string input;
     cout << "There was a natural disaster!" << endl;
-    for (int currentItem = 0; currentItem < thePlayer.vItems.size(); currentItem++) {
-        if (shared_ptr<house> savingItem = static_pointer_cast<house>(thePlayer.vItems[currentItem].first)) {
-            if (savingItem->itemType == 3) {
-                if (random(1,1000) > savingItem->iStrength) {
-                    cout << "Your house got destroyed!" << endl;
-                    thePlayer.vItems[currentItem].second--;
+    if (thePlayer.iJailTime > 0) {
+        cout << "There was a natural disaster!" << endl;
+        cout << "Do you want to use the chance to escape (Y/N):";
+        cin >> input;
+        cout << endl;
+        if (input == "Y" || input == "y") {
+            if (round(random(0,5) > 4)){
+                cout << "You escaped successfully and are free!" << endl;
+                thePlayer.iJailTime = 0;
+                thePlayer.vCrimes.push_back({{5, 0.2, "escpaping prison"}, 5});
+            }
+            else {
+                cout << "You were caught by a warden and now need to spend an additional 100 days in prison" << endl;
+                thePlayer.iJailTime += 100;
+            }
+        }
+        else {
+            cout << "You didn't escape and were rewarded with a reduction of your sentance by 50 days." << endl;
+            thePlayer.iJailTime -= 50;
+            thePlayer.mentalHealth += 10;
+        }
+    }
+    else {
+        for (int currentItem = 0; currentItem < thePlayer.vItems.size(); currentItem++) {
+            if (shared_ptr<house> savingItem = static_pointer_cast<house>(thePlayer.vItems[currentItem].first)) {
+                if (savingItem->itemType == 3) {
+                    if (random(1,1000) > savingItem->iStrength) {
+                        cout << "Your house got destroyed!" << endl;
+                        thePlayer.vItems[currentItem].second--;
+                    }
                 }
             }
         }
@@ -224,14 +309,26 @@ void makeDonation(player &thePlayer) {
     cout << "Do you want to do a donation (Y/N)" << endl;
     cin >> strAnswer;
     if (strAnswer == "Y" || strAnswer == "y") {
+        getIDonation:
         int iDonation;
         cout << "How much do you want to donate?" << endl;
         cin >> iDonation;
+        if (cin.fail() || iDonation < 1) {
+            cin.clear();
+            cin.ignore();
+            cout << "Invalid input, try again" << endl;
+            goto getIDonation;
+        }
+
         cout << "Thanks for donating" << iDonation << endl;
         thePlayer.balance -= iDonation;
+
+        if (thePlayer.iJailTime <= 0) {
+            cout << "As a reward for donating your time will be reduced by " << iDonation/500 << " days." << endl;
+        }
     }
     else {
-        cout << "You are very selfish and lost 5 Mental Health Points" << endl;
+        cout << "You are very selfish and lost 5 Mental Health." << endl;
         thePlayer.balance -= 5;
     }
 };
@@ -280,7 +377,35 @@ void explosiveDiarrheaInPublicSpace(player &thePlayer) {
     thePlayer.balance -= iFine;
 };
 
-void organisedCrime(player &thePlayer) {
-    // Dont know what to do
+void getCaughtInStripclubByMedia(player &thePlayer) {
+    cout << "The media caught you spending time in a strip club" << endl;
+    if (thePlayer.jCurrentJob.sName == "politician" || thePlayer.jCurrentJob.sName == "mayor" || thePlayer.jCurrentJob.sName == "prime minister") {
+        cout << "You lost your job as a " << thePlayer.jCurrentJob.sName << " and are now homeless." << endl;
+        for (int prevJob = 0; prevJob < thePlayer.vPrevJobs.size(); prevJob++) {
+            if (thePlayer.vPrevJobs[prevJob].sName == thePlayer.jCurrentJob.sName) {
+                thePlayer.vPrevJobs.erase(thePlayer.vPrevJobs.begin() + prevJob);
+                break;
+            }
+        }
+        thePlayer.vPrevJobs.push_back(thePlayer.jCurrentJob);
+        thePlayer.jCurrentJob = getJobVector()[7];
+        thePlayer.mentalHealth -= 50;
+    }
+    else {
+        if (checkForItem(thePlayer, "partner") != -1) {
+            cout << "Your partner wasn't too happy and left you" << endl;
+            thePlayer.vItems[checkForItem(thePlayer, "partner")].second--;
+            if (thePlayer.vItems[checkForItem(thePlayer, "partner")].second <= 0) {
+                thePlayer.vItems.erase(thePlayer.vItems.begin() + checkForItem(thePlayer, "partner"));
+            }
+            thePlayer.mentalHealth -= 10;
+        }
+        else {
+            cout << "No one really cared and you had a good time." << endl;
+            thePlayer.mentalHealth += 5;
+        }
+    }
+
 }
+
 

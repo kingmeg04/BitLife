@@ -289,6 +289,15 @@ int main() {
                     prevPayDay = timeManager.iDay;
                 }
             }
+            if (uiManager.pCurrentPlayer->iJailTime > 0) {
+                uiManager.pCurrentPlayer->iJailTime -= daysSkipped;
+                if (uiManager.pCurrentPlayer->iJailTime <= 0) {
+                    cout << "You were released from prison." << endl;
+                }
+                else {
+                    cout << "You still need to spend " << uiManager.pCurrentPlayer->iJailTime << " days in prison." << endl;
+                }
+            }
             newDay = true;
         };
 

@@ -21,7 +21,7 @@ void UIManager::newGame() {
     cout << endl;
 
     pCurrentPlayer = new player(playerName,job(0, 0, "child"));
-    pCurrentPlayer->balance = 10000;
+    pCurrentPlayer->balance = 0;
     cout << "New game started successfully!" << endl;
     pauseMenu();
 }
@@ -715,14 +715,7 @@ void UIManager::jobsMenu(int &actions) {
 
 void UIManager::crimesMenu(int &actions) {
 
-    array<crime, 6> crimesArray = {
-        crime{50, 0.2, "Shoplifting"},
-        crime{200, 0.5, "Fraud"},
-        crime{700, 0.8, "Arson"},
-        crime{1000, 0.9, "Robbery"},
-        crime{50, 0.3, "Pickpocketing"},
-        crime{500, 0.6, "Burglary"}
-    };
+
 
     cout << "Attempting a crime..." << endl;
     pCurrentPlayer->vCrimes.push_back({crimesArray[0],1});

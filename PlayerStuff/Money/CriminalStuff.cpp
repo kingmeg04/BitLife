@@ -10,9 +10,9 @@ void prisonCharge(player& thePlayer, crime crimeCaughtFor) {
     cout << "You've been caught for " << crimeCaughtFor.sName << " and are being charged with the following:" << endl;
     int time = 0, fine = 0, paidFees = 0;
 
-    const int LOW_ILLEGALNESS = 200;
-    const int MEDIUM_ILLEGALNESS = 700;
-    const int MAX_ILLEGALNESS = 1000;
+    const int LOW_ILLEGALNESS = 20;
+    const int MEDIUM_ILLEGALNESS = 70;
+    const int MAX_ILLEGALNESS = 100;
     const int FINE_TO_TIME_RATIO = 100;
 
     for (int crimes = 0; crimes < thePlayer.vCrimes.size(); crimes++) {
