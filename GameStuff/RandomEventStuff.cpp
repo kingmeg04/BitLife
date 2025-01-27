@@ -37,7 +37,7 @@ int randomEventSelector(player &thePlayer, int currentDay) {
         adminChance = 1;
         bananaChance = 10;
         crimeChance = thePlayer.sCriminalReputation * 5;
-        EDIPSChance = round(random(0,100));
+        EDIPSChance = 1
         CinSCChance = 10;
 
 
@@ -55,7 +55,7 @@ int randomEventSelector(player &thePlayer, int currentDay) {
         adminChance = 1;
         bananaChance = 25;
         crimeChance = 0;
-        EDIPSChance = round(random(0,1000));
+        EDIPSChance = 1;
         CinSCChance = 0;
     }
 
