@@ -756,6 +756,7 @@ void UIManager::crimesMenu(int &actions) {
 
     bool found = false;
     cout << "You commited " << getCrimeVector()[input].sName << " and gained satisfaction." << endl;
+    actions--;
     pCurrentPlayer->sCriminalReputation += getCrimeVector()[input].sIllegalness * 0.1;
     for (int crimeFinder = 0; crimeFinder < pCurrentPlayer->vCrimes.size(); crimeFinder++) {
         if (getCrimeVector()[input].sName == pCurrentPlayer->vCrimes[crimeFinder].first.sName) {
