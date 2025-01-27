@@ -12,7 +12,7 @@ int main() {
 
 
 
-    while (true) {
+    while (true) { // originally was supposed to function as staying in the game but changing it, allowing for a re-initialisation without re-opening the window
         string input;
         int numInput;
         unsigned short prevPayDay = 0; // unused because I tried to use it but didn't want to work
@@ -48,7 +48,7 @@ int main() {
             if (randomEventChance > 80 || daysSkipped >= 80) {
                 randomEventChance = 80;
             }
-            // cap at 75 so player doesn't have to waste time by spamming through random events
+            // cap at 80 so player doesn't have to waste time by spamming through random events
             for (int i = 0; i < daysSkipped; i++){
                 uiManager.updatePlayerStatesOnNewDay();
 
@@ -376,6 +376,13 @@ int main() {
 
                     for (int i = 0; i < round(random(0,5)); i++) {
                         uiManager.vShops.push_back(generateShop({1},7));
+                    }
+                }
+                if (uiManager.vShops.size() <= 0 && timeManager.iDay - startDate >= 6480) {
+                    uiManager.vShops.push_back(generateShop({2}, 1)); // guarantee to generate at least one convenience store
+
+                    for (int i = 0; i < round(random(0,5)); i++) {
+                        uiManager.vShops.push_back(generateShop({1,2},7));
                     }
                 }
 
