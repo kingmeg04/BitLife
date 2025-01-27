@@ -379,7 +379,7 @@ int main() {
                     }
                 }
                 if (uiManager.vShops.size() <= 0 && timeManager.iDay - startDate >= 6480) {
-                    uiManager.vShops.push_back(generateShop({2}, 1)); // guarantee to generate at least one convenience store
+                    uiManager.vShops.push_back(generateShop({2}, 1)); // guarantee to generate at least one car store
 
                     for (int i = 0; i < round(random(0,5)); i++) {
                         uiManager.vShops.push_back(generateShop({1,2},7));
